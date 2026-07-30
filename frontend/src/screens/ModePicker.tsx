@@ -17,13 +17,21 @@ type ModePickerProps = {
 
 const MAX_SITUATION_LENGTH = 300;
 
+// Render's free tier sleeps the backend after inactivity — the first
+// request after a while can take 10-30s to wake it up. Below this, a plain
+// "Laster..." looks broken; only show the explanation once it's actually
+// taking a while, so a normal warm-server load never sees it.
+const SLOW_LOAD_HINT_MS = 3000;
+
 export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [slowLoad, setSlowLoad] = useState(false);
 
   useEffect(() => {
+    const timer = setTimeout(() => setSlowLoad(true), SLOW_LOAD_HINT_MS);
     fetchModes()
       .then(setModes)
       .catch((e) => {
@@ -32,7 +40,9 @@ export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: 
           return;
         }
         setError("Kunne ikke laste modusene. Prøv å laste siden på nytt.");
-      });
+      })
+      .finally(() => clearTimeout(timer));
+    return () => clearTimeout(timer);
     // onAccessDenied is stable across renders (defined once in App); omitting
     // it from deps avoids re-fetching modes on every parent re-render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -78,7 +88,13 @@ export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: 
       )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>
-        {modes === null && <p className="text-muted">Laster...</p>}
+        {modes === null && (
+          <p className="text-muted">
+            {slowLoad
+              ? "Vekker serveren — dette kan ta opptil 30 sekunder hvis den har ligget i dvale."
+              : "Laster..."}
+          </p>
+        )}
         {modes?.map((mode) => (
           <button
             key={mode.key}
