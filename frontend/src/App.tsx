@@ -40,6 +40,7 @@ function App() {
     <LessonScreen
       lesson={screen.lesson}
       onBack={() => setScreen({ name: "mode", language: screen.language })}
+      onAccessDenied={() => setAccessDenied(true)}
     />
   );
 }

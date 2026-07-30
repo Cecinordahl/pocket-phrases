@@ -5,6 +5,12 @@ import { recordReview, sortByDue } from "../lib/srs";
 type QuizProps = {
   phrases: Phrase[];
   onComplete: (score: number) => void;
+  // Undefined hides the "prøv andre fraser" button entirely — used for
+  // AI-generated lessons, where there's nothing stored to regenerate a
+  // fresh-but-similar variant from. When present, LessonScreen owns the
+  // actual refetch and remounts this component with the new phrase set.
+  onRequestNewSet?: () => void;
+  requestingNewSet?: boolean;
 };
 
 type Question = {
@@ -42,8 +48,12 @@ function buildQuestions(phrases: Phrase[]): Question[] {
   });
 }
 
-export function Quiz({ phrases, onComplete }: QuizProps) {
-  const questions = useMemo(() => buildQuestions(phrases), [phrases]);
+export function Quiz({ phrases, onComplete, onRequestNewSet, requestingNewSet }: QuizProps) {
+  const [runId, setRunId] = useState(0);
+  // runId is in the deps purely to force a reshuffle on "ta testen på nytt" —
+  // the phrase set itself doesn't change, just the question order/distractors.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const questions = useMemo(() => buildQuestions(phrases), [phrases, runId]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -57,6 +67,16 @@ export function Quiz({ phrases, onComplete }: QuizProps) {
 
   const score = answers.filter((a) => a.correct).length;
 
+  function restart() {
+    setRunId((r) => r + 1);
+    setIndex(0);
+    setSelected(null);
+    setRevealed(false);
+    setAnswers([]);
+    setFinished(false);
+    setShowReview(false);
+  }
+
   if (finished) {
     return (
       <div>
@@ -65,9 +85,23 @@ export function Quiz({ phrases, onComplete }: QuizProps) {
           <p>
             Du fikk {score} av {questions.length} riktige.
           </p>
-          <button className="button button-secondary" onClick={() => setShowReview((s) => !s)}>
-            {showReview ? "Skjul gjennomgang" : "Gå gjennom svarene"}
-          </button>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <button className="button" onClick={restart}>
+              Ta testen på nytt
+            </button>
+            {onRequestNewSet && (
+              <button
+                className="button button-secondary"
+                disabled={requestingNewSet}
+                onClick={onRequestNewSet}
+              >
+                {requestingNewSet ? "Henter nye fraser..." : "Prøv med andre fraser"}
+              </button>
+            )}
+            <button className="button button-secondary" onClick={() => setShowReview((s) => !s)}>
+              {showReview ? "Skjul gjennomgang" : "Gå gjennom svarene"}
+            </button>
+          </div>
         </div>
         {showReview && (
           <ul
