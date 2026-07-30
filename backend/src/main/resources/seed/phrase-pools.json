@@ -3208,5 +3208,602 @@
         }
       ]
     }
+  },
+  "de": {
+    "tourist-essentials": {
+      "title": "Turist-essensielt",
+      "phrases": [
+        {
+          "id": "tourist-essentials-de-1",
+          "target": "Wo ist...?",
+          "pronunciation": "vo ist",
+          "native": "Hvor er...?",
+          "category": "reise",
+          "icon": "location"
+        },
+        {
+          "id": "tourist-essentials-de-2",
+          "target": "Wie viel kostet das?",
+          "pronunciation": "vee feel KOS-tet das",
+          "native": "Hvor mye koster det?",
+          "category": "reise",
+          "icon": "price"
+        },
+        {
+          "id": "tourist-essentials-de-3",
+          "target": "Sprechen Sie Englisch?",
+          "pronunciation": "SHPREH-khen zee ENG-lish",
+          "native": "Snakker du engelsk?",
+          "category": "reise",
+          "icon": "language"
+        },
+        {
+          "id": "tourist-essentials-de-4",
+          "target": "Ich verstehe nicht",
+          "pronunciation": "ikh fer-SHTAY-eh nikht",
+          "native": "Jeg forstår ikke",
+          "category": "reise",
+          "icon": "confused"
+        },
+        {
+          "id": "tourist-essentials-de-5",
+          "target": "Können Sie mir helfen?",
+          "pronunciation": "KUR-nen zee meer HEL-fen",
+          "native": "Kan du hjelpe meg?",
+          "category": "reise",
+          "icon": "help"
+        },
+        {
+          "id": "tourist-essentials-de-6",
+          "target": "Wo ist die Toilette?",
+          "pronunciation": "vo ist dee toa-LET-teh",
+          "native": "Hvor er toalettet?",
+          "category": "reise",
+          "icon": "bathroom"
+        },
+        {
+          "id": "tourist-essentials-de-7",
+          "target": "Entschuldigung",
+          "pronunciation": "ent-SHOOL-dee-goong",
+          "native": "Unnskyld meg",
+          "category": "reise",
+          "icon": "excuse-me"
+        },
+        {
+          "id": "tourist-essentials-de-8",
+          "target": "Auf Wiedersehen",
+          "pronunciation": "owf VEE-der-zayn",
+          "native": "Ha det bra",
+          "category": "reise",
+          "icon": "goodbye"
+        },
+        {
+          "id": "tourist-essentials-de-9",
+          "target": "Guten Morgen",
+          "pronunciation": "GOO-ten MOR-gen",
+          "native": "God morgen",
+          "category": "reise",
+          "icon": "greeting"
+        },
+        {
+          "id": "tourist-essentials-de-10",
+          "target": "Vielen Dank",
+          "pronunciation": "FEE-len dank",
+          "native": "Takk skal du ha",
+          "category": "reise",
+          "icon": "thanks"
+        }
+      ]
+    },
+    "restaurant": {
+      "title": "Restaurant",
+      "phrases": [
+        {
+          "id": "restaurant-de-1",
+          "target": "Einen Tisch für zwei, bitte",
+          "pronunciation": "AI-nen tish fewr tsvai BIT-teh",
+          "native": "Et bord til to, takk",
+          "category": "mat",
+          "icon": "table"
+        },
+        {
+          "id": "restaurant-de-2",
+          "target": "Kann ich die Speisekarte haben?",
+          "pronunciation": "kan ikh dee SHPAI-zeh-kar-teh HAH-ben",
+          "native": "Kan jeg få menyen?",
+          "category": "mat",
+          "icon": "menu"
+        },
+        {
+          "id": "restaurant-de-3",
+          "target": "Ich bin Vegetarier/in",
+          "pronunciation": "ikh bin veh-geh-TAH-ree-er",
+          "native": "Jeg er vegetarianer",
+          "category": "mat",
+          "icon": "dietary"
+        },
+        {
+          "id": "restaurant-de-4",
+          "target": "Die Rechnung, bitte",
+          "pronunciation": "dee REKH-noong BIT-teh",
+          "native": "Regningen, takk",
+          "category": "mat",
+          "icon": "bill"
+        },
+        {
+          "id": "restaurant-de-5",
+          "target": "Das war lecker",
+          "pronunciation": "das vahr LEK-er",
+          "native": "Dette var deilig",
+          "category": "mat",
+          "icon": "delicious"
+        },
+        {
+          "id": "restaurant-de-6",
+          "target": "Ich möchte das bestellen",
+          "pronunciation": "ikh MURKH-teh das beh-SHTEL-en",
+          "native": "Jeg vil bestille dette",
+          "category": "mat",
+          "icon": "order"
+        },
+        {
+          "id": "restaurant-de-7",
+          "target": "Haben Sie etwas glutenfrei?",
+          "pronunciation": "HAH-ben zee ET-vas gloo-TEN-frai",
+          "native": "Har dere glutenfritt?",
+          "category": "mat",
+          "icon": "allergy"
+        },
+        {
+          "id": "restaurant-de-8",
+          "target": "Kann ich noch etwas Wasser haben?",
+          "pronunciation": "kan ikh nokh ET-vas VAS-er HAH-ben",
+          "native": "Kan jeg få litt mer vann?",
+          "category": "mat",
+          "icon": "water"
+        },
+        {
+          "id": "restaurant-de-9",
+          "target": "Was empfehlen Sie?",
+          "pronunciation": "vas emp-FAY-len zee",
+          "native": "Hva anbefaler du?",
+          "category": "mat",
+          "icon": "recommend"
+        },
+        {
+          "id": "restaurant-de-10",
+          "target": "Prost!",
+          "pronunciation": "prohst",
+          "native": "Skål!",
+          "category": "mat",
+          "icon": "cheers"
+        }
+      ]
+    },
+    "bar-smalltalk": {
+      "title": "Bar og småprat",
+      "phrases": [
+        {
+          "id": "bar-smalltalk-de-1",
+          "target": "Darf ich dir einen Drink ausgeben?",
+          "pronunciation": "darf ikh deer AI-nen drink OWS-gay-ben",
+          "native": "Kan jeg by på en drink?",
+          "category": "sosialt",
+          "icon": "drink"
+        },
+        {
+          "id": "bar-smalltalk-de-2",
+          "target": "Wie heißt du?",
+          "pronunciation": "vee haist doo",
+          "native": "Hva heter du?",
+          "category": "sosialt",
+          "icon": "name"
+        },
+        {
+          "id": "bar-smalltalk-de-3",
+          "target": "Woher kommst du?",
+          "pronunciation": "vo-HAYR komst doo",
+          "native": "Hvor er du fra?",
+          "category": "sosialt",
+          "icon": "origin"
+        },
+        {
+          "id": "bar-smalltalk-de-4",
+          "target": "Ich heiße ...",
+          "pronunciation": "ikh HAI-seh",
+          "native": "Jeg heter ...",
+          "category": "sosialt",
+          "icon": "name"
+        },
+        {
+          "id": "bar-smalltalk-de-5",
+          "target": "Es war schön, dich kennenzulernen",
+          "pronunciation": "es vahr shurn dikh KEN-en-tsoo-lair-nen",
+          "native": "Det var hyggelig å møte deg",
+          "category": "sosialt",
+          "icon": "nice-meet"
+        },
+        {
+          "id": "bar-smalltalk-de-6",
+          "target": "Kann ich ein Bier haben?",
+          "pronunciation": "kan ikh ain beer HAH-ben",
+          "native": "Kan jeg få en øl?",
+          "category": "sosialt",
+          "icon": "beer"
+        },
+        {
+          "id": "bar-smalltalk-de-7",
+          "target": "Prost!",
+          "pronunciation": "prohst",
+          "native": "Skål!",
+          "category": "sosialt",
+          "icon": "cheers"
+        },
+        {
+          "id": "bar-smalltalk-de-8",
+          "target": "Ist dieser Platz frei?",
+          "pronunciation": "ist DEE-zer plats frai",
+          "native": "Er dette setet ledig?",
+          "category": "sosialt",
+          "icon": "seat"
+        },
+        {
+          "id": "bar-smalltalk-de-9",
+          "target": "Was machst du beruflich?",
+          "pronunciation": "vas makhst doo beh-ROOF-likh",
+          "native": "Hva jobber du med?",
+          "category": "sosialt",
+          "icon": "job"
+        },
+        {
+          "id": "bar-smalltalk-de-10",
+          "target": "Schönen Abend noch",
+          "pronunciation": "SHUR-nen AH-bent nokh",
+          "native": "Ha en fin kveld",
+          "category": "sosialt",
+          "icon": "evening"
+        }
+      ]
+    },
+    "taxi-transport": {
+      "title": "Taxi og transport",
+      "phrases": [
+        {
+          "id": "taxi-transport-de-1",
+          "target": "Zum Flughafen, bitte",
+          "pronunciation": "tsoom FLOOK-hah-fen BIT-teh",
+          "native": "Til flyplassen, takk",
+          "category": "transport",
+          "icon": "airport"
+        },
+        {
+          "id": "taxi-transport-de-2",
+          "target": "Was kostet die Fahrt?",
+          "pronunciation": "vas KOS-tet dee fahrt",
+          "native": "Hvor mye koster turen?",
+          "category": "transport",
+          "icon": "price"
+        },
+        {
+          "id": "taxi-transport-de-3",
+          "target": "Können Sie hier anhalten?",
+          "pronunciation": "KUR-nen zee heer AN-hal-ten",
+          "native": "Kan du stoppe her?",
+          "category": "transport",
+          "icon": "stop"
+        },
+        {
+          "id": "taxi-transport-de-4",
+          "target": "Ich brauche ein Taxi",
+          "pronunciation": "ikh BROW-kheh ain TAK-see",
+          "native": "Jeg trenger en drosje",
+          "category": "transport",
+          "icon": "taxi"
+        },
+        {
+          "id": "taxi-transport-de-5",
+          "target": "Wo ist die nächste Bushaltestelle?",
+          "pronunciation": "vo ist dee NEKH-steh BOOS-hal-teh-shtel-eh",
+          "native": "Hvor er nærmeste busstopp?",
+          "category": "transport",
+          "icon": "bus"
+        },
+        {
+          "id": "taxi-transport-de-6",
+          "target": "Fährt dieser Zug nach...?",
+          "pronunciation": "fairt DEE-zer tsook nakh",
+          "native": "Går dette toget til...?",
+          "category": "transport",
+          "icon": "train"
+        },
+        {
+          "id": "taxi-transport-de-7",
+          "target": "Eine Fahrkarte, bitte",
+          "pronunciation": "AI-neh FAHR-kar-teh BIT-teh",
+          "native": "Én billett, takk",
+          "category": "transport",
+          "icon": "ticket"
+        },
+        {
+          "id": "taxi-transport-de-8",
+          "target": "Wie lange dauert das?",
+          "pronunciation": "vee LANG-eh DOW-ert das",
+          "native": "Hvor lang tid tar det?",
+          "category": "transport",
+          "icon": "time"
+        },
+        {
+          "id": "taxi-transport-de-9",
+          "target": "Können Sie kurz warten?",
+          "pronunciation": "KUR-nen zee koorts VAR-ten",
+          "native": "Kan du vente litt?",
+          "category": "transport",
+          "icon": "wait"
+        },
+        {
+          "id": "taxi-transport-de-10",
+          "target": "Ich bin spät dran",
+          "pronunciation": "ikh bin shpayt drahn",
+          "native": "Jeg er sent ute",
+          "category": "transport",
+          "icon": "late"
+        }
+      ]
+    },
+    "emergency-pharmacy": {
+      "title": "Nød og apotek",
+      "phrases": [
+        {
+          "id": "emergency-pharmacy-de-1",
+          "target": "Ich brauche Hilfe",
+          "pronunciation": "ikh BROW-kheh HIL-feh",
+          "native": "Jeg trenger hjelp",
+          "category": "nodsituasjon",
+          "icon": "help"
+        },
+        {
+          "id": "emergency-pharmacy-de-2",
+          "target": "Rufen Sie einen Krankenwagen",
+          "pronunciation": "ROO-fen zee AI-nen KRAN-ken-vah-gen",
+          "native": "Ring en ambulanse",
+          "category": "nodsituasjon",
+          "icon": "ambulance"
+        },
+        {
+          "id": "emergency-pharmacy-de-3",
+          "target": "Es tut hier weh",
+          "pronunciation": "es toot heer vay",
+          "native": "Jeg har vondt her",
+          "category": "nodsituasjon",
+          "icon": "pain"
+        },
+        {
+          "id": "emergency-pharmacy-de-4",
+          "target": "Haben Sie das ohne Rezept?",
+          "pronunciation": "HAH-ben zee das OH-neh reh-TSEPT",
+          "native": "Har dere dette uten resept?",
+          "category": "nodsituasjon",
+          "icon": "pharmacy"
+        },
+        {
+          "id": "emergency-pharmacy-de-5",
+          "target": "Ich bin allergisch gegen...",
+          "pronunciation": "ikh bin a-LAIR-gish GAY-gen",
+          "native": "Jeg er allergisk mot...",
+          "category": "nodsituasjon",
+          "icon": "allergy"
+        },
+        {
+          "id": "emergency-pharmacy-de-6",
+          "target": "Wo ist das nächste Krankenhaus?",
+          "pronunciation": "vo ist das NEKH-steh KRAN-ken-hows",
+          "native": "Hvor er nærmeste sykehus?",
+          "category": "nodsituasjon",
+          "icon": "hospital"
+        },
+        {
+          "id": "emergency-pharmacy-de-7",
+          "target": "Ich habe meinen Pass verloren",
+          "pronunciation": "ikh HAH-beh MAI-nen pas fer-LOH-ren",
+          "native": "Jeg har mistet passet mitt",
+          "category": "nodsituasjon",
+          "icon": "document"
+        },
+        {
+          "id": "emergency-pharmacy-de-8",
+          "target": "Rufen Sie die Polizei",
+          "pronunciation": "ROO-fen zee dee po-lee-TSAI",
+          "native": "Ring politiet",
+          "category": "nodsituasjon",
+          "icon": "police"
+        },
+        {
+          "id": "emergency-pharmacy-de-9",
+          "target": "Mir ist schlecht",
+          "pronunciation": "meer ist shlekht",
+          "native": "Jeg føler meg dårlig",
+          "category": "nodsituasjon",
+          "icon": "sick"
+        },
+        {
+          "id": "emergency-pharmacy-de-10",
+          "target": "Können Sie mir helfen?",
+          "pronunciation": "KUR-nen zee meer HEL-fen",
+          "native": "Kan du hjelpe meg?",
+          "category": "nodsituasjon",
+          "icon": "help"
+        }
+      ]
+    },
+    "shopping-prices": {
+      "title": "Handel og priser",
+      "phrases": [
+        {
+          "id": "shopping-prices-de-1",
+          "target": "Wie viel kostet das hier?",
+          "pronunciation": "vee feel KOS-tet das heer",
+          "native": "Hvor mye koster denne?",
+          "category": "handel",
+          "icon": "price"
+        },
+        {
+          "id": "shopping-prices-de-2",
+          "target": "Kann ich es anprobieren?",
+          "pronunciation": "kan ikh es AN-pro-bee-ren",
+          "native": "Kan jeg prøve den?",
+          "category": "handel",
+          "icon": "fitting"
+        },
+        {
+          "id": "shopping-prices-de-3",
+          "target": "Haben Sie eine kleinere Größe?",
+          "pronunciation": "HAH-ben zee AI-neh KLAI-neh-reh GRUR-seh",
+          "native": "Har dere en mindre størrelse?",
+          "category": "handel",
+          "icon": "size"
+        },
+        {
+          "id": "shopping-prices-de-4",
+          "target": "Nehmen Sie Karte?",
+          "pronunciation": "NAY-men zee KAR-teh",
+          "native": "Tar dere kort?",
+          "category": "handel",
+          "icon": "card"
+        },
+        {
+          "id": "shopping-prices-de-5",
+          "target": "Das ist zu teuer",
+          "pronunciation": "das ist tsoo TOY-er",
+          "native": "Det er for dyrt",
+          "category": "handel",
+          "icon": "expensive"
+        },
+        {
+          "id": "shopping-prices-de-6",
+          "target": "Kann ich eine Quittung bekommen?",
+          "pronunciation": "kan ikh AI-neh KVIT-oong beh-KOM-en",
+          "native": "Kan jeg få kvittering?",
+          "category": "handel",
+          "icon": "receipt"
+        },
+        {
+          "id": "shopping-prices-de-7",
+          "target": "Ich schaue mich nur um",
+          "pronunciation": "ikh SHOW-eh mikh noor oom",
+          "native": "Bare ser meg litt rundt",
+          "category": "handel",
+          "icon": "browsing"
+        },
+        {
+          "id": "shopping-prices-de-8",
+          "target": "Haben Sie das in einer anderen Farbe?",
+          "pronunciation": "HAH-ben zee das in AI-ner AN-deh-ren FAR-beh",
+          "native": "Har dere dette i en annen farge?",
+          "category": "handel",
+          "icon": "color"
+        },
+        {
+          "id": "shopping-prices-de-9",
+          "target": "Kann ich einen Rabatt bekommen?",
+          "pronunciation": "kan ikh AI-nen ra-BAT beh-KOM-en",
+          "native": "Kan jeg få rabatt?",
+          "category": "handel",
+          "icon": "discount"
+        },
+        {
+          "id": "shopping-prices-de-10",
+          "target": "Ich nehme das",
+          "pronunciation": "ikh NAY-meh das",
+          "native": "Jeg tar denne",
+          "category": "handel",
+          "icon": "buy"
+        }
+      ]
+    },
+    "polite-guest": {
+      "title": "Høflig gjest",
+      "phrases": [
+        {
+          "id": "polite-guest-de-1",
+          "target": "Danke, dass du mich eingeladen hast",
+          "pronunciation": "DANK-eh das doo mikh AIN-geh-lah-den hast",
+          "native": "Takk for at du har meg",
+          "category": "hoflighet",
+          "icon": "thanks"
+        },
+        {
+          "id": "polite-guest-de-2",
+          "target": "Soll ich die Schuhe ausziehen?",
+          "pronunciation": "zol ikh dee SHOO-eh OWS-tsee-en",
+          "native": "Kan jeg ta av meg skoene?",
+          "category": "hoflighet",
+          "icon": "shoes"
+        },
+        {
+          "id": "polite-guest-de-3",
+          "target": "Das ist wirklich lecker",
+          "pronunciation": "das ist VEERK-likh LEK-er",
+          "native": "Dette er veldig godt",
+          "category": "hoflighet",
+          "icon": "delicious"
+        },
+        {
+          "id": "polite-guest-de-4",
+          "target": "Kann ich irgendwie helfen?",
+          "pronunciation": "kan ikh EER-gent-vee HEL-fen",
+          "native": "Kan jeg hjelpe til med noe?",
+          "category": "hoflighet",
+          "icon": "help-offer"
+        },
+        {
+          "id": "polite-guest-de-5",
+          "target": "Entschuldigung für die Verspätung",
+          "pronunciation": "ent-SHOOL-dee-goong fewr dee fer-SHPAY-toong",
+          "native": "Beklager forsinkelsen",
+          "category": "hoflighet",
+          "icon": "delay"
+        },
+        {
+          "id": "polite-guest-de-6",
+          "target": "Das war ein schöner Abend",
+          "pronunciation": "das vahr ain SHUR-ner AH-bent",
+          "native": "Det var en hyggelig kveld",
+          "category": "hoflighet",
+          "icon": "evening"
+        },
+        {
+          "id": "polite-guest-de-7",
+          "target": "Vielen Dank für die Gastfreundschaft",
+          "pronunciation": "FEE-len dank fewr dee GAST-froynt-shaft",
+          "native": "Tusen takk for gjestfriheten",
+          "category": "hoflighet",
+          "icon": "thanks"
+        },
+        {
+          "id": "polite-guest-de-8",
+          "target": "Kann ich das Bad benutzen?",
+          "pronunciation": "kan ikh das baht beh-NUT-sen",
+          "native": "Kan jeg få bruke badet?",
+          "category": "hoflighet",
+          "icon": "bathroom"
+        },
+        {
+          "id": "polite-guest-de-9",
+          "target": "Das ist ein Geschenk für dich",
+          "pronunciation": "das ist ain geh-SHENK fewr dikh",
+          "native": "Dette er en gave til deg",
+          "category": "hoflighet",
+          "icon": "gift"
+        },
+        {
+          "id": "polite-guest-de-10",
+          "target": "Ich muss leider jetzt gehen",
+          "pronunciation": "ikh moos LAI-der yetst GAY-en",
+          "native": "Jeg må dessverre gå nå",
+          "category": "hoflighet",
+          "icon": "goodbye"
+        }
+      ]
+    }
   }
 }

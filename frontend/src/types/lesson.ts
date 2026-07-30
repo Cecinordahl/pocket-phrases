@@ -18,7 +18,7 @@ export type Lesson = {
   phrases: Phrase[];
 };
 
-export type Language = "es" | "fr";
+export type Language = "es" | "fr" | "de";
 
 export type ModeInfo = {
   key: string;

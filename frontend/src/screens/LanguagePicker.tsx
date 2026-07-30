@@ -7,6 +7,7 @@ type LanguagePickerProps = {
 const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: "es", label: "Spansk", flag: "🇪🇸" },
   { code: "fr", label: "Fransk", flag: "🇫🇷" },
+  { code: "de", label: "Tysk", flag: "🇩🇪" },
 ];
 
 export function LanguagePicker({ onSelect }: LanguagePickerProps) {

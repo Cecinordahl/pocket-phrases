@@ -2,7 +2,7 @@
 
 A lightweight, situation-based travel language learner. Pick a language, pick (or describe) the situation you're about to be in, and get a short lesson you can work through three ways: **Les** (read), **Øv** (flashcard drill), **Test** (quiz).
 
-v1 supports Spanish and French, with a Norwegian Bokmål UI. No accounts.
+Supports Spanish, French, and German, with a Norwegian Bokmål UI. No accounts.
 
 ## Repo layout
 
@@ -32,7 +32,7 @@ A **lesson** is one shape everywhere in the app:
 
 ```ts
 type Phrase = { target: string; pronunciation: string; native: string };
-type Lesson = { title: string; language: "es" | "fr"; mode: string; phrases: Phrase[] };
+type Lesson = { title: string; language: "es" | "fr" | "de"; mode: string; phrases: Phrase[] };
 ```
 
 It doesn't matter whether a lesson came from the local seed pool, the Anthropic free-text endpoint, or the "Tilfeldig" shuffle — the backend always returns this shape, and the frontend's Les/Øv/Test screens only ever render this shape. This is the seam that let prebuilt content, AI-generated content, and random mixes all use identical UI code.
@@ -120,7 +120,7 @@ Never commit real values. See `backend/.env.example` and `frontend/.env.example`
 
 ## Judgment calls (flagged for review)
 
-- **Prebuilt pools are a local JSON seed file, not Firestore.** `backend/src/main/resources/seed/phrase-pools.json` holds ~10 phrases per mode per language; `PhrasePoolService` samples 6 and shuffles on every request. Reasoning: pool content barely changes, so a Firestore round-trip on every prebuilt-lesson request adds latency and setup friction (a service-account key just to run locally) for content that doesn't need it. `PhrasePoolService`'s public methods (`getLesson`, `getRandomLesson`, `listModes`) are the seam — swapping in a Firestore-backed implementation later is a one-file change; nothing above it (controller, frontend) needs to change. Firestore stays the documented migration target if you want pools editable without a redeploy.
+- **Prebuilt pools are a local JSON seed file, not Firestore.** `backend/src/main/resources/seed/phrase-pools.json` holds the pools (Spanish/French at 28 phrases per mode, German at 10 — started smaller and can grow the same way); `PhrasePoolService` samples 6 and shuffles on every request. Reasoning: pool content barely changes, so a Firestore round-trip on every prebuilt-lesson request adds latency and setup friction (a service-account key just to run locally) for content that doesn't need it. `PhrasePoolService`'s public methods (`getLesson`, `getRandomLesson`, `listModes`) are the seam — swapping in a Firestore-backed implementation later is a one-file change; nothing above it (controller, frontend) needs to change. Firestore stays the documented migration target if you want pools editable without a redeploy.
 - **Backend is deliberately minimal.** Three controllers, a handful of services, no repository/entity layer, no Spring Security. The whitelist gate is a single `Filter` (`WhitelistFilter`) that's a no-op unless explicitly enabled — resisting the temptation to reach for a full auth framework for what's currently a single-flag gate.
 - **The whitelist gate is fully implemented, not stubbed — but off by default.** Flip `APP_ACCESS_WHITELIST_ENABLED=true` when you want v1 to be private; the Firestore-backed check, the frontend `EmailGate` screen, and the 403 handling are all already wired up.
 - **Free-text generation uses Anthropic's structured outputs** (`output_config.format`, derived from a `GeneratedLesson` record) rather than "prompt for JSON + manually parse the text." This makes the response validated JSON at the API level — a stronger version of "strict JSON only" than string parsing. A `try/catch` around the whole call still exists: if Anthropic errors, refuses, or the SDK throws for any reason, the backend serves a prebuilt "Turist-essensielt" lesson instead of an error page.

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/api")
 public class GenerateController {
@@ -18,6 +20,7 @@ public class GenerateController {
     private static final Logger log = LoggerFactory.getLogger(GenerateController.class);
     private static final int MAX_SITUATION_LENGTH = 300;
     private static final String FALLBACK_MODE = "tourist-essentials";
+    private static final Set<String> SUPPORTED_LANGUAGES = Set.of("es", "fr", "de");
 
     private final AnthropicService anthropicService;
     private final PhrasePoolService phrasePoolService;
@@ -36,7 +39,7 @@ public class GenerateController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "Beskrivelsen er for lang (maks %d tegn)".formatted(MAX_SITUATION_LENGTH));
         }
-        if (!"es".equals(request.language()) && !"fr".equals(request.language())) {
+        if (!SUPPORTED_LANGUAGES.contains(request.language())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ukjent språk");
         }
 
