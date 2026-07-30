@@ -114,6 +114,118 @@
           "native": "Kan du skrive det ned?",
           "category": "reise",
           "icon": "write"
+        },
+        {
+          "id": "tourist-essentials-es-15",
+          "target": "¿Puedo tener un mapa?",
+          "pronunciation": "PWE-do te-NER oon MA-pa",
+          "native": "Kan jeg få et kart?",
+          "category": "reise",
+          "icon": "location"
+        },
+        {
+          "id": "tourist-essentials-es-16",
+          "target": "¿Es gratis la entrada?",
+          "pronunciation": "es GRA-tees la en-TRA-da",
+          "native": "Er det gratis inngang?",
+          "category": "reise",
+          "icon": "price"
+        },
+        {
+          "id": "tourist-essentials-es-17",
+          "target": "¿Dónde puedo cargar el teléfono?",
+          "pronunciation": "DON-de PWE-do kar-GAR el te-LE-fo-no",
+          "native": "Hvor kan jeg lade telefonen?",
+          "category": "reise",
+          "icon": "wifi"
+        },
+        {
+          "id": "tourist-essentials-es-18",
+          "target": "Que descanses",
+          "pronunciation": "ke des-KAN-ses",
+          "native": "God natt",
+          "category": "reise",
+          "icon": "greeting"
+        },
+        {
+          "id": "tourist-essentials-es-19",
+          "target": "¿Dónde está el hotel más cercano?",
+          "pronunciation": "DON-de es-TA el o-TEL mas ser-KA-no",
+          "native": "Hvor er nærmeste hotell?",
+          "category": "reise",
+          "icon": "location"
+        },
+        {
+          "id": "tourist-essentials-es-20",
+          "target": "¿Tienes un bolígrafo?",
+          "pronunciation": "TYE-nes oon bo-LEE-gra-fo",
+          "native": "Har du en penn?",
+          "category": "reise",
+          "icon": "write"
+        },
+        {
+          "id": "tourist-essentials-es-21",
+          "target": "¿Puedo tomar una foto aquí?",
+          "pronunciation": "PWE-do to-MAR OO-na FO-to a-KEE",
+          "native": "Kan jeg ta et bilde her?",
+          "category": "reise",
+          "icon": "camera"
+        },
+        {
+          "id": "tourist-essentials-es-22",
+          "target": "¿Cuántos kilómetros hay hasta...?",
+          "pronunciation": "KWAN-tos kee-LO-me-tros ai AS-ta",
+          "native": "Hvor mange kilometer er det til...?",
+          "category": "reise",
+          "icon": "direction"
+        },
+        {
+          "id": "tourist-essentials-es-23",
+          "target": "¿Es seguro beber esto?",
+          "pronunciation": "es se-GOO-ro be-BER ES-to",
+          "native": "Er dette trygt å drikke?",
+          "category": "reise",
+          "icon": "water"
+        },
+        {
+          "id": "tourist-essentials-es-24",
+          "target": "¿Puedes recomendar un buen sitio para comer?",
+          "pronunciation": "PWE-des re-ko-men-DAR oon bwen SEE-tyo PA-ra ko-MER",
+          "native": "Kan du anbefale et godt sted å spise?",
+          "category": "reise",
+          "icon": "recommend"
+        },
+        {
+          "id": "tourist-essentials-es-25",
+          "target": "Necesito un taxi al hotel",
+          "pronunciation": "ne-se-SEE-to oon TAK-see al o-TEL",
+          "native": "Jeg trenger en drosje til hotellet",
+          "category": "reise",
+          "icon": "taxi"
+        },
+        {
+          "id": "tourist-essentials-es-26",
+          "target": "¿Qué día es hoy?",
+          "pronunciation": "ke DEE-a es oy",
+          "native": "Hvilken dag er det i dag?",
+          "category": "reise",
+          "icon": "open-hours"
+        },
+        {
+          "id": "tourist-essentials-es-27",
+          "target": "¿Puedo tener el recibo?",
+          "pronunciation": "PWE-do te-NER el re-SEE-bo",
+          "native": "Kan jeg få kvitteringen?",
+          "category": "reise",
+          "icon": "receipt"
+        },
+        {
+          "id": "tourist-essentials-es-28",
+          "target": "Perdón, soy nuevo/a aquí",
+          "pronunciation": "per-DON soy NWE-vo a-KEE",
+          "native": "Beklager, jeg er ny her",
+          "category": "reise",
+          "icon": "confused"
         }
       ]
     },
@@ -231,6 +343,118 @@
           "native": "Kan jeg bestille takeaway?",
           "category": "mat",
           "icon": "takeaway"
+        },
+        {
+          "id": "restaurant-es-15",
+          "target": "¿Puedo tomar un café?",
+          "pronunciation": "PWE-do to-MAR oon ka-FE",
+          "native": "Kan jeg få en kaffe?",
+          "category": "mat",
+          "icon": "drink"
+        },
+        {
+          "id": "restaurant-es-16",
+          "target": "¿Esto es vegano?",
+          "pronunciation": "ES-to es ve-GA-no",
+          "native": "Er dette vegansk?",
+          "category": "mat",
+          "icon": "dietary"
+        },
+        {
+          "id": "restaurant-es-17",
+          "target": "¿Puedo tener hielo para el agua?",
+          "pronunciation": "PWE-do te-NER YE-lo PA-ra el A-gwa",
+          "native": "Kan jeg få is til vannet?",
+          "category": "mat",
+          "icon": "water"
+        },
+        {
+          "id": "restaurant-es-18",
+          "target": "Esto no es lo que pedí",
+          "pronunciation": "ES-to no es lo ke pe-DEE",
+          "native": "Dette var ikke det jeg bestilte",
+          "category": "mat",
+          "icon": "order"
+        },
+        {
+          "id": "restaurant-es-19",
+          "target": "¿Puedo tener otra cerveza?",
+          "pronunciation": "PWE-do te-NER O-tra ser-VE-sa",
+          "native": "Kan jeg få en øl til?",
+          "category": "mat",
+          "icon": "beer"
+        },
+        {
+          "id": "restaurant-es-20",
+          "target": "¿Cuál es el plato del día?",
+          "pronunciation": "kwal es el PLA-to del DEE-a",
+          "native": "Hva er dagens rett?",
+          "category": "mat",
+          "icon": "menu"
+        },
+        {
+          "id": "restaurant-es-21",
+          "target": "¿Puedo tener un poco de pan?",
+          "pronunciation": "PWE-do te-NER oon PO-ko de pan",
+          "native": "Kan jeg få litt brød?",
+          "category": "mat",
+          "icon": "order"
+        },
+        {
+          "id": "restaurant-es-22",
+          "target": "¿Hay frutos secos en este plato?",
+          "pronunciation": "ai FROO-tos SE-kos en ES-te PLA-to",
+          "native": "Er nøtter i denne retten?",
+          "category": "mat",
+          "icon": "allergy"
+        },
+        {
+          "id": "restaurant-es-23",
+          "target": "Esta mesa está reservada",
+          "pronunciation": "ES-ta ME-sa es-TA re-ser-VA-da",
+          "native": "Dette bordet er reservert",
+          "category": "mat",
+          "icon": "table"
+        },
+        {
+          "id": "restaurant-es-24",
+          "target": "¿Podemos tener una vela?",
+          "pronunciation": "po-DE-mos te-NER OO-na VE-la",
+          "native": "Kan vi få stearinlys?",
+          "category": "mat",
+          "icon": "evening"
+        },
+        {
+          "id": "restaurant-es-25",
+          "target": "La comida llegó fría",
+          "pronunciation": "la ko-MEE-da ye-GO FREE-a",
+          "native": "Maten kom kald",
+          "category": "mat",
+          "icon": "order"
+        },
+        {
+          "id": "restaurant-es-26",
+          "target": "¿Puedo llevarme las sobras?",
+          "pronunciation": "PWE-do ye-VAR-me las SO-bras",
+          "native": "Kan jeg få doggybag?",
+          "category": "mat",
+          "icon": "takeaway"
+        },
+        {
+          "id": "restaurant-es-27",
+          "target": "¿Es esta la especialidad de la casa?",
+          "pronunciation": "es ES-ta la es-pe-sya-lee-DAD de la KA-sa",
+          "native": "Er dette en husets spesialitet?",
+          "category": "mat",
+          "icon": "recommend"
+        },
+        {
+          "id": "restaurant-es-28",
+          "target": "¿Dónde está la panadería más cercana?",
+          "pronunciation": "DON-de es-TA la pa-na-de-REE-a mas ser-KA-na",
+          "native": "Hvor er nærmeste bakeri?",
+          "category": "mat",
+          "icon": "location"
         }
       ]
     },
@@ -348,6 +572,118 @@
           "native": "Denne plassen er fantastisk",
           "category": "sosialt",
           "icon": "amazing"
+        },
+        {
+          "id": "bar-smalltalk-es-15",
+          "target": "¿Has estado aquí antes?",
+          "pronunciation": "as es-TA-do a-KEE AN-tes",
+          "native": "Har du vært her før?",
+          "category": "sosialt",
+          "icon": "origin"
+        },
+        {
+          "id": "bar-smalltalk-es-16",
+          "target": "¿Puedo sentarme aquí?",
+          "pronunciation": "PWE-do sen-TAR-me a-KEE",
+          "native": "Kan jeg sitte her?",
+          "category": "sosialt",
+          "icon": "seat"
+        },
+        {
+          "id": "bar-smalltalk-es-17",
+          "target": "¿Qué piensas de...?",
+          "pronunciation": "ke PYEN-sas de",
+          "native": "Hva synes du om...?",
+          "category": "sosialt",
+          "icon": "name"
+        },
+        {
+          "id": "bar-smalltalk-es-18",
+          "target": "Tengo que irme ya",
+          "pronunciation": "TEN-go ke EER-me ya",
+          "native": "Jeg må gå nå",
+          "category": "sosialt",
+          "icon": "goodbye"
+        },
+        {
+          "id": "bar-smalltalk-es-19",
+          "target": "¿Qué estás bebiendo?",
+          "pronunciation": "ke es-TAS be-BYEN-do",
+          "native": "Hva drikker du?",
+          "category": "sosialt",
+          "icon": "drink"
+        },
+        {
+          "id": "bar-smalltalk-es-20",
+          "target": "¿Vienes aquí a menudo?",
+          "pronunciation": "VYE-nes a-KEE a me-NOO-do",
+          "native": "Kommer du hit ofte?",
+          "category": "sosialt",
+          "icon": "origin"
+        },
+        {
+          "id": "bar-smalltalk-es-21",
+          "target": "¿Puedo sentarme a tu lado?",
+          "pronunciation": "PWE-do sen-TAR-me a too LA-do",
+          "native": "Kan jeg sette meg ved siden av deg?",
+          "category": "sosialt",
+          "icon": "seat"
+        },
+        {
+          "id": "bar-smalltalk-es-22",
+          "target": "¿Tienes Instagram?",
+          "pronunciation": "TYE-nes een-sta-GRAM",
+          "native": "Har du Instagram?",
+          "category": "sosialt",
+          "icon": "phone-number"
+        },
+        {
+          "id": "bar-smalltalk-es-23",
+          "target": "Me lo estoy pasando muy bien",
+          "pronunciation": "me lo es-TOY pa-SAN-do mwee byen",
+          "native": "Jeg koser meg veldig",
+          "category": "sosialt",
+          "icon": "amazing"
+        },
+        {
+          "id": "bar-smalltalk-es-24",
+          "target": "¿Cuánto tiempo llevas viviendo aquí?",
+          "pronunciation": "KWAN-to TYEM-po YE-vas vee-VYEN-do a-KEE",
+          "native": "Hvor lenge har du bodd her?",
+          "category": "sosialt",
+          "icon": "origin"
+        },
+        {
+          "id": "bar-smalltalk-es-25",
+          "target": "Deja que yo pague la próxima ronda",
+          "pronunciation": "DE-kha ke yo PA-ge la PROK-see-ma RON-da",
+          "native": "La meg ta neste runde",
+          "category": "sosialt",
+          "icon": "drink"
+        },
+        {
+          "id": "bar-smalltalk-es-26",
+          "target": "Tienes muy buen estilo",
+          "pronunciation": "TYE-nes mwee bwen es-TEE-lo",
+          "native": "Du har en fin stil",
+          "category": "sosialt",
+          "icon": "amazing"
+        },
+        {
+          "id": "bar-smalltalk-es-27",
+          "target": "¿Buscamos un lugar más tranquilo?",
+          "pronunciation": "boos-KA-mos oon loo-GAR mas tran-KEE-lo",
+          "native": "Skal vi finne et roligere sted?",
+          "category": "sosialt",
+          "icon": "location"
+        },
+        {
+          "id": "bar-smalltalk-es-28",
+          "target": "Fue un placer hablar contigo",
+          "pronunciation": "fwe oon pla-SER a-BLAR kon-TEE-go",
+          "native": "Det var hyggelig å prate med deg",
+          "category": "sosialt",
+          "icon": "nice-meet"
         }
       ]
     },
@@ -465,6 +801,118 @@
           "native": "Kan du kjøre litt saktere?",
           "category": "transport",
           "icon": "slower"
+        },
+        {
+          "id": "taxi-transport-es-15",
+          "target": "¿Dónde puedo aparcar?",
+          "pronunciation": "DON-de PWE-do a-par-KAR",
+          "native": "Hvor kan jeg parkere?",
+          "category": "transport",
+          "icon": "location"
+        },
+        {
+          "id": "taxi-transport-es-16",
+          "target": "¿Hay una ruta directa?",
+          "pronunciation": "ai OO-na ROO-ta dee-REK-ta",
+          "native": "Går det en direkte rute?",
+          "category": "transport",
+          "icon": "direction"
+        },
+        {
+          "id": "taxi-transport-es-17",
+          "target": "Me he perdido",
+          "pronunciation": "me e per-DEE-do",
+          "native": "Jeg gikk meg bort",
+          "category": "transport",
+          "icon": "confused"
+        },
+        {
+          "id": "taxi-transport-es-18",
+          "target": "¿Puedo tener un recibo del viaje?",
+          "pronunciation": "PWE-do te-NER oon re-SEE-bo del VYA-khe",
+          "native": "Kan jeg få kvittering for turen?",
+          "category": "transport",
+          "icon": "receipt"
+        },
+        {
+          "id": "taxi-transport-es-19",
+          "target": "¿Dónde compro el billete de tren?",
+          "pronunciation": "DON-de KOM-pro el bee-YE-te de tren",
+          "native": "Hvor kjøper jeg togbillett?",
+          "category": "transport",
+          "icon": "ticket"
+        },
+        {
+          "id": "taxi-transport-es-20",
+          "target": "¿Hay un autobús nocturno?",
+          "pronunciation": "ai oon ow-to-BOOS nok-TOOR-no",
+          "native": "Går det en nattbuss?",
+          "category": "transport",
+          "icon": "bus"
+        },
+        {
+          "id": "taxi-transport-es-21",
+          "target": "¿Puedo poner el equipaje aquí?",
+          "pronunciation": "PWE-do po-NER el e-kee-PA-khe a-KEE",
+          "native": "Kan jeg sette bagasjen her?",
+          "category": "transport",
+          "icon": "luggage"
+        },
+        {
+          "id": "taxi-transport-es-22",
+          "target": "¿De qué andén sale el tren?",
+          "pronunciation": "de ke an-DEN SA-le el tren",
+          "native": "Hvilken plattform går toget fra?",
+          "category": "transport",
+          "icon": "train"
+        },
+        {
+          "id": "taxi-transport-es-23",
+          "target": "¿Hay atasco?",
+          "pronunciation": "ai a-TAS-ko",
+          "native": "Er det trafikkork?",
+          "category": "transport",
+          "icon": "taxi"
+        },
+        {
+          "id": "taxi-transport-es-24",
+          "target": "¿Puedo reservar un viaje con antelación?",
+          "pronunciation": "PWE-do re-ser-VAR oon VYA-khe kon an-te-la-SYON",
+          "native": "Kan jeg bestille en tur på forhånd?",
+          "category": "transport",
+          "icon": "time"
+        },
+        {
+          "id": "taxi-transport-es-25",
+          "target": "¿Cuánto es de propina?",
+          "pronunciation": "KWAN-to es de pro-PEE-na",
+          "native": "Hvor mye er det i dusør?",
+          "category": "transport",
+          "icon": "price"
+        },
+        {
+          "id": "taxi-transport-es-26",
+          "target": "Este coche huele a humo",
+          "pronunciation": "ES-te KO-che WE-le a OO-mo",
+          "native": "Denne bilen lukter røyk",
+          "category": "transport",
+          "icon": "sick"
+        },
+        {
+          "id": "taxi-transport-es-27",
+          "target": "¿Puedo abrir la ventana?",
+          "pronunciation": "PWE-do a-BREER la ven-TA-na",
+          "native": "Kan jeg åpne vinduet?",
+          "category": "transport",
+          "icon": "slower"
+        },
+        {
+          "id": "taxi-transport-es-28",
+          "target": "Tenemos que darnos prisa",
+          "pronunciation": "te-NE-mos ke DAR-nos PREE-sa",
+          "native": "Vi må skynde oss",
+          "category": "transport",
+          "icon": "late"
         }
       ]
     },
@@ -582,6 +1030,118 @@
           "native": "Kan du ringe familien min?",
           "category": "nodsituasjon",
           "icon": "call-family"
+        },
+        {
+          "id": "emergency-pharmacy-es-15",
+          "target": "¿Tienen analgésicos?",
+          "pronunciation": "TYE-nen a-nal-KHE-see-kos",
+          "native": "Har dere smertestillende?",
+          "category": "nodsituasjon",
+          "icon": "pharmacy"
+        },
+        {
+          "id": "emergency-pharmacy-es-16",
+          "target": "Necesito un intérprete",
+          "pronunciation": "ne-se-SEE-to oon in-TER-pre-te",
+          "native": "Jeg trenger tolk",
+          "category": "nodsituasjon",
+          "icon": "language"
+        },
+        {
+          "id": "emergency-pharmacy-es-17",
+          "target": "Es una emergencia",
+          "pronunciation": "es OO-na e-mer-KHEN-sya",
+          "native": "Det er en nødsituasjon",
+          "category": "nodsituasjon",
+          "icon": "ambulance"
+        },
+        {
+          "id": "emergency-pharmacy-es-18",
+          "target": "¿Puede acompañarme allí?",
+          "pronunciation": "PWE-de a-kom-pa-NYAR-me a-YEE",
+          "native": "Kan du følge meg dit?",
+          "category": "nodsituasjon",
+          "icon": "help"
+        },
+        {
+          "id": "emergency-pharmacy-es-19",
+          "target": "Tengo fiebre",
+          "pronunciation": "TEN-go FYE-bre",
+          "native": "Jeg har feber",
+          "category": "nodsituasjon",
+          "icon": "sick"
+        },
+        {
+          "id": "emergency-pharmacy-es-20",
+          "target": "Necesito una tirita",
+          "pronunciation": "ne-se-SEE-to OO-na tee-REE-ta",
+          "native": "Jeg trenger plaster",
+          "category": "nodsituasjon",
+          "icon": "pharmacy"
+        },
+        {
+          "id": "emergency-pharmacy-es-21",
+          "target": "¿Hay un dentista cerca?",
+          "pronunciation": "ai oon den-TEES-ta SER-ka",
+          "native": "Er det en tannlege i nærheten?",
+          "category": "nodsituasjon",
+          "icon": "hospital"
+        },
+        {
+          "id": "emergency-pharmacy-es-22",
+          "target": "Algo me ha picado",
+          "pronunciation": "AL-go me a pee-KA-do",
+          "native": "Jeg har blitt bitt av noe",
+          "category": "nodsituasjon",
+          "icon": "pain"
+        },
+        {
+          "id": "emergency-pharmacy-es-23",
+          "target": "¿Puedes escribir los síntomas?",
+          "pronunciation": "PWE-des es-kree-BEER los SEEN-to-mas",
+          "native": "Kan du skrive ned symptomene?",
+          "category": "nodsituasjon",
+          "icon": "write"
+        },
+        {
+          "id": "emergency-pharmacy-es-24",
+          "target": "Tomo este medicamento",
+          "pronunciation": "TO-mo ES-te me-dee-ka-MEN-to",
+          "native": "Jeg tar denne medisinen",
+          "category": "nodsituasjon",
+          "icon": "pharmacy"
+        },
+        {
+          "id": "emergency-pharmacy-es-25",
+          "target": "¿Tienes seguro aquí?",
+          "pronunciation": "TYE-nes se-GOO-ro a-KEE",
+          "native": "Har du forsikring her?",
+          "category": "nodsituasjon",
+          "icon": "document"
+        },
+        {
+          "id": "emergency-pharmacy-es-26",
+          "target": "Me siento mareado/a",
+          "pronunciation": "me SYEN-to ma-re-A-do",
+          "native": "Jeg føler meg svimmel",
+          "category": "nodsituasjon",
+          "icon": "sick"
+        },
+        {
+          "id": "emergency-pharmacy-es-27",
+          "target": "¿Dónde está la salida de emergencia?",
+          "pronunciation": "DON-de es-TA la sa-LEE-da de e-mer-KHEN-sya",
+          "native": "Hvor er nødutgangen?",
+          "category": "nodsituasjon",
+          "icon": "location"
+        },
+        {
+          "id": "emergency-pharmacy-es-28",
+          "target": "¿Puede llamar a urgencias?",
+          "pronunciation": "PWE-de ya-MAR a oor-KHEN-syas",
+          "native": "Kan du ringe legevakten?",
+          "category": "nodsituasjon",
+          "icon": "doctor"
         }
       ]
     },
@@ -699,6 +1259,118 @@
           "native": "Har dere dette i en større størrelse?",
           "category": "handel",
           "icon": "size"
+        },
+        {
+          "id": "shopping-prices-es-15",
+          "target": "¿Tienen papel de regalo?",
+          "pronunciation": "TYE-nen pa-PEL de re-GA-lo",
+          "native": "Har dere gavepapir?",
+          "category": "handel",
+          "icon": "gift"
+        },
+        {
+          "id": "shopping-prices-es-16",
+          "target": "¿Cuánto cuesta el envío?",
+          "pronunciation": "KWAN-to KWES-ta el en-VEE-o",
+          "native": "Hvor mye er fraktkostnaden?",
+          "category": "handel",
+          "icon": "price"
+        },
+        {
+          "id": "shopping-prices-es-17",
+          "target": "¿Venden recuerdos?",
+          "pronunciation": "VEN-den re-KWER-dos",
+          "native": "Selger dere suvenirer?",
+          "category": "handel",
+          "icon": "buy"
+        },
+        {
+          "id": "shopping-prices-es-18",
+          "target": "¿Puede guardármelo?",
+          "pronunciation": "PWE-de gwar-DAR-me-lo",
+          "native": "Kan jeg legge det til side?",
+          "category": "handel",
+          "icon": "browsing"
+        },
+        {
+          "id": "shopping-prices-es-19",
+          "target": "¿Tienen rebajas ahora?",
+          "pronunciation": "TYE-nen re-BA-khas a-O-ra",
+          "native": "Har dere salg nå?",
+          "category": "handel",
+          "icon": "discount"
+        },
+        {
+          "id": "shopping-prices-es-20",
+          "target": "¿Puedo cambiar esto?",
+          "pronunciation": "PWE-do kam-BYAR ES-to",
+          "native": "Kan jeg bytte denne?",
+          "category": "handel",
+          "icon": "return"
+        },
+        {
+          "id": "shopping-prices-es-21",
+          "target": "¿Esto está hecho a mano?",
+          "pronunciation": "ES-to es-TA E-cho a MA-no",
+          "native": "Er dette håndlaget?",
+          "category": "handel",
+          "icon": "gift"
+        },
+        {
+          "id": "shopping-prices-es-22",
+          "target": "¿Dónde está la caja?",
+          "pronunciation": "DON-de es-TA la KA-kha",
+          "native": "Hvor er kassen?",
+          "category": "handel",
+          "icon": "card"
+        },
+        {
+          "id": "shopping-prices-es-23",
+          "target": "¿Aceptan moneda extranjera?",
+          "pronunciation": "a-SEP-tan mo-NE-da eks-tran-KHE-ra",
+          "native": "Tar dere utenlandsk valuta?",
+          "category": "handel",
+          "icon": "card"
+        },
+        {
+          "id": "shopping-prices-es-24",
+          "target": "¿Puedo tener una bolsa?",
+          "pronunciation": "PWE-do te-NER OO-na BOL-sa",
+          "native": "Kan jeg få en pose?",
+          "category": "handel",
+          "icon": "buy"
+        },
+        {
+          "id": "shopping-prices-es-25",
+          "target": "Esto está roto",
+          "pronunciation": "ES-to es-TA RO-to",
+          "native": "Dette er ødelagt",
+          "category": "handel",
+          "icon": "return"
+        },
+        {
+          "id": "shopping-prices-es-26",
+          "target": "¿Lo tienen en talla XL?",
+          "pronunciation": "lo TYE-nen en TA-ya E-kees-EL-e",
+          "native": "Har dere dette i XL?",
+          "category": "handel",
+          "icon": "size"
+        },
+        {
+          "id": "shopping-prices-es-27",
+          "target": "¿Cuántos puedo comprar?",
+          "pronunciation": "KWAN-tos PWE-do kom-PRAR",
+          "native": "Hvor mange kan jeg kjøpe?",
+          "category": "handel",
+          "icon": "buy"
+        },
+        {
+          "id": "shopping-prices-es-28",
+          "target": "Busco un regalo para niños",
+          "pronunciation": "BOOS-ko oon re-GA-lo PA-ra NEE-nyos",
+          "native": "Jeg leter etter en gave til barn",
+          "category": "handel",
+          "icon": "gift"
         }
       ]
     },
@@ -816,6 +1488,118 @@
           "native": "Takk for maten",
           "category": "hoflighet",
           "icon": "thanks"
+        },
+        {
+          "id": "polite-guest-es-15",
+          "target": "¿Puedo tener la receta?",
+          "pronunciation": "PWE-do te-NER la re-SE-ta",
+          "native": "Kan jeg få oppskriften?",
+          "category": "hoflighet",
+          "icon": "menu"
+        },
+        {
+          "id": "polite-guest-es-16",
+          "target": "Esta sala es muy acogedora",
+          "pronunciation": "ES-ta SA-la es mwee a-ko-khe-DO-ra",
+          "native": "Dette er en koselig stue",
+          "category": "hoflighet",
+          "icon": "nice-house"
+        },
+        {
+          "id": "polite-guest-es-17",
+          "target": "¿Me quito la chaqueta?",
+          "pronunciation": "me KEE-to la cha-KE-ta",
+          "native": "Skal jeg ta av meg jakken?",
+          "category": "hoflighet",
+          "icon": "shoes"
+        },
+        {
+          "id": "polite-guest-es-18",
+          "target": "Tenemos que repetirlo",
+          "pronunciation": "te-NE-mos ke re-pe-TEER-lo",
+          "native": "Vi må gjøre dette igjen",
+          "category": "hoflighet",
+          "icon": "nice-meet"
+        },
+        {
+          "id": "polite-guest-es-19",
+          "target": "¿Puedo tener un poco más?",
+          "pronunciation": "PWE-do te-NER oon PO-ko mas",
+          "native": "Kan jeg få litt mer?",
+          "category": "hoflighet",
+          "icon": "delicious"
+        },
+        {
+          "id": "polite-guest-es-20",
+          "target": "Esto sabe como la comida de mi madre",
+          "pronunciation": "ES-to SA-be KO-mo la ko-MEE-da de mee MA-dre",
+          "native": "Dette er akkurat som mammas mat",
+          "category": "hoflighet",
+          "icon": "delicious"
+        },
+        {
+          "id": "polite-guest-es-21",
+          "target": "¿Puedo lavar los platos?",
+          "pronunciation": "PWE-do la-VAR los PLA-tos",
+          "native": "Kan jeg vaske opp?",
+          "category": "hoflighet",
+          "icon": "help-offer"
+        },
+        {
+          "id": "polite-guest-es-22",
+          "target": "Tus hijos son adorables",
+          "pronunciation": "toos EE-khos son a-do-RA-bles",
+          "native": "Barna dine er søte",
+          "category": "hoflighet",
+          "icon": "nice-house"
+        },
+        {
+          "id": "polite-guest-es-23",
+          "target": "¿Traigo vino la próxima vez?",
+          "pronunciation": "TRAI-go VEE-no la PROK-see-ma ves",
+          "native": "Skal jeg ta med vin neste gang?",
+          "category": "hoflighet",
+          "icon": "bring"
+        },
+        {
+          "id": "polite-guest-es-24",
+          "target": "Aprecio mucho tu hospitalidad",
+          "pronunciation": "a-PRE-syo MOO-cho too os-pee-ta-lee-DAD",
+          "native": "Jeg setter stor pris på gjestfriheten din",
+          "category": "hoflighet",
+          "icon": "thanks"
+        },
+        {
+          "id": "polite-guest-es-25",
+          "target": "¿Puedo tener un poco de agua?",
+          "pronunciation": "PWE-do te-NER oon PO-ko de A-gwa",
+          "native": "Kan jeg få litt vann?",
+          "category": "hoflighet",
+          "icon": "water"
+        },
+        {
+          "id": "polite-guest-es-26",
+          "target": "Tu casa huele muy bien",
+          "pronunciation": "too KA-sa WE-le mwee byen",
+          "native": "Huset ditt lukter så godt",
+          "category": "hoflighet",
+          "icon": "nice-house"
+        },
+        {
+          "id": "polite-guest-es-27",
+          "target": "¿Has vivido aquí mucho tiempo?",
+          "pronunciation": "as vee-VEE-do a-KEE MOO-cho TYEM-po",
+          "native": "Har du bodd her lenge?",
+          "category": "hoflighet",
+          "icon": "origin"
+        },
+        {
+          "id": "polite-guest-es-28",
+          "target": "La próxima vez me toca invitar a mí",
+          "pronunciation": "la PROK-see-ma ves me TO-ka een-vee-TAR a mee",
+          "native": "Neste gang er det min tur å invitere",
+          "category": "hoflighet",
+          "icon": "nice-meet"
         }
       ]
     }
@@ -935,6 +1719,118 @@
           "native": "Kan du skrive det ned?",
           "category": "reise",
           "icon": "write"
+        },
+        {
+          "id": "tourist-essentials-fr-15",
+          "target": "Puis-je avoir une carte ?",
+          "pronunciation": "pwee-zh a-vwar oon kart",
+          "native": "Kan jeg få et kart?",
+          "category": "reise",
+          "icon": "location"
+        },
+        {
+          "id": "tourist-essentials-fr-16",
+          "target": "L'entrée est-elle gratuite ?",
+          "pronunciation": "lahn-tray et-el gra-tweet",
+          "native": "Er det gratis inngang?",
+          "category": "reise",
+          "icon": "price"
+        },
+        {
+          "id": "tourist-essentials-fr-17",
+          "target": "Où puis-je charger mon téléphone ?",
+          "pronunciation": "oo pwee-zh shar-zhay mon tay-lay-fon",
+          "native": "Hvor kan jeg lade telefonen?",
+          "category": "reise",
+          "icon": "wifi"
+        },
+        {
+          "id": "tourist-essentials-fr-18",
+          "target": "Bonne nuit",
+          "pronunciation": "bun nwee",
+          "native": "God natt",
+          "category": "reise",
+          "icon": "greeting"
+        },
+        {
+          "id": "tourist-essentials-fr-19",
+          "target": "Où est l'hôtel le plus proche ?",
+          "pronunciation": "oo eh lo-tel luh plu prosh",
+          "native": "Hvor er nærmeste hotell?",
+          "category": "reise",
+          "icon": "location"
+        },
+        {
+          "id": "tourist-essentials-fr-20",
+          "target": "As-tu un stylo ?",
+          "pronunciation": "a tu uhn stee-lo",
+          "native": "Har du en penn?",
+          "category": "reise",
+          "icon": "write"
+        },
+        {
+          "id": "tourist-essentials-fr-21",
+          "target": "Puis-je prendre une photo ici ?",
+          "pronunciation": "pwee-zh prahn-druh oon fo-to ee-see",
+          "native": "Kan jeg ta et bilde her?",
+          "category": "reise",
+          "icon": "camera"
+        },
+        {
+          "id": "tourist-essentials-fr-22",
+          "target": "Combien de kilomètres jusqu'à...?",
+          "pronunciation": "kom-byen duh kee-lo-metr zhoos-ka",
+          "native": "Hvor mange kilometer er det til...?",
+          "category": "reise",
+          "icon": "direction"
+        },
+        {
+          "id": "tourist-essentials-fr-23",
+          "target": "Est-ce sûr à boire ?",
+          "pronunciation": "es sur a bwar",
+          "native": "Er dette trygt å drikke?",
+          "category": "reise",
+          "icon": "water"
+        },
+        {
+          "id": "tourist-essentials-fr-24",
+          "target": "Peux-tu recommander un bon endroit pour manger ?",
+          "pronunciation": "puh tu ruh-ko-mahn-day uhn bon ahn-drwa poor mahn-zhay",
+          "native": "Kan du anbefale et godt sted å spise?",
+          "category": "reise",
+          "icon": "recommend"
+        },
+        {
+          "id": "tourist-essentials-fr-25",
+          "target": "J'ai besoin d'un taxi pour l'hôtel",
+          "pronunciation": "zhay buh-zwan duhn tak-see poor lo-tel",
+          "native": "Jeg trenger en drosje til hotellet",
+          "category": "reise",
+          "icon": "taxi"
+        },
+        {
+          "id": "tourist-essentials-fr-26",
+          "target": "Quel jour sommes-nous ?",
+          "pronunciation": "kel zhoor som noo",
+          "native": "Hvilken dag er det i dag?",
+          "category": "reise",
+          "icon": "open-hours"
+        },
+        {
+          "id": "tourist-essentials-fr-27",
+          "target": "Puis-je avoir le reçu ?",
+          "pronunciation": "pwee-zh a-vwar luh ruh-su",
+          "native": "Kan jeg få kvitteringen?",
+          "category": "reise",
+          "icon": "receipt"
+        },
+        {
+          "id": "tourist-essentials-fr-28",
+          "target": "Désolé(e), je suis nouveau/nouvelle ici",
+          "pronunciation": "day-zo-lay zhuh swee noo-vo ee-see",
+          "native": "Beklager, jeg er ny her",
+          "category": "reise",
+          "icon": "confused"
         }
       ]
     },
@@ -1052,6 +1948,118 @@
           "native": "Kan jeg bestille takeaway?",
           "category": "mat",
           "icon": "takeaway"
+        },
+        {
+          "id": "restaurant-fr-15",
+          "target": "Puis-je avoir un café ?",
+          "pronunciation": "pwee-zh a-vwar uhn ka-fay",
+          "native": "Kan jeg få en kaffe?",
+          "category": "mat",
+          "icon": "drink"
+        },
+        {
+          "id": "restaurant-fr-16",
+          "target": "Est-ce végétalien ?",
+          "pronunciation": "es veh-zheh-ta-lyen",
+          "native": "Er dette vegansk?",
+          "category": "mat",
+          "icon": "dietary"
+        },
+        {
+          "id": "restaurant-fr-17",
+          "target": "Puis-je avoir des glaçons pour l'eau ?",
+          "pronunciation": "pwee-zh a-vwar day gla-son poor loh",
+          "native": "Kan jeg få is til vannet?",
+          "category": "mat",
+          "icon": "water"
+        },
+        {
+          "id": "restaurant-fr-18",
+          "target": "Ce n'est pas ce que j'ai commandé",
+          "pronunciation": "suh neh pah suh kuh zhay ko-mahn-day",
+          "native": "Dette var ikke det jeg bestilte",
+          "category": "mat",
+          "icon": "order"
+        },
+        {
+          "id": "restaurant-fr-19",
+          "target": "Puis-je avoir une autre bière ?",
+          "pronunciation": "pwee-zh a-vwar oon oh-truh byair",
+          "native": "Kan jeg få en øl til?",
+          "category": "mat",
+          "icon": "beer"
+        },
+        {
+          "id": "restaurant-fr-20",
+          "target": "Quel est le plat du jour ?",
+          "pronunciation": "kel eh luh pla du zhoor",
+          "native": "Hva er dagens rett?",
+          "category": "mat",
+          "icon": "menu"
+        },
+        {
+          "id": "restaurant-fr-21",
+          "target": "Puis-je avoir un peu de pain ?",
+          "pronunciation": "pwee-zh a-vwar uhn puh duh pan",
+          "native": "Kan jeg få litt brød?",
+          "category": "mat",
+          "icon": "order"
+        },
+        {
+          "id": "restaurant-fr-22",
+          "target": "Y a-t-il des noix dans ce plat ?",
+          "pronunciation": "ee a-teel day nwa dahn suh pla",
+          "native": "Er nøtter i denne retten?",
+          "category": "mat",
+          "icon": "allergy"
+        },
+        {
+          "id": "restaurant-fr-23",
+          "target": "Cette table est réservée",
+          "pronunciation": "set tah-bl eh ray-zair-vay",
+          "native": "Dette bordet er reservert",
+          "category": "mat",
+          "icon": "table"
+        },
+        {
+          "id": "restaurant-fr-24",
+          "target": "Pouvons-nous avoir une bougie ?",
+          "pronunciation": "poo-von noo a-vwar oon boo-zhee",
+          "native": "Kan vi få stearinlys?",
+          "category": "mat",
+          "icon": "evening"
+        },
+        {
+          "id": "restaurant-fr-25",
+          "target": "Le plat est arrivé froid",
+          "pronunciation": "luh pla eh a-ree-vay frwa",
+          "native": "Maten kom kald",
+          "category": "mat",
+          "icon": "order"
+        },
+        {
+          "id": "restaurant-fr-26",
+          "target": "Puis-je emporter les restes ?",
+          "pronunciation": "pwee-zh ahm-por-tay lay rest",
+          "native": "Kan jeg få doggybag?",
+          "category": "mat",
+          "icon": "takeaway"
+        },
+        {
+          "id": "restaurant-fr-27",
+          "target": "Est-ce la spécialité de la maison ?",
+          "pronunciation": "es la spay-sya-lee-tay duh la may-zon",
+          "native": "Er dette en husets spesialitet?",
+          "category": "mat",
+          "icon": "recommend"
+        },
+        {
+          "id": "restaurant-fr-28",
+          "target": "Où est la boulangerie la plus proche ?",
+          "pronunciation": "oo eh la boo-lahn-zhree la plu prosh",
+          "native": "Hvor er nærmeste bakeri?",
+          "category": "mat",
+          "icon": "location"
         }
       ]
     },
@@ -1169,6 +2177,118 @@
           "native": "Denne plassen er fantastisk",
           "category": "sosialt",
           "icon": "amazing"
+        },
+        {
+          "id": "bar-smalltalk-fr-15",
+          "target": "Es-tu déjà venu(e) ici ?",
+          "pronunciation": "eh tu day-zha vuh-nu ee-see",
+          "native": "Har du vært her før?",
+          "category": "sosialt",
+          "icon": "origin"
+        },
+        {
+          "id": "bar-smalltalk-fr-16",
+          "target": "Puis-je m'asseoir ici ?",
+          "pronunciation": "pwee-zh ma-swar ee-see",
+          "native": "Kan jeg sitte her?",
+          "category": "sosialt",
+          "icon": "seat"
+        },
+        {
+          "id": "bar-smalltalk-fr-17",
+          "target": "Que penses-tu de...?",
+          "pronunciation": "kuh pahns-tu duh",
+          "native": "Hva synes du om...?",
+          "category": "sosialt",
+          "icon": "name"
+        },
+        {
+          "id": "bar-smalltalk-fr-18",
+          "target": "Je dois y aller maintenant",
+          "pronunciation": "zhuh dwa ee a-lay man-tuh-nahn",
+          "native": "Jeg må gå nå",
+          "category": "sosialt",
+          "icon": "goodbye"
+        },
+        {
+          "id": "bar-smalltalk-fr-19",
+          "target": "Qu'est-ce que tu bois ?",
+          "pronunciation": "kes kuh tu bwa",
+          "native": "Hva drikker du?",
+          "category": "sosialt",
+          "icon": "drink"
+        },
+        {
+          "id": "bar-smalltalk-fr-20",
+          "target": "Tu viens souvent ici ?",
+          "pronunciation": "tu vyen soo-vahn ee-see",
+          "native": "Kommer du hit ofte?",
+          "category": "sosialt",
+          "icon": "origin"
+        },
+        {
+          "id": "bar-smalltalk-fr-21",
+          "target": "Puis-je m'asseoir à côté de toi ?",
+          "pronunciation": "pwee-zh ma-swar a ko-tay duh twa",
+          "native": "Kan jeg sette meg ved siden av deg?",
+          "category": "sosialt",
+          "icon": "seat"
+        },
+        {
+          "id": "bar-smalltalk-fr-22",
+          "target": "As-tu Instagram ?",
+          "pronunciation": "a tu een-sta-gram",
+          "native": "Har du Instagram?",
+          "category": "sosialt",
+          "icon": "phone-number"
+        },
+        {
+          "id": "bar-smalltalk-fr-23",
+          "target": "Je passe un très bon moment",
+          "pronunciation": "zhuh pas uhn tray bon mo-mahn",
+          "native": "Jeg koser meg veldig",
+          "category": "sosialt",
+          "icon": "amazing"
+        },
+        {
+          "id": "bar-smalltalk-fr-24",
+          "target": "Depuis combien de temps habites-tu ici ?",
+          "pronunciation": "duh-pwee kom-byen duh tahn a-beet-tu ee-see",
+          "native": "Hvor lenge har du bodd her?",
+          "category": "sosialt",
+          "icon": "origin"
+        },
+        {
+          "id": "bar-smalltalk-fr-25",
+          "target": "Laisse-moi payer la prochaine tournée",
+          "pronunciation": "les-mwa pay-yay la pro-shen toor-nay",
+          "native": "La meg ta neste runde",
+          "category": "sosialt",
+          "icon": "drink"
+        },
+        {
+          "id": "bar-smalltalk-fr-26",
+          "target": "Tu as un très bon style",
+          "pronunciation": "tu a uhn tray bon steel",
+          "native": "Du har en fin stil",
+          "category": "sosialt",
+          "icon": "amazing"
+        },
+        {
+          "id": "bar-smalltalk-fr-27",
+          "target": "On cherche un endroit plus calme ?",
+          "pronunciation": "on shairsh uhn nahn-drwa plu kalm",
+          "native": "Skal vi finne et roligere sted?",
+          "category": "sosialt",
+          "icon": "location"
+        },
+        {
+          "id": "bar-smalltalk-fr-28",
+          "target": "C'était un plaisir de parler avec toi",
+          "pronunciation": "say-teh uhn play-zeer duh par-lay a-vek twa",
+          "native": "Det var hyggelig å prate med deg",
+          "category": "sosialt",
+          "icon": "nice-meet"
         }
       ]
     },
@@ -1286,6 +2406,118 @@
           "native": "Kan du kjøre litt saktere?",
           "category": "transport",
           "icon": "slower"
+        },
+        {
+          "id": "taxi-transport-fr-15",
+          "target": "Où puis-je me garer ?",
+          "pronunciation": "oo pwee-zh muh ga-ray",
+          "native": "Hvor kan jeg parkere?",
+          "category": "transport",
+          "icon": "location"
+        },
+        {
+          "id": "taxi-transport-fr-16",
+          "target": "Y a-t-il un trajet direct ?",
+          "pronunciation": "ee a-teel uhn tra-zheh dee-rekt",
+          "native": "Går det en direkte rute?",
+          "category": "transport",
+          "icon": "direction"
+        },
+        {
+          "id": "taxi-transport-fr-17",
+          "target": "Je me suis perdu(e)",
+          "pronunciation": "zhuh muh swee per-du",
+          "native": "Jeg gikk meg bort",
+          "category": "transport",
+          "icon": "confused"
+        },
+        {
+          "id": "taxi-transport-fr-18",
+          "target": "Puis-je avoir un reçu pour le trajet ?",
+          "pronunciation": "pwee-zh a-vwar uhn ruh-su poor luh tra-zheh",
+          "native": "Kan jeg få kvittering for turen?",
+          "category": "transport",
+          "icon": "receipt"
+        },
+        {
+          "id": "taxi-transport-fr-19",
+          "target": "Où puis-je acheter un billet de train ?",
+          "pronunciation": "oo pwee-zh ash-tay uhn bee-yeh duh tran",
+          "native": "Hvor kjøper jeg togbillett?",
+          "category": "transport",
+          "icon": "ticket"
+        },
+        {
+          "id": "taxi-transport-fr-20",
+          "target": "Y a-t-il un bus de nuit ?",
+          "pronunciation": "ee a-teel uhn bus duh nwee",
+          "native": "Går det en nattbuss?",
+          "category": "transport",
+          "icon": "bus"
+        },
+        {
+          "id": "taxi-transport-fr-21",
+          "target": "Puis-je mettre mes bagages ici ?",
+          "pronunciation": "pwee-zh met-truh may ba-gazh ee-see",
+          "native": "Kan jeg sette bagasjen her?",
+          "category": "transport",
+          "icon": "luggage"
+        },
+        {
+          "id": "taxi-transport-fr-22",
+          "target": "De quel quai part le train ?",
+          "pronunciation": "duh kel kay par luh tran",
+          "native": "Hvilken plattform går toget fra?",
+          "category": "transport",
+          "icon": "train"
+        },
+        {
+          "id": "taxi-transport-fr-23",
+          "target": "Y a-t-il des embouteillages ?",
+          "pronunciation": "ee a-teel day zahm-boo-tay-yazh",
+          "native": "Er det trafikkork?",
+          "category": "transport",
+          "icon": "taxi"
+        },
+        {
+          "id": "taxi-transport-fr-24",
+          "target": "Puis-je réserver un trajet à l'avance ?",
+          "pronunciation": "pwee-zh ray-zair-vay uhn tra-zheh a la-vahns",
+          "native": "Kan jeg bestille en tur på forhånd?",
+          "category": "transport",
+          "icon": "time"
+        },
+        {
+          "id": "taxi-transport-fr-25",
+          "target": "Combien pour le pourboire ?",
+          "pronunciation": "kom-byen poor luh poor-bwar",
+          "native": "Hvor mye er det i dusør?",
+          "category": "transport",
+          "icon": "price"
+        },
+        {
+          "id": "taxi-transport-fr-26",
+          "target": "Cette voiture sent la fumée",
+          "pronunciation": "set vwa-tur sahn la fu-may",
+          "native": "Denne bilen lukter røyk",
+          "category": "transport",
+          "icon": "sick"
+        },
+        {
+          "id": "taxi-transport-fr-27",
+          "target": "Puis-je ouvrir la fenêtre ?",
+          "pronunciation": "pwee-zh oo-vreer la fuh-net-ruh",
+          "native": "Kan jeg åpne vinduet?",
+          "category": "transport",
+          "icon": "slower"
+        },
+        {
+          "id": "taxi-transport-fr-28",
+          "target": "Nous devons nous dépêcher",
+          "pronunciation": "noo duh-von noo day-pesh-ay",
+          "native": "Vi må skynde oss",
+          "category": "transport",
+          "icon": "late"
         }
       ]
     },
@@ -1403,6 +2635,118 @@
           "native": "Kan du ringe familien min?",
           "category": "nodsituasjon",
           "icon": "call-family"
+        },
+        {
+          "id": "emergency-pharmacy-fr-15",
+          "target": "Avez-vous des antidouleurs ?",
+          "pronunciation": "ah-vay voo day zan-tee-doo-lur",
+          "native": "Har dere smertestillende?",
+          "category": "nodsituasjon",
+          "icon": "pharmacy"
+        },
+        {
+          "id": "emergency-pharmacy-fr-16",
+          "target": "J'ai besoin d'un interprète",
+          "pronunciation": "zhay buh-zwan duhn an-tair-pret",
+          "native": "Jeg trenger tolk",
+          "category": "nodsituasjon",
+          "icon": "language"
+        },
+        {
+          "id": "emergency-pharmacy-fr-17",
+          "target": "C'est une urgence",
+          "pronunciation": "set oon ur-zhahns",
+          "native": "Det er en nødsituasjon",
+          "category": "nodsituasjon",
+          "icon": "ambulance"
+        },
+        {
+          "id": "emergency-pharmacy-fr-18",
+          "target": "Pouvez-vous m'accompagner là-bas ?",
+          "pronunciation": "poo-vay voo ma-kom-pa-nyay la-ba",
+          "native": "Kan du følge meg dit?",
+          "category": "nodsituasjon",
+          "icon": "help"
+        },
+        {
+          "id": "emergency-pharmacy-fr-19",
+          "target": "J'ai de la fièvre",
+          "pronunciation": "zhay duh la fyev-ruh",
+          "native": "Jeg har feber",
+          "category": "nodsituasjon",
+          "icon": "sick"
+        },
+        {
+          "id": "emergency-pharmacy-fr-20",
+          "target": "J'ai besoin d'un pansement",
+          "pronunciation": "zhay buh-zwan duhn pahns-mahn",
+          "native": "Jeg trenger plaster",
+          "category": "nodsituasjon",
+          "icon": "pharmacy"
+        },
+        {
+          "id": "emergency-pharmacy-fr-21",
+          "target": "Y a-t-il un dentiste à proximité ?",
+          "pronunciation": "ee a-teel uhn dahn-teest a prok-see-mee-tay",
+          "native": "Er det en tannlege i nærheten?",
+          "category": "nodsituasjon",
+          "icon": "hospital"
+        },
+        {
+          "id": "emergency-pharmacy-fr-22",
+          "target": "Quelque chose m'a piqué",
+          "pronunciation": "kel-kuh shoz ma pee-kay",
+          "native": "Jeg har blitt bitt av noe",
+          "category": "nodsituasjon",
+          "icon": "pain"
+        },
+        {
+          "id": "emergency-pharmacy-fr-23",
+          "target": "Pouvez-vous noter les symptômes ?",
+          "pronunciation": "poo-vay voo no-tay lay sam-tom",
+          "native": "Kan du skrive ned symptomene?",
+          "category": "nodsituasjon",
+          "icon": "write"
+        },
+        {
+          "id": "emergency-pharmacy-fr-24",
+          "target": "Je prends ce médicament",
+          "pronunciation": "zhuh prahn suh may-dee-ka-mahn",
+          "native": "Jeg tar denne medisinen",
+          "category": "nodsituasjon",
+          "icon": "pharmacy"
+        },
+        {
+          "id": "emergency-pharmacy-fr-25",
+          "target": "As-tu une assurance ici ?",
+          "pronunciation": "a tu oon a-su-rahns ee-see",
+          "native": "Har du forsikring her?",
+          "category": "nodsituasjon",
+          "icon": "document"
+        },
+        {
+          "id": "emergency-pharmacy-fr-26",
+          "target": "Je me sens étourdi(e)",
+          "pronunciation": "zhuh muh sahn zay-toor-dee",
+          "native": "Jeg føler meg svimmel",
+          "category": "nodsituasjon",
+          "icon": "sick"
+        },
+        {
+          "id": "emergency-pharmacy-fr-27",
+          "target": "Où est la sortie de secours ?",
+          "pronunciation": "oo eh la sor-tee duh suh-koor",
+          "native": "Hvor er nødutgangen?",
+          "category": "nodsituasjon",
+          "icon": "location"
+        },
+        {
+          "id": "emergency-pharmacy-fr-28",
+          "target": "Pouvez-vous appeler les urgences ?",
+          "pronunciation": "poo-vay voo a-play lay zur-zhahns",
+          "native": "Kan du ringe legevakten?",
+          "category": "nodsituasjon",
+          "icon": "doctor"
         }
       ]
     },
@@ -1520,6 +2864,118 @@
           "native": "Har dere dette i en større størrelse?",
           "category": "handel",
           "icon": "size"
+        },
+        {
+          "id": "shopping-prices-fr-15",
+          "target": "Avez-vous du papier cadeau ?",
+          "pronunciation": "ah-vay voo du pa-pyay ka-doh",
+          "native": "Har dere gavepapir?",
+          "category": "handel",
+          "icon": "gift"
+        },
+        {
+          "id": "shopping-prices-fr-16",
+          "target": "Combien coûte la livraison ?",
+          "pronunciation": "kom-byen koot la lee-vray-zon",
+          "native": "Hvor mye er fraktkostnaden?",
+          "category": "handel",
+          "icon": "price"
+        },
+        {
+          "id": "shopping-prices-fr-17",
+          "target": "Vendez-vous des souvenirs ?",
+          "pronunciation": "vahn-day voo day soo-vuh-neer",
+          "native": "Selger dere suvenirer?",
+          "category": "handel",
+          "icon": "buy"
+        },
+        {
+          "id": "shopping-prices-fr-18",
+          "target": "Pouvez-vous me le mettre de côté ?",
+          "pronunciation": "poo-vay voo muh luh met-truh duh ko-tay",
+          "native": "Kan jeg legge det til side?",
+          "category": "handel",
+          "icon": "browsing"
+        },
+        {
+          "id": "shopping-prices-fr-19",
+          "target": "Avez-vous des soldes en ce moment ?",
+          "pronunciation": "ah-vay voo day sold ahn suh mo-mahn",
+          "native": "Har dere salg nå?",
+          "category": "handel",
+          "icon": "discount"
+        },
+        {
+          "id": "shopping-prices-fr-20",
+          "target": "Puis-je échanger ceci ?",
+          "pronunciation": "pwee-zh ay-shahn-zhay suh-see",
+          "native": "Kan jeg bytte denne?",
+          "category": "handel",
+          "icon": "return"
+        },
+        {
+          "id": "shopping-prices-fr-21",
+          "target": "Est-ce fait main ?",
+          "pronunciation": "es feh man",
+          "native": "Er dette håndlaget?",
+          "category": "handel",
+          "icon": "gift"
+        },
+        {
+          "id": "shopping-prices-fr-22",
+          "target": "Où est la caisse ?",
+          "pronunciation": "oo eh la kes",
+          "native": "Hvor er kassen?",
+          "category": "handel",
+          "icon": "card"
+        },
+        {
+          "id": "shopping-prices-fr-23",
+          "target": "Acceptez-vous les devises étrangères ?",
+          "pronunciation": "ak-sep-tay voo lay duh-veez zay-trahn-zhair",
+          "native": "Tar dere utenlandsk valuta?",
+          "category": "handel",
+          "icon": "card"
+        },
+        {
+          "id": "shopping-prices-fr-24",
+          "target": "Puis-je avoir un sac ?",
+          "pronunciation": "pwee-zh a-vwar uhn sak",
+          "native": "Kan jeg få en pose?",
+          "category": "handel",
+          "icon": "buy"
+        },
+        {
+          "id": "shopping-prices-fr-25",
+          "target": "C'est cassé",
+          "pronunciation": "seh ka-say",
+          "native": "Dette er ødelagt",
+          "category": "handel",
+          "icon": "return"
+        },
+        {
+          "id": "shopping-prices-fr-26",
+          "target": "L'avez-vous en taille XL ?",
+          "pronunciation": "la-vay voo ahn tie eeks-el",
+          "native": "Har dere dette i XL?",
+          "category": "handel",
+          "icon": "size"
+        },
+        {
+          "id": "shopping-prices-fr-27",
+          "target": "Combien puis-je en acheter ?",
+          "pronunciation": "kom-byen pwee-zh ahn ash-tay",
+          "native": "Hvor mange kan jeg kjøpe?",
+          "category": "handel",
+          "icon": "buy"
+        },
+        {
+          "id": "shopping-prices-fr-28",
+          "target": "Je cherche un cadeau pour enfants",
+          "pronunciation": "zhuh shairsh uhn ka-doh poor ahn-fahn",
+          "native": "Jeg leter etter en gave til barn",
+          "category": "handel",
+          "icon": "gift"
         }
       ]
     },
@@ -1637,6 +3093,118 @@
           "native": "Takk for maten",
           "category": "hoflighet",
           "icon": "thanks"
+        },
+        {
+          "id": "polite-guest-fr-15",
+          "target": "Puis-je avoir la recette ?",
+          "pronunciation": "pwee-zh a-vwar la ruh-set",
+          "native": "Kan jeg få oppskriften?",
+          "category": "hoflighet",
+          "icon": "menu"
+        },
+        {
+          "id": "polite-guest-fr-16",
+          "target": "Ce salon est très chaleureux",
+          "pronunciation": "suh sa-lon eh tray sha-luh-ruh",
+          "native": "Dette er en koselig stue",
+          "category": "hoflighet",
+          "icon": "nice-house"
+        },
+        {
+          "id": "polite-guest-fr-17",
+          "target": "Je retire ma veste ?",
+          "pronunciation": "zhuh ruh-teer ma vest",
+          "native": "Skal jeg ta av meg jakken?",
+          "category": "hoflighet",
+          "icon": "shoes"
+        },
+        {
+          "id": "polite-guest-fr-18",
+          "target": "Il faut qu'on refasse ça",
+          "pronunciation": "eel foh kon ruh-fas sa",
+          "native": "Vi må gjøre dette igjen",
+          "category": "hoflighet",
+          "icon": "nice-meet"
+        },
+        {
+          "id": "polite-guest-fr-19",
+          "target": "Puis-je en avoir un peu plus ?",
+          "pronunciation": "pwee-zh ahn a-vwar uhn puh plu",
+          "native": "Kan jeg få litt mer?",
+          "category": "hoflighet",
+          "icon": "delicious"
+        },
+        {
+          "id": "polite-guest-fr-20",
+          "target": "Ça a le goût de la cuisine de ma mère",
+          "pronunciation": "sa a luh goo duh la kwee-zeen duh ma mair",
+          "native": "Dette er akkurat som mammas mat",
+          "category": "hoflighet",
+          "icon": "delicious"
+        },
+        {
+          "id": "polite-guest-fr-21",
+          "target": "Puis-je faire la vaisselle ?",
+          "pronunciation": "pwee-zh fair la vay-sel",
+          "native": "Kan jeg vaske opp?",
+          "category": "hoflighet",
+          "icon": "help-offer"
+        },
+        {
+          "id": "polite-guest-fr-22",
+          "target": "Tes enfants sont adorables",
+          "pronunciation": "tay zahn-fahn son a-do-rabl",
+          "native": "Barna dine er søte",
+          "category": "hoflighet",
+          "icon": "nice-house"
+        },
+        {
+          "id": "polite-guest-fr-23",
+          "target": "J'apporte du vin la prochaine fois ?",
+          "pronunciation": "zha-port du van la pro-shen fwa",
+          "native": "Skal jeg ta med vin neste gang?",
+          "category": "hoflighet",
+          "icon": "bring"
+        },
+        {
+          "id": "polite-guest-fr-24",
+          "target": "J'apprécie beaucoup ton hospitalité",
+          "pronunciation": "zha-pray-see bo-koo ton os-pee-ta-lee-tay",
+          "native": "Jeg setter stor pris på gjestfriheten din",
+          "category": "hoflighet",
+          "icon": "thanks"
+        },
+        {
+          "id": "polite-guest-fr-25",
+          "target": "Puis-je avoir un peu d'eau ?",
+          "pronunciation": "pwee-zh a-vwar uhn puh doh",
+          "native": "Kan jeg få litt vann?",
+          "category": "hoflighet",
+          "icon": "water"
+        },
+        {
+          "id": "polite-guest-fr-26",
+          "target": "Ta maison sent très bon",
+          "pronunciation": "ta may-zon sahn tray bon",
+          "native": "Huset ditt lukter så godt",
+          "category": "hoflighet",
+          "icon": "nice-house"
+        },
+        {
+          "id": "polite-guest-fr-27",
+          "target": "Habites-tu ici depuis longtemps ?",
+          "pronunciation": "a-beet-tu ee-see duh-pwee lon-tahn",
+          "native": "Har du bodd her lenge?",
+          "category": "hoflighet",
+          "icon": "origin"
+        },
+        {
+          "id": "polite-guest-fr-28",
+          "target": "La prochaine fois, c'est moi qui invite",
+          "pronunciation": "la pro-shen fwa seh mwa kee an-veet",
+          "native": "Neste gang er det min tur å invitere",
+          "category": "hoflighet",
+          "icon": "nice-meet"
         }
       ]
     }
