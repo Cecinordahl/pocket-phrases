@@ -1,0 +1,216 @@
+{
+  "es": {
+    "tourist-essentials": {
+      "title": "Turist-essensielt",
+      "phrases": [
+        { "target": "¿Dónde está...?", "pronunciation": "DON-de es-TA", "native": "Hvor er...?" },
+        { "target": "¿Cuánto cuesta esto?", "pronunciation": "KWAN-to KWES-ta ES-to", "native": "Hvor mye koster det?" },
+        { "target": "¿Hablas inglés?", "pronunciation": "AH-blas in-GLES", "native": "Snakker du engelsk?" },
+        { "target": "No entiendo", "pronunciation": "no en-TYEN-do", "native": "Jeg forstår ikke" },
+        { "target": "¿Puedes ayudarme?", "pronunciation": "PWE-des a-yoo-DAR-me", "native": "Kan du hjelpe meg?" },
+        { "target": "¿Dónde está el baño?", "pronunciation": "DON-de es-TA el BA-nyo", "native": "Hvor er toalettet?" },
+        { "target": "Disculpe", "pronunciation": "dis-KOOL-pe", "native": "Unnskyld meg" },
+        { "target": "Adiós", "pronunciation": "a-DYOS", "native": "Ha det bra" },
+        { "target": "Buenos días", "pronunciation": "BWE-nos DEE-as", "native": "God morgen" },
+        { "target": "Muchas gracias", "pronunciation": "MOO-chas GRA-syas", "native": "Takk skal du ha" }
+      ]
+    },
+    "restaurant": {
+      "title": "Restaurant",
+      "phrases": [
+        { "target": "Una mesa para dos, por favor", "pronunciation": "OO-na ME-sa PA-ra dos por fa-VOR", "native": "Et bord til to, takk" },
+        { "target": "¿Puedo ver el menú?", "pronunciation": "PWE-do ver el me-NOO", "native": "Kan jeg få menyen?" },
+        { "target": "Soy vegetariano/a", "pronunciation": "soy ve-khe-ta-RYA-no", "native": "Jeg er vegetarianer" },
+        { "target": "La cuenta, por favor", "pronunciation": "la KWEN-ta por fa-VOR", "native": "Regningen, takk" },
+        { "target": "Esto estaba delicioso", "pronunciation": "ES-to es-TA-ba de-li-SYO-so", "native": "Dette var deilig" },
+        { "target": "Quiero pedir esto", "pronunciation": "KYE-ro pe-DEER ES-to", "native": "Jeg vil bestille dette" },
+        { "target": "¿Tienen algo sin gluten?", "pronunciation": "TYE-nen AL-go seen GLOO-ten", "native": "Har dere glutenfritt?" },
+        { "target": "¿Puedo tener más agua?", "pronunciation": "PWE-do te-NER mas A-gwa", "native": "Kan jeg få litt mer vann?" },
+        { "target": "¿Qué me recomiendas?", "pronunciation": "ke me re-ko-MYEN-das", "native": "Hva anbefaler du?" },
+        { "target": "¡Salud!", "pronunciation": "sa-LOOD", "native": "Skål!" }
+      ]
+    },
+    "bar-smalltalk": {
+      "title": "Bar og småprat",
+      "phrases": [
+        { "target": "¿Te invito a una copa?", "pronunciation": "te in-VEE-to a OO-na KO-pa", "native": "Kan jeg by på en drink?" },
+        { "target": "¿Cómo te llamas?", "pronunciation": "KO-mo te YA-mas", "native": "Hva heter du?" },
+        { "target": "¿De dónde eres?", "pronunciation": "de DON-de E-res", "native": "Hvor er du fra?" },
+        { "target": "Me llamo...", "pronunciation": "me YA-mo", "native": "Jeg heter ..." },
+        { "target": "Encantado/a de conocerte", "pronunciation": "en-kan-TA-do de ko-no-SER-te", "native": "Det var hyggelig å møte deg" },
+        { "target": "¿Me pones una cerveza?", "pronunciation": "me PO-nes OO-na ser-VE-sa", "native": "Kan jeg få en øl?" },
+        { "target": "¡Salud!", "pronunciation": "sa-LOOD", "native": "Skål!" },
+        { "target": "¿Está libre este asiento?", "pronunciation": "es-TA LEE-bre ES-te a-SYEN-to", "native": "Er dette setet ledig?" },
+        { "target": "¿En qué trabajas?", "pronunciation": "en ke tra-BA-khas", "native": "Hva jobber du med?" },
+        { "target": "Que tengas buena noche", "pronunciation": "ke TEN-gas BWE-na NO-che", "native": "Ha en fin kveld" }
+      ]
+    },
+    "taxi-transport": {
+      "title": "Taxi og transport",
+      "phrases": [
+        { "target": "Al aeropuerto, por favor", "pronunciation": "al a-e-ro-PWER-to por fa-VOR", "native": "Til flyplassen, takk" },
+        { "target": "¿Cuánto cuesta el viaje?", "pronunciation": "KWAN-to KWES-ta el VYA-khe", "native": "Hvor mye koster turen?" },
+        { "target": "¿Puede parar aquí?", "pronunciation": "PWE-de pa-RAR a-KEE", "native": "Kan du stoppe her?" },
+        { "target": "Necesito un taxi", "pronunciation": "ne-se-SEE-to oon TAK-see", "native": "Jeg trenger en drosje" },
+        { "target": "¿Dónde está la parada de autobús más cercana?", "pronunciation": "DON-de es-TA la pa-RA-da de ow-to-BOOS mas ser-KA-na", "native": "Hvor er nærmeste busstopp?" },
+        { "target": "¿Este tren va a...?", "pronunciation": "ES-te tren va a", "native": "Går dette toget til...?" },
+        { "target": "Un billete, por favor", "pronunciation": "oon bee-YE-te por fa-VOR", "native": "Én billett, takk" },
+        { "target": "¿Cuánto tiempo se tarda?", "pronunciation": "KWAN-to TYEM-po se TAR-da", "native": "Hvor lang tid tar det?" },
+        { "target": "¿Puede esperar un momento?", "pronunciation": "PWE-de es-pe-RAR oon mo-MEN-to", "native": "Kan du vente litt?" },
+        { "target": "Voy tarde", "pronunciation": "voy TAR-de", "native": "Jeg er sent ute" }
+      ]
+    },
+    "emergency-pharmacy": {
+      "title": "Nød og apotek",
+      "phrases": [
+        { "target": "Necesito ayuda", "pronunciation": "ne-se-SEE-to a-YOO-da", "native": "Jeg trenger hjelp" },
+        { "target": "Llame a una ambulancia", "pronunciation": "YA-me a OO-na am-boo-LAN-sya", "native": "Ring en ambulanse" },
+        { "target": "Me duele aquí", "pronunciation": "me DWE-le a-KEE", "native": "Jeg har vondt her" },
+        { "target": "¿Tienen esto sin receta?", "pronunciation": "TYE-nen ES-to seen re-SE-ta", "native": "Har dere dette uten resept?" },
+        { "target": "Soy alérgico/a a...", "pronunciation": "soy a-LER-khee-ko a", "native": "Jeg er allergisk mot..." },
+        { "target": "¿Dónde está el hospital más cercano?", "pronunciation": "DON-de es-TA el os-pee-TAL mas ser-KA-no", "native": "Hvor er nærmeste sykehus?" },
+        { "target": "He perdido mi pasaporte", "pronunciation": "e per-DEE-do mee pa-sa-POR-te", "native": "Jeg har mistet passet mitt" },
+        { "target": "Llame a la policía", "pronunciation": "YA-me a la po-lee-SEE-a", "native": "Ring politiet" },
+        { "target": "Me siento mal", "pronunciation": "me SYEN-to mal", "native": "Jeg føler meg dårlig" },
+        { "target": "¿Puedes ayudarme?", "pronunciation": "PWE-des a-yoo-DAR-me", "native": "Kan du hjelpe meg?" }
+      ]
+    },
+    "shopping-prices": {
+      "title": "Handel og priser",
+      "phrases": [
+        { "target": "¿Cuánto cuesta esta?", "pronunciation": "KWAN-to KWES-ta ES-ta", "native": "Hvor mye koster denne?" },
+        { "target": "¿Puedo probármela?", "pronunciation": "PWE-do pro-BAR-me-la", "native": "Kan jeg prøve den?" },
+        { "target": "¿Tienen una talla más pequeña?", "pronunciation": "TYE-nen OO-na TA-ya mas pe-KE-nya", "native": "Har dere en mindre størrelse?" },
+        { "target": "¿Aceptan tarjeta?", "pronunciation": "a-SEP-tan tar-KHE-ta", "native": "Tar dere kort?" },
+        { "target": "Es demasiado caro", "pronunciation": "es de-ma-SYA-do KA-ro", "native": "Det er for dyrt" },
+        { "target": "¿Puedo tener el recibo?", "pronunciation": "PWE-do te-NER el re-SEE-bo", "native": "Kan jeg få kvittering?" },
+        { "target": "Solo estoy mirando", "pronunciation": "SO-lo es-TOY mee-RAN-do", "native": "Bare ser meg litt rundt" },
+        { "target": "¿Lo tienen en otro color?", "pronunciation": "lo TYE-nen en O-tro ko-LOR", "native": "Har dere dette i en annen farge?" },
+        { "target": "¿Puede hacerme un descuento?", "pronunciation": "PWE-de a-SER-me oon des-KWEN-to", "native": "Kan jeg få rabatt?" },
+        { "target": "Me llevo esta", "pronunciation": "me YE-vo ES-ta", "native": "Jeg tar denne" }
+      ]
+    },
+    "polite-guest": {
+      "title": "Høflig gjest",
+      "phrases": [
+        { "target": "Gracias por invitarme", "pronunciation": "GRA-syas por in-vee-TAR-me", "native": "Takk for at du har meg" },
+        { "target": "¿Me quito los zapatos?", "pronunciation": "me KEE-to los sa-PA-tos", "native": "Kan jeg ta av meg skoene?" },
+        { "target": "Esto está muy rico", "pronunciation": "ES-to es-TA mwee REE-ko", "native": "Dette er veldig godt" },
+        { "target": "¿Puedo ayudar en algo?", "pronunciation": "PWE-do a-yoo-DAR en AL-go", "native": "Kan jeg hjelpe til med noe?" },
+        { "target": "Perdón por el retraso", "pronunciation": "per-DON por el re-TRA-so", "native": "Beklager forsinkelsen" },
+        { "target": "Fue una noche muy agradable", "pronunciation": "fwe OO-na NO-che mwee a-gra-DA-ble", "native": "Det var en hyggelig kveld" },
+        { "target": "Muchas gracias por la hospitalidad", "pronunciation": "MOO-chas GRA-syas por la os-pee-ta-lee-DAD", "native": "Tusen takk for gjestfriheten" },
+        { "target": "¿Puedo usar el baño?", "pronunciation": "PWE-do oo-SAR el BA-nyo", "native": "Kan jeg få bruke badet?" },
+        { "target": "Esto es un regalo para ti", "pronunciation": "ES-to es oon re-GA-lo PA-ra tee", "native": "Dette er en gave til deg" },
+        { "target": "Lamento que tengo que irme", "pronunciation": "la-MEN-to ke TEN-go ke EER-me", "native": "Jeg må dessverre gå nå" }
+      ]
+    }
+  },
+  "fr": {
+    "tourist-essentials": {
+      "title": "Turist-essensielt",
+      "phrases": [
+        { "target": "Où est...?", "pronunciation": "oo eh", "native": "Hvor er...?" },
+        { "target": "Combien ça coûte ?", "pronunciation": "kom-byen sa koot", "native": "Hvor mye koster det?" },
+        { "target": "Parlez-vous anglais ?", "pronunciation": "par-lay voo ahn-glay", "native": "Snakker du engelsk?" },
+        { "target": "Je ne comprends pas", "pronunciation": "zhuh nuh kom-prahn pah", "native": "Jeg forstår ikke" },
+        { "target": "Pouvez-vous m'aider ?", "pronunciation": "poo-vay voo may-day", "native": "Kan du hjelpe meg?" },
+        { "target": "Où sont les toilettes ?", "pronunciation": "oo son lay twa-let", "native": "Hvor er toalettet?" },
+        { "target": "Excusez-moi", "pronunciation": "ex-koo-zay mwa", "native": "Unnskyld meg" },
+        { "target": "Au revoir", "pronunciation": "oh ruh-vwar", "native": "Ha det bra" },
+        { "target": "Bonjour", "pronunciation": "bon-zhoor", "native": "God morgen" },
+        { "target": "Merci beaucoup", "pronunciation": "mer-see bo-koo", "native": "Takk skal du ha" }
+      ]
+    },
+    "restaurant": {
+      "title": "Restaurant",
+      "phrases": [
+        { "target": "Une table pour deux, s'il vous plaît", "pronunciation": "oon tah-bl poor duh seel voo play", "native": "Et bord til to, takk" },
+        { "target": "Puis-je voir le menu ?", "pronunciation": "pwee-zh vwar luh muh-noo", "native": "Kan jeg få menyen?" },
+        { "target": "Je suis végétarien(ne)", "pronunciation": "zhuh swee vay-zhay-ta-ryen", "native": "Jeg er vegetarianer" },
+        { "target": "L'addition, s'il vous plaît", "pronunciation": "la-dee-syon seel voo play", "native": "Regningen, takk" },
+        { "target": "C'était délicieux", "pronunciation": "say-tay day-lee-syuh", "native": "Dette var deilig" },
+        { "target": "Je voudrais commander ceci", "pronunciation": "zhuh voo-dray ko-mahn-day suh-see", "native": "Jeg vil bestille dette" },
+        { "target": "Avez-vous des options sans gluten ?", "pronunciation": "ah-vay voo day-zop-syon sahn glu-ten", "native": "Har dere glutenfritt?" },
+        { "target": "Puis-je avoir plus d'eau ?", "pronunciation": "pwee-zh a-vwar plu doh", "native": "Kan jeg få litt mer vann?" },
+        { "target": "Que recommandez-vous ?", "pronunciation": "kuh ruh-ko-mahn-day voo", "native": "Hva anbefaler du?" },
+        { "target": "Santé !", "pronunciation": "sahn-tay", "native": "Skål!" }
+      ]
+    },
+    "bar-smalltalk": {
+      "title": "Bar og småprat",
+      "phrases": [
+        { "target": "Je peux t'offrir un verre ?", "pronunciation": "zhuh puh tof-reer uhn vair", "native": "Kan jeg by på en drink?" },
+        { "target": "Comment tu t'appelles ?", "pronunciation": "ko-mahn tu ta-pel", "native": "Hva heter du?" },
+        { "target": "D'où viens-tu ?", "pronunciation": "doo vyen tu", "native": "Hvor er du fra?" },
+        { "target": "Je m'appelle...", "pronunciation": "zhuh ma-pel", "native": "Jeg heter ..." },
+        { "target": "Enchanté(e)", "pronunciation": "ahn-shahn-tay", "native": "Det var hyggelig å møte deg" },
+        { "target": "Je peux avoir une bière ?", "pronunciation": "zhuh puh a-vwar oon byair", "native": "Kan jeg få en øl?" },
+        { "target": "Santé !", "pronunciation": "sahn-tay", "native": "Skål!" },
+        { "target": "Cette place est libre ?", "pronunciation": "set plas eh lee-bruh", "native": "Er dette setet ledig?" },
+        { "target": "Tu fais quoi dans la vie ?", "pronunciation": "tu fay kwa dahn la vee", "native": "Hva jobber du med?" },
+        { "target": "Passe une bonne soirée", "pronunciation": "pas oon bun swa-ray", "native": "Ha en fin kveld" }
+      ]
+    },
+    "taxi-transport": {
+      "title": "Taxi og transport",
+      "phrases": [
+        { "target": "À l'aéroport, s'il vous plaît", "pronunciation": "a lay-ro-por seel voo play", "native": "Til flyplassen, takk" },
+        { "target": "Combien coûte le trajet ?", "pronunciation": "kom-byen koot luh tra-zheh", "native": "Hvor mye koster turen?" },
+        { "target": "Pouvez-vous vous arrêter ici ?", "pronunciation": "poo-vay voo voo za-reh-tay ee-see", "native": "Kan du stoppe her?" },
+        { "target": "J'ai besoin d'un taxi", "pronunciation": "zhay buh-zwan duhn tak-see", "native": "Jeg trenger en drosje" },
+        { "target": "Où est l'arrêt de bus le plus proche ?", "pronunciation": "oo eh la-reh duh bus luh plu prosh", "native": "Hvor er nærmeste busstopp?" },
+        { "target": "Ce train va à...?", "pronunciation": "suh tran va a", "native": "Går dette toget til...?" },
+        { "target": "Un billet, s'il vous plaît", "pronunciation": "uhn bee-yeh seel voo play", "native": "Én billett, takk" },
+        { "target": "Combien de temps ça prend ?", "pronunciation": "kom-byen duh tahn sa prahn", "native": "Hvor lang tid tar det?" },
+        { "target": "Pouvez-vous attendre un instant ?", "pronunciation": "poo-vay voo a-tahn-druh uhn nan-stahn", "native": "Kan du vente litt?" },
+        { "target": "Je suis en retard", "pronunciation": "zhuh swee zahn ruh-tar", "native": "Jeg er sent ute" }
+      ]
+    },
+    "emergency-pharmacy": {
+      "title": "Nød og apotek",
+      "phrases": [
+        { "target": "J'ai besoin d'aide", "pronunciation": "zhay buh-zwan ded", "native": "Jeg trenger hjelp" },
+        { "target": "Appelez une ambulance", "pronunciation": "a-play oon ahn-boo-lahns", "native": "Ring en ambulanse" },
+        { "target": "J'ai mal ici", "pronunciation": "zhay mal ee-see", "native": "Jeg har vondt her" },
+        { "target": "Avez-vous ceci sans ordonnance ?", "pronunciation": "ah-vay voo suh-see sahn zor-do-nahns", "native": "Har dere dette uten resept?" },
+        { "target": "Je suis allergique à...", "pronunciation": "zhuh swee za-lair-zheek a", "native": "Jeg er allergisk mot..." },
+        { "target": "Où est l'hôpital le plus proche ?", "pronunciation": "oo eh lo-pee-tal luh plu prosh", "native": "Hvor er nærmeste sykehus?" },
+        { "target": "J'ai perdu mon passeport", "pronunciation": "zhay per-du mon pas-por", "native": "Jeg har mistet passet mitt" },
+        { "target": "Appelez la police", "pronunciation": "a-play la po-lees", "native": "Ring politiet" },
+        { "target": "Je ne me sens pas bien", "pronunciation": "zhuh nuh muh sahn pah byen", "native": "Jeg føler meg dårlig" },
+        { "target": "Pouvez-vous m'aider ?", "pronunciation": "poo-vay voo may-day", "native": "Kan du hjelpe meg?" }
+      ]
+    },
+    "shopping-prices": {
+      "title": "Handel og priser",
+      "phrases": [
+        { "target": "Combien coûte celui-ci ?", "pronunciation": "kom-byen koot suh-lwee-see", "native": "Hvor mye koster denne?" },
+        { "target": "Puis-je l'essayer ?", "pronunciation": "pwee-zh leh-say-yay", "native": "Kan jeg prøve den?" },
+        { "target": "Avez-vous une taille plus petite ?", "pronunciation": "ah-vay voo oon tie plu puh-teet", "native": "Har dere en mindre størrelse?" },
+        { "target": "Acceptez-vous la carte ?", "pronunciation": "ak-sep-tay voo la kart", "native": "Tar dere kort?" },
+        { "target": "C'est trop cher", "pronunciation": "seh tro shair", "native": "Det er for dyrt" },
+        { "target": "Puis-je avoir le reçu ?", "pronunciation": "pwee-zh a-vwar luh ruh-su", "native": "Kan jeg få kvittering?" },
+        { "target": "Je regarde seulement", "pronunciation": "zhuh ruh-gard suhl-mahn", "native": "Bare ser meg litt rundt" },
+        { "target": "L'avez-vous dans une autre couleur ?", "pronunciation": "la-vay voo dahn zoon oh-truh koo-luhr", "native": "Har dere dette i en annen farge?" },
+        { "target": "Pouvez-vous me faire une réduction ?", "pronunciation": "poo-vay voo muh fair oon ray-duk-syon", "native": "Kan jeg få rabatt?" },
+        { "target": "Je le/la prends", "pronunciation": "zhuh luh prahn", "native": "Jeg tar denne" }
+      ]
+    },
+    "polite-guest": {
+      "title": "Høflig gjest",
+      "phrases": [
+        { "target": "Merci de m'avoir invité(e)", "pronunciation": "mer-see duh ma-vwar an-vee-tay", "native": "Takk for at du har meg" },
+        { "target": "Je peux enlever mes chaussures ?", "pronunciation": "zhuh puh ahn-luh-vay may sho-sur", "native": "Kan jeg ta av meg skoene?" },
+        { "target": "C'est vraiment délicieux", "pronunciation": "seh vray-mahn day-lee-syuh", "native": "Dette er veldig godt" },
+        { "target": "Je peux aider avec quelque chose ?", "pronunciation": "zhuh puh eh-day a-vek kel-kuh shoz", "native": "Kan jeg hjelpe til med noe?" },
+        { "target": "Désolé(e) pour le retard", "pronunciation": "day-zo-lay poor luh ruh-tar", "native": "Beklager forsinkelsen" },
+        { "target": "C'était une soirée très agréable", "pronunciation": "say-teh oon swa-ray tray za-gray-ah-bluh", "native": "Det var en hyggelig kveld" },
+        { "target": "Merci beaucoup pour votre hospitalité", "pronunciation": "mer-see bo-koo poor vo-truh os-pee-ta-lee-tay", "native": "Tusen takk for gjestfriheten" },
+        { "target": "Je peux utiliser la salle de bain ?", "pronunciation": "zhuh puh u-tee-lee-zay la sal duh ban", "native": "Kan jeg få bruke badet?" },
+        { "target": "C'est un cadeau pour toi", "pronunciation": "seh tuhn ka-doh poor twa", "native": "Dette er en gave til deg" },
+        { "target": "Je suis désolé(e), je dois y aller", "pronunciation": "zhuh swee day-zo-lay zhuh dwa ee a-lay", "native": "Jeg må dessverre gå nå" }
+      ]
+    }
+  }
+}

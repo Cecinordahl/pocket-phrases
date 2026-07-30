@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: pocket-phrases-backend
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
+      - key: APP_ACCESS_WHITELIST_ENABLED
+        value: "false"
+      - key: APP_CORS_ALLOWED_ORIGINS
+        sync: false

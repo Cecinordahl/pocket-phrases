@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: pocket-phrases-backend
+
+server:
+  port: ${PORT:8080}
+
+# Anthropic API key. Never commit a real value — set via the ANTHROPIC_API_KEY
+# environment variable locally and on the deploy platform.
+anthropic:
+  api-key: ${ANTHROPIC_API_KEY:}
+
+# Firestore credentials for the optional email whitelist (see app.access
+# below). Only read when the gate is enabled.
+firebase:
+  service-account-json: ${FIREBASE_SERVICE_ACCOUNT_JSON:}
+
+app:
+  access:
+    # Off by default (v1). Set to true to require every request to carry an
+    # X-User-Email header present in the Firestore "whitelist" collection.
+    whitelist-enabled: ${APP_ACCESS_WHITELIST_ENABLED:false}
+  cors:
+    # Comma-separated list of allowed frontend origins.
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:5173}
