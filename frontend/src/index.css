@@ -1,16 +1,38 @@
 :root {
-  --color-bg: #faf8f5;
+  /* Calm, neutral base — Duolingo-meets-Notion, not a themed skin. */
+  --color-bg: #faf9f7;
   --color-surface: #ffffff;
-  --color-text: #1f2933;
-  --color-text-muted: #5b6572;
-  --color-border: #e2ddd4;
-  --color-primary: #2f6f4f;
-  --color-primary-dark: #234f39;
-  --color-accent: #c96f3a;
-  --color-danger: #b3261e;
-  --color-danger-bg: #fdecea;
-  --radius: 12px;
-  --shadow: 0 1px 3px rgba(31, 41, 51, 0.08);
+  --color-surface-muted: #f4f3f0;
+  --color-text: #1c1c1e;
+  --color-text-muted: #6b7280;
+  --color-border: #e7e5e1;
+
+  /* Primary action color is deliberately neutral ink, not a hue used
+     anywhere else — category colors and the sacred feedback colors below
+     stay the only saturated colors in the app. */
+  --color-primary: #18181b;
+  --color-primary-hover: #000000;
+
+  /* Warning tone for disclaimers — distinct from --color-wrong, which is
+     reserved exclusively for "incorrect answer" feedback. */
+  --color-warning: #b45309;
+  --color-warning-bg: #fffbeb;
+
+  /* Sacred feedback colors. Green + a checkmark always means "correct";
+     red + an X always means "wrong". Never reuse these for anything else
+     (buttons, categories, decoration) so the pairing keeps its meaning —
+     color is always paired with an icon, never color alone, so it still
+     works for red-green colorblind users. */
+  --color-correct: #16a34a;
+  --color-correct-bg: #f0fdf4;
+  --color-wrong: #dc2626;
+  --color-wrong-bg: #fef2f2;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 1px 2px rgba(20, 20, 20, 0.04);
+  --shadow-md: 0 10px 30px -12px rgba(20, 20, 20, 0.14);
+
   color-scheme: light;
 }
 
@@ -27,9 +49,8 @@ body {
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -49,6 +70,22 @@ h2,
 h3 {
   line-height: 1.25;
   margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
 }
 
 p {
@@ -72,7 +109,7 @@ textarea {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -80,8 +117,8 @@ textarea {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
 }
 
 .button {
@@ -90,24 +127,29 @@ textarea {
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 14px 16px;
-  border-radius: var(--radius);
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   background: var(--color-primary);
   color: white;
   font-weight: 600;
   font-size: 1rem;
   min-height: 48px;
-  transition: background-color 150ms ease;
+  transition: background-color 150ms ease, transform 150ms ease;
 }
 
 .button:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-primary-hover);
+}
+
+.button:active {
+  transform: scale(0.98);
 }
 
 .button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .button-secondary {
@@ -117,7 +159,7 @@ textarea {
 }
 
 .button-secondary:hover {
-  background: var(--color-bg);
+  background: var(--color-surface-muted);
 }
 
 .text-muted {
@@ -129,13 +171,46 @@ textarea {
   display: flex;
   gap: 8px;
   align-items: flex-start;
-  background: var(--color-danger-bg);
-  color: var(--color-danger);
-  border: 1px solid rgba(179, 38, 30, 0.25);
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid color-mix(in srgb, var(--color-warning) 25%, transparent);
   border-radius: var(--radius);
   padding: 12px 14px;
   font-size: 0.85rem;
   margin: 0 0 16px;
+}
+
+/* Feedback: correct / wrong. Color is always paired with an icon (never
+   color alone) — see components/Feedback.tsx. */
+.feedback-correct {
+  background: var(--color-correct-bg);
+  color: var(--color-correct);
+  border-color: color-mix(in srgb, var(--color-correct) 35%, transparent) !important;
+  opacity: 1 !important;
+}
+
+.feedback-wrong {
+  background: var(--color-wrong-bg);
+  color: var(--color-wrong);
+  border-color: color-mix(in srgb, var(--color-wrong) 35%, transparent) !important;
+  opacity: 1 !important;
+}
+
+@keyframes pocket-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Gentle micro-animation for card flips and answer feedback. Pair with a
+   `key` change so React remounts the node and restarts the animation. */
+.animate-in {
+  animation: pocket-fade-in 180ms ease-out;
 }
 
 /* Respect the user's motion preference throughout the app. */

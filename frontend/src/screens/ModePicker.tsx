@@ -72,7 +72,7 @@ export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: 
       <p className="text-muted">Hva slags situasjon gjør du deg klar for?</p>
 
       {error && (
-        <p style={{ color: "var(--color-danger)" }} role="alert">
+        <p style={{ color: "var(--color-warning)" }} role="alert">
           {error}
         </p>
       )}

@@ -34,6 +34,8 @@ public class AnthropicService {
             Returner 6 til 10 fraser på målspråket som er relevante for situasjonen brukeren beskriver.
             Uttalen skal være en enkel fonetisk skrivemåte som en norsktalende kan lese direkte, ikke IPA.
             "native" skal være frasens betydning på norsk bokmål.
+            Velg den kategorien og det ikonet som passer best for hver frase — bruk ANNET/GENERAL kun hvis
+            ingenting annet passer.
             Gi et kort, beskrivende tittel på norsk bokmål for situasjonen.
             """;
 
@@ -60,9 +62,20 @@ public class AnthropicService {
 
         List<Phrase> phrases = generated.phrases().stream()
                 .limit(MAX_PHRASES)
-                .map(p -> new Phrase(p.target(), p.pronunciation(), p.nativeText()))
+                .map(p -> new Phrase(
+                        generatedPhraseId(p.target()),
+                        p.target(),
+                        p.pronunciation(),
+                        p.nativeText(),
+                        p.category(),
+                        p.icon()))
                 .toList();
 
         return new Lesson(generated.title(), language, "generated", phrases);
+    }
+
+    /** Stable across repeats of the same generated phrase text within a session. */
+    private String generatedPhraseId(String target) {
+        return "generated-" + Integer.toHexString(target.hashCode());
     }
 }
