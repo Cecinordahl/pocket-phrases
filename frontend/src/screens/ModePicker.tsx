@@ -29,6 +29,20 @@ export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: 
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [slowLoad, setSlowLoad] = useState(false);
+  const [slowGenerate, setSlowGenerate] = useState(false);
+
+  // Calling Anthropic genuinely takes a few seconds even on a warm backend,
+  // so — unlike the mode-list load — this hint shows immediately rather
+  // than waiting to see if it's "slow". It escalates if it runs long
+  // enough to plausibly be a cold-started backend on top of the AI call.
+  useEffect(() => {
+    if (loadingKey !== "generate") {
+      setSlowGenerate(false);
+      return;
+    }
+    const timer = setTimeout(() => setSlowGenerate(true), 8000);
+    return () => clearTimeout(timer);
+  }, [loadingKey]);
 
   useEffect(() => {
     const timer = setTimeout(() => setSlowLoad(true), SLOW_LOAD_HINT_MS);
@@ -143,6 +157,13 @@ export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: 
         <button className="button" disabled={busy || !situation.trim()} onClick={handleGenerate}>
           {loadingKey === "generate" ? "Genererer..." : "Lag leksjon"}
         </button>
+        {loadingKey === "generate" && (
+          <p className="text-muted animate-in" style={{ marginTop: 10, marginBottom: 0 }}>
+            {slowGenerate
+              ? "Tar litt lengre tid enn vanlig — kan hende serveren våkner fra dvale. Vent litt til..."
+              : "Lager fraser tilpasset situasjonen din — dette tar gjerne 5–15 sekunder."}
+          </p>
+        )}
       </div>
     </div>
   );
