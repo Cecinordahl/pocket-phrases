@@ -7,12 +7,14 @@ import {
   generateLesson,
 } from "../lib/api";
 import type { Language, Lesson, ModeInfo } from "../types/lesson";
+import { getWordCount } from "../lib/frequency";
 
 type ModePickerProps = {
   language: Language;
   onBack: () => void;
   onLessonReady: (lesson: Lesson) => void;
   onAccessDenied: () => void;
+  onEnterVocabJourney: () => void;
 };
 
 const MAX_SITUATION_LENGTH = 300;
@@ -23,7 +25,13 @@ const MAX_SITUATION_LENGTH = 300;
 // taking a while, so a normal warm-server load never sees it.
 const SLOW_LOAD_HINT_MS = 3000;
 
-export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: ModePickerProps) {
+export function ModePicker({
+  language,
+  onBack,
+  onLessonReady,
+  onAccessDenied,
+  onEnterVocabJourney,
+}: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
@@ -99,6 +107,21 @@ export function ModePicker({ language, onBack, onLessonReady, onAccessDenied }: 
         <p style={{ color: "var(--color-warning)" }} role="alert">
           {error}
         </p>
+      )}
+
+      {/* Only shown once there's at least some fetched content for this
+          language — no point linking into a journey that's 100% locked. */}
+      {getWordCount(language) > 0 && (
+        <div className="card" style={{ marginTop: 16 }}>
+          <h3>📚 Lær de mest brukte ordene</h3>
+          <p className="text-muted" style={{ marginBottom: 12 }}>
+            En strukturert reise gjennom de vanligste ordene i språket, milepæl for milepæl —
+            fremfor fraser til én bestemt situasjon.
+          </p>
+          <button className="button" style={{ width: "100%" }} onClick={onEnterVocabJourney}>
+            Start ordforråd-reisen
+          </button>
+        </div>
       )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>

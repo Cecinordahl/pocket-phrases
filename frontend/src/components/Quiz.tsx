@@ -2,6 +2,13 @@ import { useMemo, useState, type CSSProperties } from "react";
 import type { Phrase } from "../types/lesson";
 import { recordReview, sortByDue } from "../lib/srs";
 
+// "native-to-target" (default) shows the Norwegian phrase and asks for the
+// foreign-language match — the original situational-lesson direction.
+// "target-to-native" flips it: shows the foreign word/phrase and asks for
+// its Norwegian meaning, used by the vocab-frequency journey where
+// recognition (understanding what you read/hear) is the actual goal.
+type QuizDirection = "native-to-target" | "target-to-native";
+
 type QuizProps = {
   phrases: Phrase[];
   onComplete: (score: number) => void;
@@ -11,15 +18,20 @@ type QuizProps = {
   // actual refetch and remounts this component with the new phrase set.
   onRequestNewSet?: () => void;
   requestingNewSet?: boolean;
+  direction?: QuizDirection;
 };
 
 type Question = {
   phrase: Phrase;
+  questionText: string;
+  answerText: string;
   options: string[];
 };
 
 type Answered = {
   phrase: Phrase;
+  questionText: string;
+  answerText: string;
   selected: string;
   correct: boolean;
 };
@@ -39,21 +51,34 @@ function shuffle<T>(items: T[]): T[] {
   return copy;
 }
 
-function buildQuestions(phrases: Phrase[]): Question[] {
+function buildQuestions(phrases: Phrase[], direction: QuizDirection): Question[] {
+  const field = direction === "target-to-native" ? "native" : "target";
   return sortByDue(phrases).map((phrase) => {
     const distractors = shuffle(
-      phrases.filter((p) => p.id !== phrase.id).map((p) => p.target),
+      phrases.filter((p) => p.id !== phrase.id).map((p) => p[field]),
     ).slice(0, 3);
-    return { phrase, options: shuffle([phrase.target, ...distractors]) };
+    const answerText = phrase[field];
+    return {
+      phrase,
+      questionText: direction === "target-to-native" ? phrase.target : phrase.native,
+      answerText,
+      options: shuffle([answerText, ...distractors]),
+    };
   });
 }
 
-export function Quiz({ phrases, onComplete, onRequestNewSet, requestingNewSet }: QuizProps) {
+export function Quiz({
+  phrases,
+  onComplete,
+  onRequestNewSet,
+  requestingNewSet,
+  direction = "native-to-target",
+}: QuizProps) {
   const [runId, setRunId] = useState(0);
   // runId is in the deps purely to force a reshuffle on "ta testen på nytt" —
   // the phrase set itself doesn't change, just the question order/distractors.
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const questions = useMemo(() => buildQuestions(phrases), [phrases, runId]);
+  const questions = useMemo(() => buildQuestions(phrases, direction), [phrases, direction, runId]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -123,7 +148,7 @@ export function Quiz({ phrases, onComplete, onRequestNewSet, requestingNewSet }:
                   borderLeft: `4px solid ${a.correct ? "var(--color-correct)" : "var(--color-wrong)"}`,
                 }}
               >
-                <div className="text-muted">{a.phrase.native}</div>
+                <div className="text-muted">{a.questionText}</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
                   <span aria-hidden="true" style={{ color: a.correct ? "var(--color-correct)" : "var(--color-wrong)" }}>
                     {a.correct ? "✓" : "✗"}
@@ -132,7 +157,7 @@ export function Quiz({ phrases, onComplete, onRequestNewSet, requestingNewSet }:
                 </div>
                 {!a.correct && (
                   <div style={{ marginTop: 4, color: "var(--color-correct)" }}>
-                    <span aria-hidden="true">✓</span> Riktig svar: {a.phrase.target}
+                    <span aria-hidden="true">✓</span> Riktig svar: {a.answerText}
                   </div>
                 )}
               </li>
@@ -152,9 +177,18 @@ export function Quiz({ phrases, onComplete, onRequestNewSet, requestingNewSet }:
 
     setTimeout(() => {
       setRevealed(true);
-      const correct = option === question.phrase.target;
+      const correct = option === question.answerText;
       recordReview(question.phrase.id, correct);
-      setAnswers((prev) => [...prev, { phrase: question.phrase, selected: option, correct }]);
+      setAnswers((prev) => [
+        ...prev,
+        {
+          phrase: question.phrase,
+          questionText: question.questionText,
+          answerText: question.answerText,
+          selected: option,
+          correct,
+        },
+      ]);
 
       setTimeout(() => {
         if (isLast) {
@@ -175,11 +209,11 @@ export function Quiz({ phrases, onComplete, onRequestNewSet, requestingNewSet }:
         Spørsmål {index + 1} av {questions.length} · Poeng: {score}
       </p>
       <div className="card">
-        <h3>{question.phrase.native}</h3>
+        <h3>{question.questionText}</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 12 }}>
           {question.options.map((option) => {
             const isSelected = option === selected;
-            const isCorrectOption = option === question.phrase.target;
+            const isCorrectOption = option === question.answerText;
 
             let className = "button button-secondary";
             let style: CSSProperties = {
