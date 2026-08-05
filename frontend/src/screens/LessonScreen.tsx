@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Lesson } from "../types/lesson";
 import { progressStore } from "../lib/progress";
+import { streakStore } from "../lib/streak";
 import { AccessDeniedError, fetchPrebuiltLesson, fetchRandomLesson } from "../lib/api";
 import { Read } from "../components/Read";
 import { Drill } from "../components/Drill";
@@ -116,7 +117,10 @@ export function LessonScreen({ lesson: initialLesson, onBack, onAccessDenied }: 
         <Quiz
           key={lessonVersion}
           phrases={lesson.phrases}
-          onComplete={(score) => progressStore.markQuizzed(lesson.language, lesson.mode, score)}
+          onComplete={(score) => {
+            progressStore.markQuizzed(lesson.language, lesson.mode, score);
+            streakStore.recordActivity();
+          }}
           onRequestNewSet={isGenerated ? undefined : runAnotherTest}
           requestingNewSet={refreshing}
         />
