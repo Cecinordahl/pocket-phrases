@@ -1,12 +1,13 @@
 import type { Language } from "../types/lesson";
+import { UNIT_SIZE } from "./frequency";
 
 export type FrequencyProgress = {
-  completedBatches: number[];
+  completedModules: number[];
   introSeen: boolean;
 };
 
 const EMPTY_PROGRESS: FrequencyProgress = {
-  completedBatches: [],
+  completedModules: [],
   introSeen: false,
 };
 
@@ -15,9 +16,12 @@ const STORAGE_KEY = "pocket-phrases:frequency-progress";
 // Same seam as ProgressStore/StreakStore: v1 is localStorage-only, swappable
 // for a server-backed store later without touching callers.
 export interface FrequencyProgressStore {
-  isBatchUnlocked(language: Language, batchIndex: number): boolean;
-  isBatchCompleted(language: Language, batchIndex: number): boolean;
-  completeBatch(language: Language, batchIndex: number): void;
+  isModuleUnlocked(language: Language, moduleIndex: number): boolean;
+  isModuleCompleted(language: Language, moduleIndex: number): boolean;
+  completeModule(language: Language, moduleIndex: number): void;
+  // A unit (10 modules) is complete once every module in it is — derived
+  // from module completion rather than stored separately.
+  isUnitCompleted(language: Language, unitIndex: number): boolean;
   hasSeenIntro(language: Language): boolean;
   markIntroSeen(language: Language): void;
 }
@@ -40,23 +44,31 @@ class LocalStorageFrequencyProgressStore implements FrequencyProgressStore {
     return this.readAll()[language] ?? EMPTY_PROGRESS;
   }
 
-  // Batch 0 is always unlocked (content permitting); batch N unlocks once
-  // batch N-1 has been cleared at 100%.
-  isBatchUnlocked(language: Language, batchIndex: number): boolean {
-    if (batchIndex === 0) return true;
-    return this.get(language).completedBatches.includes(batchIndex - 1);
+  // Module 0 is always unlocked (content permitting); module N unlocks once
+  // module N-1 has been cleared at 100%.
+  isModuleUnlocked(language: Language, moduleIndex: number): boolean {
+    if (moduleIndex === 0) return true;
+    return this.get(language).completedModules.includes(moduleIndex - 1);
   }
 
-  isBatchCompleted(language: Language, batchIndex: number): boolean {
-    return this.get(language).completedBatches.includes(batchIndex);
+  isModuleCompleted(language: Language, moduleIndex: number): boolean {
+    return this.get(language).completedModules.includes(moduleIndex);
   }
 
-  completeBatch(language: Language, batchIndex: number): void {
+  completeModule(language: Language, moduleIndex: number): void {
     const all = this.readAll();
     const current = all[language] ?? EMPTY_PROGRESS;
-    if (current.completedBatches.includes(batchIndex)) return;
-    all[language] = { ...current, completedBatches: [...current.completedBatches, batchIndex] };
+    if (current.completedModules.includes(moduleIndex)) return;
+    all[language] = { ...current, completedModules: [...current.completedModules, moduleIndex] };
     this.writeAll(all);
+  }
+
+  isUnitCompleted(language: Language, unitIndex: number): boolean {
+    const start = unitIndex * UNIT_SIZE;
+    for (let moduleIndex = start; moduleIndex < start + UNIT_SIZE; moduleIndex++) {
+      if (!this.isModuleCompleted(language, moduleIndex)) return false;
+    }
+    return true;
   }
 
   hasSeenIntro(language: Language): boolean {

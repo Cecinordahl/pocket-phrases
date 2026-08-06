@@ -1,12 +1,14 @@
 import { useState } from "react";
 import type { Language, Lesson } from "./types/lesson";
+import type { VocabReviewScope } from "./lib/frequency";
 import { LanguagePicker } from "./screens/LanguagePicker";
 import { ModePicker } from "./screens/ModePicker";
 import { LessonScreen } from "./screens/LessonScreen";
 import { EmailGate } from "./screens/EmailGate";
 import { VocabJourneyIntro } from "./screens/VocabJourneyIntro";
 import { VocabMilestoneMap } from "./screens/VocabMilestoneMap";
-import { VocabBatchQuiz } from "./screens/VocabBatchQuiz";
+import { VocabModuleQuiz } from "./screens/VocabModuleQuiz";
+import { VocabReviewQuiz } from "./screens/VocabReviewQuiz";
 import { frequencyProgressStore } from "./lib/frequencyProgress";
 
 type Screen =
@@ -18,7 +20,8 @@ type Screen =
   // button returns to the right place either way.
   | { name: "vocab-intro"; language: Language; origin: "mode" | "map" }
   | { name: "vocab-map"; language: Language }
-  | { name: "vocab-batch"; language: Language; batchIndex: number };
+  | { name: "vocab-module"; language: Language; moduleIndex: number }
+  | { name: "vocab-review"; language: Language; scope: VocabReviewScope };
 
 function App() {
   const [screen, setScreen] = useState<Screen>({ name: "language" });
@@ -76,19 +79,31 @@ function App() {
         language={language}
         onBack={() => setScreen({ name: "mode", language })}
         onShowInfo={() => setScreen({ name: "vocab-intro", language, origin: "map" })}
-        onOpenBatch={(batchIndex) => setScreen({ name: "vocab-batch", language, batchIndex })}
+        onOpenModule={(moduleIndex) => setScreen({ name: "vocab-module", language, moduleIndex })}
+        onOpenReview={(scope) => setScreen({ name: "vocab-review", language, scope })}
       />
     );
   }
 
-  if (screen.name === "vocab-batch") {
+  if (screen.name === "vocab-module") {
     const language = screen.language;
     return (
-      <VocabBatchQuiz
+      <VocabModuleQuiz
         language={language}
-        batchIndex={screen.batchIndex}
+        moduleIndex={screen.moduleIndex}
         onBack={() => setScreen({ name: "vocab-map", language })}
-        onBatchComplete={() => setScreen({ name: "vocab-map", language })}
+        onModuleComplete={() => setScreen({ name: "vocab-map", language })}
+      />
+    );
+  }
+
+  if (screen.name === "vocab-review") {
+    const language = screen.language;
+    return (
+      <VocabReviewQuiz
+        language={language}
+        scope={screen.scope}
+        onBack={() => setScreen({ name: "vocab-map", language })}
       />
     );
   }
