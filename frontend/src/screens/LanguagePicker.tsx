@@ -12,6 +12,12 @@ const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: "de", label: "Tysk", flag: "🇩🇪" },
 ];
 
+// Shown once, before the user has ever started a streak — a nudge to begin,
+// not just a rule explanation.
+const STREAK_PITCH_TEXT =
+  "Fullfør en test i dag for å starte streaken din — og se hvor lenge du klarer å holde den gående!";
+// Shown afterward as an on-demand reminder of the rule (via the ⓘ toggle,
+// or when a streak has broken and needs restarting).
 const STREAK_RULE_TEXT = "Fullfør minst én test hver dag for å holde streaken i live.";
 
 export function LanguagePicker({ onSelect }: LanguagePickerProps) {
@@ -24,14 +30,15 @@ export function LanguagePicker({ onSelect }: LanguagePickerProps) {
       <h1>Pocket Phrases</h1>
       <p className="text-muted">Velg språket du vil øve på.</p>
 
-      {/* Before the user has ever earned a streak, spell out the rule up
-          front — there's nothing to explain a bare counter otherwise. Once
-          they have streak history, switch to the counter (or a "broken"
-          nudge) with an on-demand ⓘ instead, so returning users aren't
-          shown the same explainer every visit. */}
+      {/* Before the user has ever earned a streak, pitch starting one today
+          rather than just explaining the rule — there's nothing to nudge
+          toward with a bare counter otherwise. Once they have streak
+          history, switch to the counter (or a "broken" nudge) with an
+          on-demand ⓘ instead, so returning users aren't shown the same
+          pitch every visit. */}
       {!everHadStreak && (
         <p className="text-muted" style={{ marginTop: -4 }}>
-          🔥 {STREAK_RULE_TEXT}
+          🔥 {STREAK_PITCH_TEXT}
         </p>
       )}
       {everHadStreak && (

@@ -598,5 +598,605 @@
     "target": "deux",
     "native": "to",
     "pronunciation": "døh"
+  },
+  {
+    "rank": 101,
+    "target": "ces",
+    "native": "disse",
+    "pronunciation": "seh"
+  },
+  {
+    "rank": 102,
+    "target": "êtes",
+    "native": "er (dere er)",
+    "pronunciation": "ett"
+  },
+  {
+    "rank": 103,
+    "target": "allez",
+    "native": "drar / går (dere)",
+    "pronunciation": "aleh"
+  },
+  {
+    "rank": 104,
+    "target": "ta",
+    "native": "din (hunkjønn)",
+    "pronunciation": "ta"
+  },
+  {
+    "rank": 105,
+    "target": "autre",
+    "native": "annen / annet",
+    "pronunciation": "otr"
+  },
+  {
+    "rank": 106,
+    "target": "peu",
+    "native": "lite / få",
+    "pronunciation": "pø"
+  },
+  {
+    "rank": 107,
+    "target": "temps",
+    "native": "tid / vær",
+    "pronunciation": "tang"
+  },
+  {
+    "rank": 108,
+    "target": "quelque",
+    "native": "noen / litt",
+    "pronunciation": "kelk"
+  },
+  {
+    "rank": 109,
+    "target": "fais",
+    "native": "gjør (jeg/du gjør)",
+    "pronunciation": "feh"
+  },
+  {
+    "rank": 110,
+    "target": "toujours",
+    "native": "alltid",
+    "pronunciation": "tuzjuur"
+  },
+  {
+    "rank": 111,
+    "target": "encore",
+    "native": "enda / igjen",
+    "pronunciation": "ankor"
+  },
+  {
+    "rank": 112,
+    "target": "notre",
+    "native": "vår (entall)",
+    "pronunciation": "notr"
+  },
+  {
+    "rank": 113,
+    "target": "mes",
+    "native": "mine",
+    "pronunciation": "meh"
+  },
+  {
+    "rank": 114,
+    "target": "besoin",
+    "native": "behov",
+    "pronunciation": "bezoang"
+  },
+  {
+    "rank": 115,
+    "target": "avait",
+    "native": "hadde (han/hun hadde)",
+    "pronunciation": "aveh"
+  },
+  {
+    "rank": 116,
+    "target": "accord",
+    "native": "enighet (d'accord = enig)",
+    "pronunciation": "akor"
+  },
+  {
+    "rank": 117,
+    "target": "faut",
+    "native": "må (il faut = man må)",
+    "pronunciation": "foh"
+  },
+  {
+    "rank": 118,
+    "target": "dois",
+    "native": "må (jeg/du må)",
+    "pronunciation": "doa"
+  },
+  {
+    "rank": 119,
+    "target": "vie",
+    "native": "liv",
+    "pronunciation": "vi"
+  },
+  {
+    "rank": 120,
+    "target": "peut-être",
+    "native": "kanskje",
+    "pronunciation": "pø-etr"
+  },
+  {
+    "rank": 121,
+    "target": "aller",
+    "native": "å dra / å gå",
+    "pronunciation": "aleh"
+  },
+  {
+    "rank": 122,
+    "target": "fois",
+    "native": "gang(er)",
+    "pronunciation": "foa"
+  },
+  {
+    "rank": 123,
+    "target": "vu",
+    "native": "sett (perfektum av voir)",
+    "pronunciation": "vü"
+  },
+  {
+    "rank": 124,
+    "target": "donc",
+    "native": "altså / derfor",
+    "pronunciation": "dongk"
+  },
+  {
+    "rank": 125,
+    "target": "sans",
+    "native": "uten",
+    "pronunciation": "sang"
+  },
+  {
+    "rank": 126,
+    "target": "monde",
+    "native": "verden",
+    "pronunciation": "mongd"
+  },
+  {
+    "rank": 127,
+    "target": "étais",
+    "native": "var (jeg/du var)",
+    "pronunciation": "eteh"
+  },
+  {
+    "rank": 128,
+    "target": "parce",
+    "native": "fordi (parce que)",
+    "pronunciation": "pars"
+  },
+  {
+    "rank": 129,
+    "target": "avant",
+    "native": "før",
+    "pronunciation": "avang"
+  },
+  {
+    "rank": 130,
+    "target": "sûr",
+    "native": "sikker",
+    "pronunciation": "sür"
+  },
+  {
+    "rank": 131,
+    "target": "trop",
+    "native": "for mye",
+    "pronunciation": "tro"
+  },
+  {
+    "rank": 132,
+    "target": "parler",
+    "native": "å snakke",
+    "pronunciation": "parleh"
+  },
+  {
+    "rank": 133,
+    "target": "personne",
+    "native": "person / ingen",
+    "pronunciation": "person"
+  },
+  {
+    "rank": 134,
+    "target": "avais",
+    "native": "hadde (jeg/du hadde)",
+    "pronunciation": "aveh"
+  },
+  {
+    "rank": 135,
+    "target": "père",
+    "native": "far",
+    "pronunciation": "pehr"
+  },
+  {
+    "rank": 136,
+    "target": "crois",
+    "native": "tror (jeg/du tror)",
+    "pronunciation": "kroa"
+  },
+  {
+    "rank": 137,
+    "target": "après",
+    "native": "etter",
+    "pronunciation": "apreh"
+  },
+  {
+    "rank": 138,
+    "target": "aux",
+    "native": "til / på (sammentrukket, flertall)",
+    "pronunciation": "oh"
+  },
+  {
+    "rank": 139,
+    "target": "dieu",
+    "native": "gud",
+    "pronunciation": "djø"
+  },
+  {
+    "rank": 140,
+    "target": "ouais",
+    "native": "jepp",
+    "pronunciation": "weh"
+  },
+  {
+    "rank": 141,
+    "target": "ses",
+    "native": "hans / hennes (flertall)",
+    "pronunciation": "seh"
+  },
+  {
+    "rank": 142,
+    "target": "pense",
+    "native": "tenker (jeg/du tenker)",
+    "pronunciation": "pangs"
+  },
+  {
+    "rank": 143,
+    "target": "eu",
+    "native": "hatt (perfektum av avoir)",
+    "pronunciation": "ü"
+  },
+  {
+    "rank": 144,
+    "target": "aime",
+    "native": "liker / elsker (jeg/du liker)",
+    "pronunciation": "em"
+  },
+  {
+    "rank": 145,
+    "target": "leur",
+    "native": "deres",
+    "pronunciation": "lør"
+  },
+  {
+    "rank": 146,
+    "target": "homme",
+    "native": "mann",
+    "pronunciation": "omm"
+  },
+  {
+    "rank": 147,
+    "target": "viens",
+    "native": "kommer (jeg/du kommer)",
+    "pronunciation": "vjang"
+  },
+  {
+    "rank": 148,
+    "target": "vrai",
+    "native": "sann / ekte",
+    "pronunciation": "vreh"
+  },
+  {
+    "rank": 149,
+    "target": "femme",
+    "native": "kvinne",
+    "pronunciation": "fam"
+  },
+  {
+    "rank": 150,
+    "target": "ok",
+    "native": "ok",
+    "pronunciation": "oke"
+  },
+  {
+    "rank": 151,
+    "target": "doit",
+    "native": "må (han/hun må)",
+    "pronunciation": "doa"
+  },
+  {
+    "rank": 152,
+    "target": "veut",
+    "native": "vil (han/hun vil)",
+    "pronunciation": "vø"
+  },
+  {
+    "rank": 153,
+    "target": "ans",
+    "native": "år",
+    "pronunciation": "ang"
+  },
+  {
+    "rank": 154,
+    "target": "mal",
+    "native": "vondt / dårlig",
+    "pronunciation": "mal"
+  },
+  {
+    "rank": 155,
+    "target": "chez",
+    "native": "hjemme hos",
+    "pronunciation": "sjeh"
+  },
+  {
+    "rank": 156,
+    "target": "déjà",
+    "native": "allerede",
+    "pronunciation": "dezja"
+  },
+  {
+    "rank": 157,
+    "target": "depuis",
+    "native": "siden",
+    "pronunciation": "dupui"
+  },
+  {
+    "rank": 158,
+    "target": "beaucoup",
+    "native": "mye",
+    "pronunciation": "bokuu"
+  },
+  {
+    "rank": 159,
+    "target": "vos",
+    "native": "deres (høflig/flertall)",
+    "pronunciation": "vo"
+  },
+  {
+    "rank": 160,
+    "target": "bonne",
+    "native": "god / bra (hunkjønn)",
+    "pronunciation": "bonn"
+  },
+  {
+    "rank": 161,
+    "target": "mort",
+    "native": "død",
+    "pronunciation": "mor"
+  },
+  {
+    "rank": 162,
+    "target": "mieux",
+    "native": "bedre",
+    "pronunciation": "mjø"
+  },
+  {
+    "rank": 163,
+    "target": "vas",
+    "native": "går / drar (du)",
+    "pronunciation": "va"
+  },
+  {
+    "rank": 164,
+    "target": "mère",
+    "native": "mor",
+    "pronunciation": "mehr"
+  },
+  {
+    "rank": 165,
+    "target": "sera",
+    "native": "vil bli / blir (han/hun)",
+    "pronunciation": "sera"
+  },
+  {
+    "rank": 166,
+    "target": "dis",
+    "native": "sier (jeg/du sier)",
+    "pronunciation": "di"
+  },
+  {
+    "rank": 167,
+    "target": "fille",
+    "native": "jente / datter",
+    "pronunciation": "fii"
+  },
+  {
+    "rank": 168,
+    "target": "tes",
+    "native": "dine",
+    "pronunciation": "teh"
+  },
+  {
+    "rank": 169,
+    "target": "gens",
+    "native": "folk",
+    "pronunciation": "zjang"
+  },
+  {
+    "rank": 170,
+    "target": "quel",
+    "native": "hvilken (hankjønn)",
+    "pronunciation": "kel"
+  },
+  {
+    "rank": 171,
+    "target": "vois",
+    "native": "ser (jeg/du ser)",
+    "pronunciation": "voa"
+  },
+  {
+    "rank": 172,
+    "target": "désolé",
+    "native": "lei meg",
+    "pronunciation": "dezoleh"
+  },
+  {
+    "rank": 173,
+    "target": "voilà",
+    "native": "sånn / her har du",
+    "pronunciation": "voala"
+  },
+  {
+    "rank": 174,
+    "target": "avons",
+    "native": "har (vi har)",
+    "pronunciation": "avong"
+  },
+  {
+    "rank": 175,
+    "target": "petit",
+    "native": "liten",
+    "pronunciation": "pəti"
+  },
+  {
+    "rank": 176,
+    "target": "maison",
+    "native": "hus",
+    "pronunciation": "mezong"
+  },
+  {
+    "rank": 177,
+    "target": "soit",
+    "native": "enten / (konjunktiv av être)",
+    "pronunciation": "soa"
+  },
+  {
+    "rank": 178,
+    "target": "cela",
+    "native": "det (formelt)",
+    "pronunciation": "sla"
+  },
+  {
+    "rank": 179,
+    "target": "autres",
+    "native": "andre",
+    "pronunciation": "otr"
+  },
+  {
+    "rank": 180,
+    "target": "toute",
+    "native": "hel / all (hunkjønn)",
+    "pronunciation": "tut"
+  },
+  {
+    "rank": 181,
+    "target": "soir",
+    "native": "kveld",
+    "pronunciation": "soar"
+  },
+  {
+    "rank": 182,
+    "target": "passé",
+    "native": "fortid / tilbrakt",
+    "pronunciation": "paseh"
+  },
+  {
+    "rank": 183,
+    "target": "prendre",
+    "native": "å ta",
+    "pronunciation": "prangdr"
+  },
+  {
+    "rank": 184,
+    "target": "jour",
+    "native": "dag",
+    "pronunciation": "zjuur"
+  },
+  {
+    "rank": 185,
+    "target": "monsieur",
+    "native": "herr / høflig tiltale til mann",
+    "pronunciation": "møsjø"
+  },
+  {
+    "rank": 186,
+    "target": "nos",
+    "native": "våre",
+    "pronunciation": "no"
+  },
+  {
+    "rank": 187,
+    "target": "savoir",
+    "native": "å vite",
+    "pronunciation": "savoar"
+  },
+  {
+    "rank": 188,
+    "target": "choses",
+    "native": "ting (flertall)",
+    "pronunciation": "sjoos"
+  },
+  {
+    "rank": 189,
+    "target": "salut",
+    "native": "hei / hade",
+    "pronunciation": "salü"
+  },
+  {
+    "rank": 190,
+    "target": "cet",
+    "native": "denne / dette (hankjønn foran vokal)",
+    "pronunciation": "set"
+  },
+  {
+    "rank": 191,
+    "target": "nom",
+    "native": "navn",
+    "pronunciation": "nong"
+  },
+  {
+    "rank": 192,
+    "target": "argent",
+    "native": "penger",
+    "pronunciation": "arzjang"
+  },
+  {
+    "rank": 193,
+    "target": "bonjour",
+    "native": "god dag / hei",
+    "pronunciation": "bongzjuur"
+  },
+  {
+    "rank": 194,
+    "target": "nuit",
+    "native": "natt",
+    "pronunciation": "nui"
+  },
+  {
+    "rank": 195,
+    "target": "raison",
+    "native": "grunn / rett (å ha rett)",
+    "pronunciation": "rezong"
+  },
+  {
+    "rank": 196,
+    "target": "moins",
+    "native": "mindre",
+    "pronunciation": "moang"
+  },
+  {
+    "rank": 197,
+    "target": "arrive",
+    "native": "kommer / skjer (jeg/du kommer)",
+    "pronunciation": "ariv"
+  },
+  {
+    "rank": 198,
+    "target": "maman",
+    "native": "mamma",
+    "pronunciation": "mamang"
+  },
+  {
+    "rank": 199,
+    "target": "reste",
+    "native": "blir igjen / resten",
+    "pronunciation": "rest"
+  },
+  {
+    "rank": 200,
+    "target": "moment",
+    "native": "øyeblikk",
+    "pronunciation": "momang"
   }
 ]
