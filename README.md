@@ -1,8 +1,10 @@
 # Pocket Phrases
 
-A lightweight, situation-based travel language learner. Pick a language, pick (or describe) the situation you're about to be in, and get a short lesson you can work through three ways: **Les** (read), **Øv** (flashcard drill), **Test** (quiz).
+A lightweight, situation-based travel language learner. 
+Pick a language, pick (or describe) the situation you're about to be in, and get a short lesson you can work through three ways: **Les** (read), **Øv** (flashcard drill), **Test** (quiz).
 
-Supports Spanish, French, and German, with a Norwegian Bokmål UI. No accounts.
+Supports Spanish, French, and German, with a Norwegian Bokmål UI. 
+No accounts.
 
 ## Repo layout
 
@@ -147,3 +149,11 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 **Access control:** implemented as a Firestore-backed email whitelist, off by default (`APP_ACCESS_WHITELIST_ENABLED`). When enabled, the frontend prompts for an email on first 403, stores it in `localStorage`, and sends it as an `X-User-Email` header on every request; the backend's `WhitelistFilter` rejects anything not found in the `whitelist` Firestore collection with a 403. This is not authentication (anyone who knows a whitelisted email could type it in) — it's a simple, switchable gate suitable for "keep this private from search engines and randoms" rather than a security boundary against a determined user with knowledge of a valid email.
 
 **Disclaimers:** the "Nød og apotek" (emergency/pharmacy) lessons and any AI-generated ("Beskriv situasjonen") lesson show an inline warning banner directly in the lesson view — not buried in a footer — stating the phrases are a learning aid, may contain errors, and are not a substitute for professional help or a real emergency response.
+
+
+**TODOs:** 
+- When selecting "Prøv med andre fraser", remove the phrases that were just used from the selection pool. If selecting this again, all previous removed phrases should remain removed.
+- The daily streak is not working as intended. The streak should stop if a user has not done any lesson/test/practice during one entire day.
+- Orforråd reisen skal helst unngå ord som de, est, le, la, osv. siden de alltid hører sammen med noe annet feks la maison.
+- Norwegian sentence displayed, mix of drag and drop words for the user to create the sentence themselves, with many (minimum 5, max 10) words that are not correct but are there to confuse the user.
+- AI version where the user can type the sentence themselves and the LLM will check to see if the user got it somewhat right- it would be nice to give feks score based on percentage of correctness. Example for spanish, "Jeg elsker deg" is displayed in norwegian and the user writes "Te amo" is 100% correct (?) but if the user writes "Tu amo" they get some points say 90% since they may have thought te amo but missed one letter.
