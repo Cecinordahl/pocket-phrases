@@ -9,7 +9,11 @@ import { VocabJourneyIntro } from "./screens/VocabJourneyIntro";
 import { VocabMilestoneMap } from "./screens/VocabMilestoneMap";
 import { VocabModuleQuiz } from "./screens/VocabModuleQuiz";
 import { VocabReviewQuiz } from "./screens/VocabReviewQuiz";
+import { TopicVocabMap } from "./screens/TopicVocabMap";
+import { TopicModuleQuiz } from "./screens/TopicModuleQuiz";
+import { TopicReviewQuiz } from "./screens/TopicReviewQuiz";
 import { frequencyProgressStore } from "./lib/frequencyProgress";
+import type { TopicId } from "./lib/topicVocab";
 
 type Screen =
   | { name: "language" }
@@ -21,7 +25,10 @@ type Screen =
   | { name: "vocab-intro"; language: Language; origin: "mode" | "map" }
   | { name: "vocab-map"; language: Language }
   | { name: "vocab-module"; language: Language; moduleIndex: number }
-  | { name: "vocab-review"; language: Language; scope: VocabReviewScope };
+  | { name: "vocab-review"; language: Language; scope: VocabReviewScope }
+  | { name: "topic-map"; language: Language; topic: TopicId }
+  | { name: "topic-module"; language: Language; topic: TopicId; moduleIndex: number }
+  | { name: "topic-review"; language: Language; topic: TopicId };
 
 function App() {
   const [screen, setScreen] = useState<Screen>({ name: "language" });
@@ -51,6 +58,7 @@ function App() {
               : { name: "vocab-intro", language, origin: "mode" },
           )
         }
+        onEnterTopic={(topic) => setScreen({ name: "topic-map", language, topic })}
       />
     );
   }
@@ -104,6 +112,43 @@ function App() {
         language={language}
         scope={screen.scope}
         onBack={() => setScreen({ name: "vocab-map", language })}
+      />
+    );
+  }
+
+  if (screen.name === "topic-map") {
+    const { language, topic } = screen;
+    return (
+      <TopicVocabMap
+        topic={topic}
+        language={language}
+        onBack={() => setScreen({ name: "mode", language })}
+        onOpenModule={(moduleIndex) => setScreen({ name: "topic-module", language, topic, moduleIndex })}
+        onOpenReview={() => setScreen({ name: "topic-review", language, topic })}
+      />
+    );
+  }
+
+  if (screen.name === "topic-module") {
+    const { language, topic } = screen;
+    return (
+      <TopicModuleQuiz
+        topic={topic}
+        language={language}
+        moduleIndex={screen.moduleIndex}
+        onBack={() => setScreen({ name: "topic-map", language, topic })}
+        onModuleComplete={() => setScreen({ name: "topic-map", language, topic })}
+      />
+    );
+  }
+
+  if (screen.name === "topic-review") {
+    const { language, topic } = screen;
+    return (
+      <TopicReviewQuiz
+        topic={topic}
+        language={language}
+        onBack={() => setScreen({ name: "topic-map", language, topic })}
       />
     );
   }

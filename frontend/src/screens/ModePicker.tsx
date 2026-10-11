@@ -8,6 +8,7 @@ import {
 } from "../lib/api";
 import type { Language, Lesson, ModeInfo } from "../types/lesson";
 import { getWordCount } from "../lib/frequency";
+import { getTopicWordCount, TOPICS, type TopicId } from "../lib/topicVocab";
 
 type ModePickerProps = {
   language: Language;
@@ -15,6 +16,7 @@ type ModePickerProps = {
   onLessonReady: (lesson: Lesson) => void;
   onAccessDenied: () => void;
   onEnterVocabJourney: () => void;
+  onEnterTopic: (topic: TopicId) => void;
 };
 
 const MAX_SITUATION_LENGTH = 300;
@@ -31,6 +33,7 @@ export function ModePicker({
   onLessonReady,
   onAccessDenied,
   onEnterVocabJourney,
+  onEnterTopic,
 }: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
@@ -120,6 +123,21 @@ export function ModePicker({
           </p>
           <button className="button" style={{ width: "100%" }} onClick={onEnterVocabJourney}>
             Start ordforråd-reisen
+          </button>
+        </div>
+      )}
+
+      {/* Themed vocab sets (e.g. tourist words) — separate from the
+          frequency journey above, only shown once that topic has content
+          for this language. */}
+      {getTopicWordCount("tourist", language) > 0 && (
+        <div className="card" style={{ marginTop: 16 }}>
+          <h3>🧳 {TOPICS.tourist.title}</h3>
+          <p className="text-muted" style={{ marginBottom: 12 }}>
+            {TOPICS.tourist.description}
+          </p>
+          <button className="button" style={{ width: "100%" }} onClick={() => onEnterTopic("tourist")}>
+            Start {TOPICS.tourist.title.toLowerCase()}
           </button>
         </div>
       )}

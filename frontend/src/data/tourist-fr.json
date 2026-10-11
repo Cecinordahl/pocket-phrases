@@ -1,0 +1,182 @@
+[
+  {
+    "order": 1,
+    "target": "l'office de tourisme",
+    "native": "turistkontoret",
+    "pronunciation": "lo-fees duh too-riz-muh"
+  },
+  {
+    "order": 2,
+    "target": "le musée",
+    "native": "museet",
+    "pronunciation": "luh mew-zay"
+  },
+  {
+    "order": 3,
+    "target": "le château",
+    "native": "slottet",
+    "pronunciation": "luh sha-toh"
+  },
+  {
+    "order": 4,
+    "target": "la cathédrale",
+    "native": "katedralen",
+    "pronunciation": "la ka-tay-dral"
+  },
+  {
+    "order": 5,
+    "target": "le monument",
+    "native": "monumentet",
+    "pronunciation": "luh mo-new-mang"
+  },
+  {
+    "order": 6,
+    "target": "la billetterie",
+    "native": "billettluken",
+    "pronunciation": "la bee-yeh-tree"
+  },
+  {
+    "order": 7,
+    "target": "le guichet",
+    "native": "luken / skranken",
+    "pronunciation": "luh gee-sheh"
+  },
+  {
+    "order": 8,
+    "target": "la visite guidée",
+    "native": "guidet omvisning",
+    "pronunciation": "la vee-zeet gee-day"
+  },
+  {
+    "order": 9,
+    "target": "l'entrée",
+    "native": "inngangen",
+    "pronunciation": "lang-tray"
+  },
+  {
+    "order": 10,
+    "target": "la sortie",
+    "native": "utgangen",
+    "pronunciation": "la sor-tee"
+  },
+  {
+    "order": 11,
+    "target": "l'horaire d'ouverture",
+    "native": "åpningstidene",
+    "pronunciation": "lo-rair doo-vair-tewr"
+  },
+  {
+    "order": 12,
+    "target": "le plan de la ville",
+    "native": "bykartet",
+    "pronunciation": "luh plang duh la veel"
+  },
+  {
+    "order": 13,
+    "target": "la consigne",
+    "native": "bagasjeoppbevaringen",
+    "pronunciation": "la kong-see-nyuh"
+  },
+  {
+    "order": 14,
+    "target": "les bagages",
+    "native": "bagasjen",
+    "pronunciation": "lay ba-gazh"
+  },
+  {
+    "order": 15,
+    "target": "le point de vue",
+    "native": "utsiktspunktet",
+    "pronunciation": "luh pwang duh vew"
+  },
+  {
+    "order": 16,
+    "target": "la réduction",
+    "native": "rabatten",
+    "pronunciation": "la ray-dewk-syong"
+  },
+  {
+    "order": 17,
+    "target": "la file d'attente",
+    "native": "køen",
+    "pronunciation": "la feel da-tangt"
+  },
+  {
+    "order": 18,
+    "target": "le pourboire",
+    "native": "driksen",
+    "pronunciation": "luh poor-bwar"
+  },
+  {
+    "order": 19,
+    "target": "la carte postale",
+    "native": "postkortet",
+    "pronunciation": "la kart pos-tal"
+  },
+  {
+    "order": 20,
+    "target": "le souvenir",
+    "native": "suveniren",
+    "pronunciation": "luh soo-vuh-neer"
+  },
+  {
+    "order": 21,
+    "target": "le bureau de change",
+    "native": "vekslingskontoret",
+    "pronunciation": "luh bew-roh duh shangzh"
+  },
+  {
+    "order": 22,
+    "target": "le passeport",
+    "native": "passet",
+    "pronunciation": "luh pas-por"
+  },
+  {
+    "order": 23,
+    "target": "les objets trouvés",
+    "native": "hittegodskontoret",
+    "pronunciation": "lay-zob-zheh troo-vay"
+  },
+  {
+    "order": 24,
+    "target": "la sortie de secours",
+    "native": "nødutgangen",
+    "pronunciation": "la sor-tee duh suh-koor"
+  },
+  {
+    "order": 25,
+    "target": "le quai",
+    "native": "plattformen",
+    "pronunciation": "luh kay"
+  },
+  {
+    "order": 26,
+    "target": "le distributeur",
+    "native": "minibanken",
+    "pronunciation": "luh dee-stree-bew-ter"
+  },
+  {
+    "order": 27,
+    "target": "la réservation",
+    "native": "reservasjonen",
+    "pronunciation": "la ray-zair-va-syong"
+  },
+  {
+    "order": 28,
+    "target": "gratuit",
+    "native": "gratis",
+    "pronunciation": "gra-twee"
+  },
+  {
+    "order": 29,
+    "target": "fermé",
+    "native": "stengt",
+    "pronunciation": "fair-may"
+  },
+  {
+    "order": 30,
+    "target": "ouvert",
+    "native": "åpent",
+    "pronunciation": "oo-vair"
+  }
+]
