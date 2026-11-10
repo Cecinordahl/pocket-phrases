@@ -17,7 +17,7 @@ No accounts.
 | **Beskriv situasjonen** | Describe any situation in free text → a generated lesson | Yes |
 | **⚡ Her og nå** | 2-minute refresh of the 5 phrases you need for a situation you're in right now, then a large-text cheat sheet | No |
 | **🧳 Reiseplan** | Destination + departure date → a day-by-day plan that reflows if you skip a day, with a "generalprøve" the last day | No |
-| **🗣️ Øv på en samtale** | Roleplay with an AI waiter/receptionist/driver, with hints and gentle corrections (max 8 replies) | Yes |
+| **🗣️ Øv på en samtale** | Roleplay with an AI waiter/receptionist/driver: pick the right reply out of 4 (or type your own), with feedback and gentle corrections (max 8 replies) | Yes |
 | **📚 Ordforråd-reisen** | Most-frequent words, milestone by milestone, with module quizzes and review tests (French prototype) | No |
 | **🧳 Turistord** | Themed tourist vocabulary with module quizzes (French prototype) | No |
 
@@ -70,7 +70,7 @@ The frontend calls the backend over plain REST under `/api`:
 | GET | `/api/lessons/prebuilt?language=es&mode=restaurant` | Samples 6 phrases from a pool of ~10, shuffled |
 | GET | `/api/lessons/random?language=es` | Samples 6 phrases across all modes |
 | POST | `/api/lessons/generate` `{ situation, language }` | Calls Anthropic (`claude-haiku-5-5`) to build a lesson from free text |
-| POST | `/api/roleplay/turn` | One roleplay turn. Stateless: body `{ language, scenario, history[] }`, returns `{ reply, replyNorwegian, correction, hints, done }`. Max 8 user turns per chat, 60 turns/hour per IP |
+| POST | `/api/roleplay/turn` | One roleplay turn. Stateless: body `{ language, scenario, history[] }`, returns `{ reply, replyNorwegian, correction, options[4] (one correct), done }`. Max 8 user turns per chat, 60 turns/hour per IP |
 
 The backend is the only thing that ever talks to Anthropic or Firestore — the Anthropic API key and Firebase credentials never reach the frontend or the repo.
 

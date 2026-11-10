@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import type { Language, ModeInfo } from "../types/lesson";
-import { AccessDeniedError, fetchModes, fetchRoleplayTurn, type RoleplayMessage } from "../lib/api";
+import {
+  AccessDeniedError,
+  fetchModes,
+  fetchRoleplayTurn,
+  type RoleplayMessage,
+  type RoleplayOption,
+} from "../lib/api";
 import { streakStore } from "../lib/streak";
 import { Disclaimer } from "../components/Disclaimer";
 
@@ -15,6 +21,16 @@ const MAX_USER_TURNS = 8;
 const MAX_MESSAGE_LENGTH = 300;
 const MAX_SCENARIO_LENGTH = 100;
 
+// The model tends to put the right answer first, so shuffle before showing.
+function shuffle<T>(items: T[]): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 type ChatMessage = RoleplayMessage & {
   norwegian?: string; // assistant only
   correction?: string; // user only — filled in when the next reply arrives
@@ -25,7 +41,12 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
   const [customScenario, setCustomScenario] = useState("");
   const [scenario, setScenario] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [hints, setHints] = useState<string[]>([]);
+  const [options, setOptions] = useState<RoleplayOption[]>([]);
+  // Indexes into `options` the user already tried and got wrong this turn.
+  const [wrongPicks, setWrongPicks] = useState<Set<number>>(new Set());
+  const [typing, setTyping] = useState(false);
+  // Turns answered by picking an option, and how many of those were right first time.
+  const [picked, setPicked] = useState({ turns: 0, firstTry: 0 });
   const [revealed, setRevealed] = useState<Set<number>>(new Set());
   const [input, setInput] = useState("");
   const [waiting, setWaiting] = useState(false);
@@ -66,7 +87,9 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
       }
       updated.push({ role: "assistant", text: turn.reply, norwegian: turn.replyNorwegian });
       setMessages(updated);
-      setHints(turn.hints);
+      // `?? []` guards against an older backend (deployed separately) that still sends `hints`.
+      setOptions(shuffle(turn.options ?? []));
+      setWrongPicks(new Set());
 
       const finished = turn.done || updated.filter((m) => m.role === "user").length >= MAX_USER_TURNS;
       if (finished) {
@@ -89,7 +112,10 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
   function start(chosen: string) {
     setScenario(chosen);
     setMessages([]);
-    setHints([]);
+    setOptions([]);
+    setWrongPicks(new Set());
+    setPicked({ turns: 0, firstTry: 0 });
+    setTyping(false);
     setRevealed(new Set());
     setDone(false);
     requestTurn(chosen, []);
@@ -101,13 +127,26 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
     const history: ChatMessage[] = [...messages, { role: "user", text: trimmed }];
     setMessages(history);
     setInput("");
-    setHints([]);
+    const previousOptions = options;
+    setOptions([]);
     const ok = await requestTurn(scenario, history);
     if (!ok) {
       // Roll back so the user can retry without a dangling unanswered message.
       setMessages(messages);
-      setInput(trimmed);
+      setOptions(previousOptions);
+      if (typing) setInput(trimmed);
     }
+  }
+
+  function pick(index: number) {
+    const option = options[index];
+    if (!option || waiting || wrongPicks.has(index)) return;
+    if (!option.correct) {
+      setWrongPicks((prev) => new Set(prev).add(index));
+      return;
+    }
+    setPicked((p) => ({ turns: p.turns + 1, firstTry: p.firstTry + (wrongPicks.size === 0 ? 1 : 0) }));
+    send(option.text);
   }
 
   function toggleReveal(i: number) {
@@ -128,8 +167,8 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
         </button>
         <h2>🗣️ Øv på en samtale</h2>
         <p className="text-muted">
-          Du snakker med en lokal person (servitør, resepsjonist, sjåfør …). Svar så godt du kan — du får
-          hint og vennlige rettelser underveis.
+          Du snakker med en lokal person (servitør, resepsjonist, sjåfør …). Velg riktig svar blant fire
+          alternativer — eller skriv selv hvis du vil.
         </p>
 
         {error && (
@@ -259,8 +298,9 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
         <div className="card animate-in" style={{ marginTop: 16 }}>
           <h3>🎉 Samtalen er ferdig!</h3>
           <p className="text-muted">
-            Du sa {userTurns} {userTurns === 1 ? "replikk" : "replikker"}
-            {messages.some((m) => m.correction) ? " — se rettelsene over." : " uten rettelser. Sterkt!"}
+            Du sa {userTurns} {userTurns === 1 ? "replikk" : "replikker"}.
+            {picked.turns > 0 && ` Riktig på første forsøk ${picked.firstTry} av ${picked.turns} ganger.`}
+            {messages.some((m) => m.correction) && " Se rettelsene over."}
           </p>
           <div style={{ display: "flex", gap: 8 }}>
             <button className="button" style={{ flex: 1 }} onClick={() => start(scenario)}>
@@ -274,51 +314,78 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
       ) : (
         messages.length > 0 && (
           <div style={{ marginTop: 16 }}>
-            {hints.length > 0 && (
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
-                <span className="text-muted" style={{ fontSize: "0.85rem", alignSelf: "center" }}>
-                  💡 Hint:
+            {!typing && options.length > 0 && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <span className="text-muted" style={{ fontSize: "0.85rem" }}>
+                  Hva svarer du?
                 </span>
-                {hints.map((h) => (
-                  <button
-                    key={h}
-                    onClick={() => setInput(h)}
-                    disabled={waiting}
-                    style={{
-                      padding: "6px 10px",
-                      borderRadius: 999,
-                      border: "1px solid var(--color-border)",
-                      background: "var(--color-surface-muted)",
-                      color: "var(--color-text)",
-                      fontSize: "0.85rem",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {h}
-                  </button>
-                ))}
+                {options.map((o, i) => {
+                  const wrong = wrongPicks.has(i);
+                  return (
+                    <div key={i}>
+                      <button
+                        className="button button-secondary"
+                        onClick={() => pick(i)}
+                        disabled={waiting || wrong}
+                        style={{
+                          width: "100%",
+                          textAlign: "left",
+                          background: wrong ? "var(--color-wrong-bg)" : undefined,
+                          borderColor: wrong ? "var(--color-wrong)" : undefined,
+                          color: wrong ? "var(--color-wrong)" : undefined,
+                        }}
+                      >
+                        {o.text}
+                      </button>
+                      {wrong && (
+                        <div className="animate-in" style={{ fontSize: "0.85rem", color: "var(--color-wrong)", margin: "4px 4px 0" }}>
+                          ❌ {o.feedback || "Ikke helt — prøv et annet alternativ."}
+                          {o.norwegian && <span className="text-muted"> («{o.norwegian}»)</span>}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             )}
-            <form
-              style={{ display: "flex", gap: 8 }}
-              onSubmit={(e) => {
-                e.preventDefault();
-                send(input);
+            <button
+              onClick={() => setTyping((t) => !t)}
+              disabled={waiting}
+              style={{
+                marginTop: 10,
+                background: "none",
+                border: "none",
+                padding: 0,
+                color: "var(--color-text-muted)",
+                textDecoration: "underline",
+                cursor: "pointer",
+                fontSize: "0.85rem",
               }}
             >
-              <input
-                type="text"
-                value={input}
-                maxLength={MAX_MESSAGE_LENGTH}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Skriv svaret ditt…"
-                disabled={waiting}
-                style={{ flex: 1, padding: 12, borderRadius: 12, border: "1px solid var(--color-border)", fontSize: "1rem" }}
-              />
-              <button className="button" type="submit" disabled={waiting || !input.trim()}>
-                Send
-              </button>
-            </form>
+              {typing ? "← Velg blant alternativer" : "✏️ Skriv selv i stedet"}
+            </button>
+            {typing && (
+              <form
+                style={{ display: "flex", gap: 8, marginTop: 8 }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  send(input);
+                }}
+              >
+                <input
+                  type="text"
+                  value={input}
+                  maxLength={MAX_MESSAGE_LENGTH}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Skriv svaret ditt…"
+                  disabled={waiting}
+                  style={{ flex: 1, padding: 12, borderRadius: 12, border: "1px solid var(--color-border)", fontSize: "1rem" }}
+                />
+                <button className="button" type="submit" disabled={waiting || !input.trim()}>
+                  Send
+                </button>
+              </form>
+            )}
           </div>
         )
       )}

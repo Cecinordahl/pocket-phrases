@@ -29,8 +29,12 @@ public class RoleplayService {
             Regler:
             - Snakk enkelt %1$s på A1–A2-nivå. Maks 1–2 korte setninger per replikk.
             - Hvis samtalen er tom, åpner du scenen selv med en naturlig første replikk.
-            - Hvis brukeren skriver på norsk eller engelsk, svar likevel på %1$s, og gi hint de kan bruke.
+            - Hvis brukeren skriver på norsk eller engelsk, svar likevel på %1$s.
             - Rett bare tydelige språkfeil i brukerens siste replikk, kort og vennlig på norsk.
+            - Gi alltid nøyaktig 4 svaralternativer på %1$s for hva brukeren kan svare nå (unntatt når done=true):
+              nøyaktig ett er riktig — naturlig, grammatisk korrekt og passer i situasjonen. De tre andre skal være
+              troverdige, men feil (f.eks. feil bøyning, feil ord, eller noe som ikke passer i situasjonen).
+              Alle alternativene skal være omtrent like lange og på samme nivå, så det riktige ikke skiller seg ut.
             - Før samtalen mot en naturlig slutt etter noen utvekslinger.
             %3$s
             """;
@@ -67,6 +71,7 @@ public class RoleplayService {
                 .flatMap(block -> block.text().stream())
                 .map(text -> text.text())
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("Tomt svar fra Anthropic"));
+                .orElseThrow(() -> new IllegalStateException("Tomt svar fra Anthropic"))
+                .withExactlyOneCorrect();
     }
 }

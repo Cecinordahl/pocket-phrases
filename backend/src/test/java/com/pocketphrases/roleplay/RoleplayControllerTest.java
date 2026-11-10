@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 class RoleplayControllerTest {
 
-    private static final RoleplayTurn TURN = new RoleplayTurn("Bonjour !", "Hei!", "", List.of("Bonjour"), false);
+    private static final RoleplayTurn TURN = new RoleplayTurn("Bonjour !", "Hei!", "", List.of(), false);
 
     private RoleplayService service;
     private RoleplayController controller;
@@ -114,6 +114,22 @@ class RoleplayControllerTest {
         public Instant instant() {
             return now;
         }
+    }
+
+    @Test
+    void keepsExactlyOneCorrectOption() {
+        RoleplayTurn twoCorrect = new RoleplayTurn("r", "n", "", List.of(
+                new RoleplayTurn.Option("a", "a", false, ""),
+                new RoleplayTurn.Option("b", "b", true, ""),
+                new RoleplayTurn.Option("c", "c", true, "")), false);
+        assertEquals(List.of(false, true, false),
+                twoCorrect.withExactlyOneCorrect().options().stream().map(RoleplayTurn.Option::correct).toList());
+
+        RoleplayTurn noneCorrect = new RoleplayTurn("r", "n", "", List.of(
+                new RoleplayTurn.Option("a", "a", false, ""),
+                new RoleplayTurn.Option("b", "b", false, "")), false);
+        assertEquals(List.of(true, false),
+                noneCorrect.withExactlyOneCorrect().options().stream().map(RoleplayTurn.Option::correct).toList());
     }
 
     @Test

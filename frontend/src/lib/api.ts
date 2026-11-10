@@ -62,11 +62,18 @@ export async function generateLesson(language: Language, situation: string): Pro
 
 export type RoleplayMessage = { role: "user" | "assistant"; text: string };
 
+export type RoleplayOption = {
+  text: string;
+  norwegian: string;
+  correct: boolean;
+  feedback: string;
+};
+
 export type RoleplayTurn = {
   reply: string;
   replyNorwegian: string;
   correction: string;
-  hints: string[];
+  options: RoleplayOption[];
   done: boolean;
 };
 
