@@ -6,6 +6,23 @@ Pick a language, pick (or describe) the situation you're about to be in, and get
 Supports Spanish, French, and German, with a Norwegian Bokmål UI. 
 No accounts.
 
+**Live:** [pocket-phrases.cnordahl.com](https://pocket-phrases.cnordahl.com)
+
+## Features
+
+| Feature | What it does | AI? |
+|---|---|---|
+| **Prebuilt situations** | 7 situations (restaurant, transport, emergency/pharmacy …) → 6 phrases → Les / Øv / Test | No |
+| **🎲 Tilfeldig** | A random mix across all situations | No |
+| **Beskriv situasjonen** | Describe any situation in free text → a generated lesson | Yes |
+| **⚡ Her og nå** | 2-minute refresh of the 5 phrases you need for a situation you're in right now, then a large-text cheat sheet | No |
+| **🧳 Reiseplan** | Destination + departure date → a day-by-day plan that reflows if you skip a day, with a "generalprøve" the last day | No |
+| **🗣️ Øv på en samtale** | Roleplay with an AI waiter/receptionist/driver, with hints and gentle corrections (max 8 replies) | Yes |
+| **📚 Ordforråd-reisen** | Most-frequent words, milestone by milestone, with module quizzes and review tests (French prototype) | No |
+| **🧳 Turistord** | Themed tourist vocabulary with module quizzes (French prototype) | No |
+
+All progress (lessons, spaced repetition, streak, trip plan) lives in the browser's `localStorage`.
+
 ## Repo layout
 
 ```
@@ -14,7 +31,8 @@ pocket-phrases/
 │   ├── src/main/java/com/pocketphrases/
 │   │   ├── lesson/       shared Lesson/Phrase model
 │   │   ├── phrasepool/   prebuilt lessons (sampled from a local JSON seed pool)
-│   │   ├── generate/     free-text -> Anthropic -> Lesson
+│   │   ├── generate/     free-text -> Anthropic -> Lesson; shared AnthropicConfig (client + model)
+│   │   ├── roleplay/     stateless AI roleplay turns + per-IP rate limiter
 │   │   ├── access/       optional Firestore email whitelist gate
 │   │   └── config/       CORS
 │   └── src/main/resources/seed/phrase-pools.json
@@ -23,8 +41,11 @@ pocket-phrases/
 │       ├── types/lesson.ts   mirrors the backend Lesson/Phrase shape
 │       ├── lib/api.ts        fetch wrapper for the backend
 │       ├── lib/progress.ts   localStorage progress, behind a ProgressStore seam
-│       └── screens/          LanguagePicker -> ModePicker -> LessonScreen
-├── render.yaml        Render deploy blueprint for the backend
+│       ├── lib/trip.ts       trip plan storage + day-by-day plan logic
+│       ├── lib/srs.ts        spaced repetition (most-overdue phrases first)
+│       └── screens/          LanguagePicker -> ModePicker -> LessonScreen, plus
+│                             QuickPrep ("Her og nå"), TripSetup/TripPlan, Roleplay, vocab journeys
+├── render.yaml        legacy Render blueprint (no longer used, see Deploy)
 └── .gitignore
 ```
 
@@ -48,7 +69,7 @@ The frontend calls the backend over plain REST under `/api`:
 | GET | `/api/modes` | List of the 7 prebuilt mode keys + Norwegian titles |
 | GET | `/api/lessons/prebuilt?language=es&mode=restaurant` | Samples 6 phrases from a pool of ~10, shuffled |
 | GET | `/api/lessons/random?language=es` | Samples 6 phrases across all modes |
-| POST | `/api/lessons/generate` `{ situation, language }` | Calls Anthropic (Claude Haiku) to build a lesson from free text |
+| POST | `/api/lessons/generate` `{ situation, language }` | Calls Anthropic (`claude-haiku-5-5`) to build a lesson from free text |
 | POST | `/api/roleplay/turn` | One roleplay turn. Stateless: body `{ language, scenario, history[] }`, returns `{ reply, replyNorwegian, correction, hints, done }`. Max 8 user turns per chat, 60 turns/hour per IP |
 
 The backend is the only thing that ever talks to Anthropic or Firestore — the Anthropic API key and Firebase credentials never reach the frontend or the repo.
@@ -59,11 +80,15 @@ The backend is the only thing that ever talks to Anthropic or Firestore — the 
 
 ```sh
 cd backend
-export ANTHROPIC_API_KEY=sk-ant-...   # optional locally — only needed for "Beskriv situasjonen"
+export ANTHROPIC_API_KEY=sk-ant-...   # optional locally — only needed for the AI features
 ./gradlew bootRun
 ```
 
-Runs on `http://localhost:8080`. Without an Anthropic key, every screen works except the free-text box, which falls back to a prebuilt lesson (see "Judgment calls" below).
+Runs on `http://localhost:8080`. Spring Boot reads OS environment variables, not `.env` files — `backend/.env.example` lists what you can set (export them, or put them in your IDE run configuration).
+
+Without an Anthropic key, everything works except the two AI features: "Beskriv situasjonen" falls back to a prebuilt lesson (see "Judgment calls" below), and roleplay shows "Fikk ikke svar akkurat nå".
+
+Run the tests with `./gradlew test`.
 
 ### Frontend
 
@@ -77,27 +102,33 @@ Runs on `http://localhost:5173` and talks to `http://localhost:8080` by default.
 
 Click through: language picker → mode picker (7 prebuilt cards, "Beskriv situasjonen" free-text box, "🎲 Tilfeldig") → lesson with Les/Øv/Test tabs.
 
-## Deploy (free tiers)
+## Deploy
 
-- **Frontend** → Vercel
-- **Backend** → Render (free web service, deployed via Docker)
-- **Firestore** → Firebase Spark (free) plan — only used by the optional email whitelist gate
+Self-hosted on a private server with [Coolify](https://coolify.io), exposed to the internet through a **Cloudflare tunnel** (no open ports on the server).
 
-### Backend on Render
+| Part | Where | URL |
+|---|---|---|
+| Frontend | Coolify (static Vite build) | `https://pocket-phrases.cnordahl.com` |
+| Backend | Coolify (Docker, `backend/Dockerfile`) | `https://pocket-phrases-api.cnordahl.com` |
+| Firestore | Firebase Spark (free) | only used by the optional whitelist gate |
 
-1. Push this repo to GitHub.
-2. In Render: **New +** → **Blueprint**, point it at the repo. Render picks up `render.yaml` at the repo root, which builds `backend/Dockerfile`.
-3. Render will prompt for the env vars marked `sync: false`: at minimum `ANTHROPIC_API_KEY`. Set `FIREBASE_SERVICE_ACCOUNT_JSON` only if you're enabling the whitelist gate. Leave `APP_CORS_ALLOWED_ORIGINS` for step 5.
-4. Deploy. You'll get a URL like `https://pocket-phrases-backend.onrender.com`.
-5. Render's free web services sleep after inactivity — the first request after a while wakes it up and is slow (10–30s). Fine for a personal/demo project; mention it if you invite others.
+### Backend in Coolify
 
-### Frontend on Vercel
+1. New resource → your Git repo, build pack **Dockerfile**, base directory `/backend` (uses `backend/Dockerfile`), port `8080`.
+2. Set environment variables (see the table below): at minimum `ANTHROPIC_API_KEY` and `APP_CORS_ALLOWED_ORIGINS=https://pocket-phrases.cnordahl.com`.
+3. Turn on **Auto Deploy** and set **Watch Paths** to `backend/**`, so pushes that touch the backend redeploy it.
 
-1. Import the repo into Vercel; set the project's **Root Directory** to `frontend`.
-2. Vercel auto-detects the Vite build via `frontend/vercel.json`.
-3. Set the env var `VITE_API_BASE_URL` to your Render backend URL from the previous step.
-4. Deploy.
-5. Back in Render, set `APP_CORS_ALLOWED_ORIGINS` to your Vercel URL (comma-separate if you keep a preview domain too) and redeploy the backend so it accepts requests from the deployed frontend.
+### Frontend in Coolify
+
+1. New resource → same repo, base directory `/frontend`, build command `npm run build`, publish directory `dist` (static site).
+2. Set `VITE_API_BASE_URL=https://pocket-phrases-api.cnordahl.com`. It's baked in at **build** time, so redeploy after changing it.
+3. Turn on **Auto Deploy** with **Watch Paths** `frontend/**`.
+
+### Cloudflare tunnel
+
+Add one public hostname per app in the tunnel (Zero Trust → Networks → Tunnels), pointing at Coolify's proxy on the server. Cloudflare sets `CF-Connecting-IP` to the real client IP, and the roleplay rate limiter relies on it.
+
+> ⚠️ **Frontend and backend deploy separately.** If a new frontend feature gets a **404** from the API, the backend hasn't been redeployed yet. Check the backend's Deployments tab in Coolify (and its Watch Paths).
 
 ### Firestore (Firebase Spark / free plan)
 
@@ -105,15 +136,15 @@ Only needed if you turn on the whitelist gate:
 
 1. Create a Firebase project (Spark plan is free) and enable Firestore (Native mode).
 2. Project settings → **Service accounts** → **Generate new private key** — downloads a JSON file.
-3. On Render, set `FIREBASE_SERVICE_ACCOUNT_JSON` to the full contents of that file, pasted as one line.
+3. In Coolify, set `FIREBASE_SERVICE_ACCOUNT_JSON` on the backend to the full contents of that file, pasted as one line.
 4. In Firestore, create a `whitelist` collection; add one document per allowed user with an `email` field, e.g. `{ "email": "you@example.com" }`.
-5. Set `APP_ACCESS_WHITELIST_ENABLED=true` on Render and redeploy. The frontend will now prompt for an email the first time it gets a 403, store it locally, and send it as `X-User-Email` on every request.
+5. Set `APP_ACCESS_WHITELIST_ENABLED=true` on the backend in Coolify and redeploy. The frontend will now prompt for an email the first time it gets a 403, store it locally, and send it as `X-User-Email` on every request.
 
 ## Environment variables
 
 | Variable | Where | Required | Purpose |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | backend | For free-text lessons | Calls Claude Haiku for "Beskriv situasjonen" |
+| `ANTHROPIC_API_KEY` | backend | For the AI features | Calls Claude Haiku 5.5 for "Beskriv situasjonen" and roleplay |
 | `FIREBASE_SERVICE_ACCOUNT_JSON` | backend | Only if whitelist enabled | Firestore credentials for the email whitelist |
 | `APP_ACCESS_WHITELIST_ENABLED` | backend | No (default `false`) | Turns the email whitelist gate on/off |
 | `APP_CORS_ALLOWED_ORIGINS` | backend | Yes in production | Comma-separated frontend origins allowed to call the API |
@@ -127,6 +158,8 @@ Never commit real values. See `backend/.env.example` and `frontend/.env.example`
 - **Backend is deliberately minimal.** Three controllers, a handful of services, no repository/entity layer, no Spring Security. The whitelist gate is a single `Filter` (`WhitelistFilter`) that's a no-op unless explicitly enabled — resisting the temptation to reach for a full auth framework for what's currently a single-flag gate.
 - **The whitelist gate is fully implemented, not stubbed — but off by default.** Flip `APP_ACCESS_WHITELIST_ENABLED=true` when you want v1 to be private; the Firestore-backed check, the frontend `EmailGate` screen, and the 403 handling are all already wired up.
 - **Free-text generation uses Anthropic's structured outputs** (`output_config.format`, derived from a `GeneratedLesson` record) rather than "prompt for JSON + manually parse the text." This makes the response validated JSON at the API level — a stronger version of "strict JSON only" than string parsing. A `try/catch` around the whole call still exists: if Anthropic errors, refuses, or the SDK throws for any reason, the backend serves a prebuilt "Turist-essensielt" lesson instead of an error page.
+- **Roleplay is stateless.** The frontend keeps the conversation and sends the whole history each turn, so the backend needs no sessions, database or accounts. Cost is capped three ways: max 8 user replies per conversation, max 300 characters per message, and an in-memory limit of 60 turns per hour per client IP (`RoleplayRateLimiter`, keyed on `CF-Connecting-IP`; resets on restart, which is fine for a single instance).
+- **Trip plans are recomputed, not stored.** Only the trip (destination, date, chosen situations, completed situations) is saved; the day-by-day plan is rebuilt from "what's left" and "days left" every time, so a skipped day simply reflows.
 - **Progress storage lives behind a `ProgressStore` interface** (`frontend/src/lib/progress.ts`), with only a `localStorage` implementation for now. The comment in that file marks it as the seam for a future account-backed implementation — the UI only ever calls the interface, never `localStorage` directly.
 
 ## Legal & privacy
@@ -135,9 +168,9 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 
 **What personal data is processed, and by whom:**
 
-- **The free-text "Beskriv situasjonen" box.** Whatever the user types is sent to Anthropic (a third-party AI provider) to generate a lesson. It could technically contain personal information if a user chose to type some in, though the feature doesn't ask for or need any. The backend does not log or persist this text anywhere — it's forwarded to Anthropic and the response is returned to the browser in the same request/response cycle. A line directly above the input box discloses this before the user submits anything: *"Teksten du skriver her sendes til Anthropic (tredjepart) for å generere frasene. Ikke skriv sensitiv informasjon."*
-- **Progress data** (which modes have been read/drilled/quizzed, last quiz score) lives entirely in the browser's `localStorage`. It is never sent to any Pocket Phrases server — from a GDPR standpoint this isn't "processing" by the app operator at all, it's local application state the user's own device holds.
-- **Server logs.** The backend's default web server access logs (Spring Boot / Render) will contain client IP addresses, as with essentially any web server. Nothing app-specific is added to them; the app doesn't read, aggregate, or act on this data. If you deploy this for real, keep default log retention short and don't repurpose these logs for anything beyond debugging.
+- **The free-text "Beskriv situasjonen" box and roleplay chat.** Whatever the user types is sent to Anthropic (a third-party AI provider) to generate a lesson. It could technically contain personal information if a user chose to type some in, though the feature doesn't ask for or need any. The backend does not log or persist this text anywhere — it's forwarded to Anthropic and the response is returned to the browser in the same request/response cycle. A line next to each input discloses this before the user submits anything (e.g. *"Teksten du skriver her sendes til Anthropic (tredjepart) for å generere frasene. Ikke skriv sensitiv informasjon."*).
+- **Progress data** (which modes have been read/drilled/quizzed, last quiz score, streak, trip plan) lives entirely in the browser's `localStorage`. It is never sent to any Pocket Phrases server — from a GDPR standpoint this isn't "processing" by the app operator at all, it's local application state the user's own device holds.
+- **Server logs.** The backend's default web server access logs (Spring Boot, Coolify's proxy, Cloudflare) will contain client IP addresses, as with essentially any web server. Nothing app-specific is added to them; the app doesn't read, aggregate, or act on this data. The roleplay rate limiter also keeps client IPs and timestamps **in memory only** (never written to disk), dropped after an hour or on restart. If you deploy this for real, keep default log retention short and don't repurpose these logs for anything beyond debugging.
 - **No accounts, no analytics, no advertising, no cookies of any kind.**
 - **The optional email whitelist** (off by default): if enabled, the email address a user enters is stored as plain text in a Firestore `whitelist` collection you (the deployer) manage, solely to gate access. It isn't linked to any other data the app holds.
 

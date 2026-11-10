@@ -87,8 +87,16 @@ public class RoleplayController {
         return new ResponseStatusException(HttpStatus.BAD_REQUEST, message);
     }
 
-    /** Render sits behind a proxy, so the real client IP is the first X-Forwarded-For entry. */
-    private static String clientId(HttpServletRequest http) {
+    /**
+     * The app runs behind a Cloudflare tunnel, which always overwrites
+     * CF-Connecting-IP with the real client IP — unlike X-Forwarded-For, whose
+     * first entry a client can spoof to dodge the rate limit.
+     */
+    static String clientId(HttpServletRequest http) {
+        String cloudflare = http.getHeader("CF-Connecting-IP");
+        if (cloudflare != null && !cloudflare.isBlank()) {
+            return cloudflare.trim();
+        }
         String forwarded = http.getHeader("X-Forwarded-For");
         if (forwarded != null && !forwarded.isBlank()) {
             return forwarded.split(",")[0].trim();

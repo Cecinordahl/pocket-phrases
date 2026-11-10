@@ -116,6 +116,13 @@ class RoleplayControllerTest {
         }
     }
 
+    @Test
+    void prefersCloudflareClientIpOverSpoofableForwardedFor() {
+        http.addHeader("X-Forwarded-For", "6.6.6.6, 10.0.0.1");
+        http.addHeader("CF-Connecting-IP", "1.2.3.4");
+        assertEquals("1.2.3.4", RoleplayController.clientId(http));
+    }
+
     /** assistant, user, assistant, user ... ending on the given number of user turns. */
     private static List<Message> conversation(int userTurns) {
         List<Message> history = new ArrayList<>();
