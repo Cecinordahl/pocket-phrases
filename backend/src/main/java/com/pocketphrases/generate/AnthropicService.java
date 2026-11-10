@@ -1,8 +1,12 @@
 package com.pocketphrases.generate;
 
 import com.anthropic.client.AnthropicClient;
+import com.anthropic.models.messages.Base64ImageSource;
+import com.anthropic.models.messages.ContentBlockParam;
+import com.anthropic.models.messages.ImageBlockParam;
 import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.StructuredMessageCreateParams;
+import com.anthropic.models.messages.TextBlockParam;
 import com.pocketphrases.lesson.Lesson;
 import com.pocketphrases.lesson.Phrase;
 import org.springframework.stereotype.Service;
@@ -38,6 +42,21 @@ public class AnthropicService {
             Gi et kort, beskrivende tittel på norsk bokmål for situasjonen.
             """;
 
+    private static final String IMAGE_SYSTEM_PROMPT = """
+            Du hjelper en norsk turist som har tatt et bilde på reise — typisk en meny, et skilt, en billettautomat,
+            en plakat eller en informasjonstavle.
+            Les det som står på bildet og lag 6 til 10 nyttige fraser på målspråket ut fra det:
+            - Oversett de viktigste ordene/uttrykkene som faktisk står på bildet (f.eks. retter, advarsler, åpningstider).
+            - Lag også fraser turisten kan bruke i situasjonen (f.eks. bestille en rett fra menyen, spørre om noe på skiltet).
+            Hvis teksten på bildet er på et annet språk enn målspråket, lag likevel frasene på målspråket ut fra innholdet.
+            Hvis bildet ikke har lesbar tekst, lag fraser om det som vises.
+            Uttalen skal være en enkel fonetisk skrivemåte som en norsktalende kan lese direkte, ikke IPA.
+            "native" skal være frasens betydning på norsk bokmål.
+            Velg den kategorien og det ikonet som passer best for hver frase — bruk ANNET/GENERAL kun hvis
+            ingenting annet passer.
+            Gi en kort, beskrivende tittel på norsk bokmål ut fra bildet, f.eks. «Menyen på kafeen».
+            """;
+
     private final AnthropicClient client;
 
     public AnthropicService(AnthropicClient client) {
@@ -53,12 +72,38 @@ public class AnthropicService {
                 .addUserMessage("Målspråk: %s. Situasjon: %s".formatted(language, situation))
                 .build();
 
-        GeneratedLesson generated = client.messages().create(params).content().stream()
+        return toLesson(call(params), language);
+    }
+
+    /** Turns a photo of a menu/sign into a lesson. mediaType is a validated image/* type. */
+    public Lesson generateLessonFromImage(String imageBase64, Base64ImageSource.MediaType mediaType, String language) {
+        ContentBlockParam image = ContentBlockParam.ofImage(ImageBlockParam.builder()
+                .source(Base64ImageSource.builder().data(imageBase64).mediaType(mediaType).build())
+                .build());
+        ContentBlockParam text = ContentBlockParam.ofText(TextBlockParam.builder()
+                .text("Målspråk: %s.".formatted(language))
+                .build());
+
+        StructuredMessageCreateParams<GeneratedLesson> params = MessageCreateParams.builder()
+                .model(MODEL)
+                .maxTokens(MAX_TOKENS)
+                .system(IMAGE_SYSTEM_PROMPT)
+                .outputConfig(GeneratedLesson.class)
+                .addUserMessageOfBlockParams(List.of(image, text))
+                .build();
+
+        return toLesson(call(params), language);
+    }
+
+    private GeneratedLesson call(StructuredMessageCreateParams<GeneratedLesson> params) {
+        return client.messages().create(params).content().stream()
                 .flatMap(block -> block.text().stream())
                 .map(text -> text.text())
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException("Tomt svar fra Anthropic"));
+    }
 
+    private Lesson toLesson(GeneratedLesson generated, String language) {
         List<Phrase> phrases = generated.phrases().stream()
                 .limit(MAX_PHRASES)
                 .map(p -> new Phrase(

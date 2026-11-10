@@ -1,8 +1,11 @@
 package com.pocketphrases.roleplay;
 
+import com.pocketphrases.ratelimit.ClientIp;
+import com.pocketphrases.ratelimit.HourlyRateLimiter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,9 +29,10 @@ public class RoleplayController {
     private static final Set<String> SUPPORTED_LANGUAGES = Set.of("es", "fr", "de");
 
     private final RoleplayService roleplayService;
-    private final RoleplayRateLimiter rateLimiter;
+    private final HourlyRateLimiter rateLimiter;
 
-    public RoleplayController(RoleplayService roleplayService, RoleplayRateLimiter rateLimiter) {
+    public RoleplayController(RoleplayService roleplayService,
+                              @Qualifier("roleplayRateLimiter") HourlyRateLimiter rateLimiter) {
         this.roleplayService = roleplayService;
         this.rateLimiter = rateLimiter;
     }
@@ -38,7 +42,7 @@ public class RoleplayController {
         List<RoleplayRequest.Message> history = request.history() == null ? List.of() : request.history();
         validate(request, history);
 
-        if (!rateLimiter.tryAcquire(clientId(http))) {
+        if (!rateLimiter.tryAcquire(ClientIp.of(http))) {
             throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS,
                     "Du har øvd mye den siste timen — ta en pause og prøv igjen litt senere.");
         }
@@ -85,22 +89,5 @@ public class RoleplayController {
 
     private static ResponseStatusException bad(String message) {
         return new ResponseStatusException(HttpStatus.BAD_REQUEST, message);
-    }
-
-    /**
-     * The app runs behind a Cloudflare tunnel, which always overwrites
-     * CF-Connecting-IP with the real client IP — unlike X-Forwarded-For, whose
-     * first entry a client can spoof to dodge the rate limit.
-     */
-    static String clientId(HttpServletRequest http) {
-        String cloudflare = http.getHeader("CF-Connecting-IP");
-        if (cloudflare != null && !cloudflare.isBlank()) {
-            return cloudflare.trim();
-        }
-        String forwarded = http.getHeader("X-Forwarded-For");
-        if (forwarded != null && !forwarded.isBlank()) {
-            return forwarded.split(",")[0].trim();
-        }
-        return http.getRemoteAddr();
     }
 }

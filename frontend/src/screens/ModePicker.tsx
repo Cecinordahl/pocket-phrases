@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AccessDeniedError,
   fetchModes,
   fetchPrebuiltLesson,
   fetchRandomLesson,
   generateLesson,
+  generateLessonFromImage,
 } from "../lib/api";
+import { prepareImage } from "../lib/image";
 import type { Language, Lesson, ModeInfo } from "../types/lesson";
 import { getWordCount } from "../lib/frequency";
 import { getTopicWordCount, TOPICS, type TopicId } from "../lib/topicVocab";
@@ -48,13 +50,14 @@ export function ModePicker({
   const [error, setError] = useState<string | null>(null);
   const [slowLoad, setSlowLoad] = useState(false);
   const [slowGenerate, setSlowGenerate] = useState(false);
+  const photoInputRef = useRef<HTMLInputElement>(null);
 
   // Calling Anthropic genuinely takes a few seconds even on a warm backend,
   // so — unlike the mode-list load — this hint shows immediately rather
   // than waiting to see if it's "slow". It escalates if it runs long
   // enough to plausibly be a cold-started backend on top of the AI call.
   useEffect(() => {
-    if (loadingKey !== "generate") {
+    if (loadingKey !== "generate" && loadingKey !== "photo") {
       setSlowGenerate(false);
       return;
     }
@@ -101,6 +104,14 @@ export function ModePicker({
     const trimmed = situation.trim();
     if (!trimmed) return;
     run("generate", () => generateLesson(language, trimmed));
+  }
+
+  function handlePhoto(file: File | undefined) {
+    if (!file) return;
+    run("photo", async () => {
+      const image = await prepareImage(file);
+      return generateLessonFromImage(language, image.base64, image.mediaType);
+    });
   }
 
   const busy = loadingKey !== null;
@@ -218,6 +229,40 @@ export function ModePicker({
         >
           {loadingKey === "random" ? "Laster..." : "🎲 Tilfeldig"}
         </button>
+      </div>
+
+      <div className="card" style={{ marginTop: 20 }}>
+        <h3>📸 Ta bilde av en meny eller et skilt</h3>
+        <p className="text-muted">
+          Vi leser det som står og lager en leksjon ut fra det — f.eks. rettene på menyen og hvordan du
+          bestiller dem.
+        </p>
+        <p className="text-muted" style={{ fontSize: "0.78rem" }}>
+          Bildet sendes til Anthropic (tredjepart) for å lage frasene, og lagres ikke. Ikke ta bilde av
+          personer eller sensitiv informasjon.
+        </p>
+        <input
+          ref={photoInputRef}
+          type="file"
+          accept="image/*"
+          capture="environment"
+          style={{ display: "none" }}
+          onChange={(e) => {
+            handlePhoto(e.target.files?.[0]);
+            // Reset so picking the same photo again still fires onChange.
+            e.target.value = "";
+          }}
+        />
+        <button className="button" style={{ width: "100%" }} disabled={busy} onClick={() => photoInputRef.current?.click()}>
+          {loadingKey === "photo" ? "Leser bildet..." : "Ta bilde / velg bilde"}
+        </button>
+        {loadingKey === "photo" && (
+          <p className="text-muted animate-in" style={{ marginTop: 10, marginBottom: 0 }}>
+            {slowGenerate
+              ? "Tar litt lengre tid enn vanlig — vent litt til..."
+              : "Leser bildet og lager fraser — dette tar gjerne 5–15 sekunder."}
+          </p>
+        )}
       </div>
 
       <div className="card" style={{ marginTop: 20 }}>

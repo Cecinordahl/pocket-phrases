@@ -15,6 +15,7 @@ No accounts.
 | **Prebuilt situations** | 7 situations (restaurant, transport, emergency/pharmacy …) → 6 phrases → Les / Øv / Test | No |
 | **🎲 Tilfeldig** | A random mix across all situations | No |
 | **Beskriv situasjonen** | Describe any situation in free text → a generated lesson | Yes |
+| **📸 Bilde av meny/skilt** | Photograph a menu, sign or ticket machine → a lesson built from what's on it | Yes |
 | **⚡ Her og nå** | 2-minute refresh of the 5 phrases you need for a situation you're in right now, then a large-text cheat sheet | No |
 | **🧳 Reiseplan** | Destination + departure date → a day-by-day plan that reflows if you skip a day, with a "generalprøve" the last day | No |
 | **🗣️ Øv på en samtale** | Roleplay with an AI waiter/receptionist/driver: pick the right reply out of 4 (or type your own), with feedback and gentle corrections (max 8 replies) | Yes |
@@ -32,7 +33,8 @@ pocket-phrases/
 │   │   ├── lesson/       shared Lesson/Phrase model
 │   │   ├── phrasepool/   prebuilt lessons (sampled from a local JSON seed pool)
 │   │   ├── generate/     free-text -> Anthropic -> Lesson; shared AnthropicConfig (client + model)
-│   │   ├── roleplay/     stateless AI roleplay turns + per-IP rate limiter
+│   │   ├── roleplay/     stateless AI roleplay turns
+│   │   ├── ratelimit/    per-feature hourly limits per client IP (CF-Connecting-IP)
 │   │   ├── access/       optional Firestore email whitelist gate
 │   │   └── config/       CORS
 │   └── src/main/resources/seed/phrase-pools.json
@@ -70,6 +72,7 @@ The frontend calls the backend over plain REST under `/api`:
 | GET | `/api/lessons/prebuilt?language=es&mode=restaurant` | Samples 6 phrases from a pool of ~10, shuffled |
 | GET | `/api/lessons/random?language=es` | Samples 6 phrases across all modes |
 | POST | `/api/lessons/generate` `{ situation, language }` | Calls Anthropic (`claude-haiku-5-5`) to build a lesson from free text |
+| POST | `/api/lessons/from-image` `{ language, imageBase64, mediaType }` | Calls Anthropic with a photo (JPEG/PNG/WebP, max ~5 MB; the frontend downsizes to 1568px JPEG) and returns a lesson. 20/hour per IP, no prebuilt fallback |
 | POST | `/api/roleplay/turn` | One roleplay turn. Stateless: body `{ language, scenario, history[] }`, returns `{ reply, replyNorwegian, correction, options[4] (one correct), done }`. Max 8 user turns per chat, 60 turns/hour per IP |
 
 The backend is the only thing that ever talks to Anthropic or Firestore — the Anthropic API key and Firebase credentials never reach the frontend or the repo.
@@ -144,7 +147,7 @@ Only needed if you turn on the whitelist gate:
 
 | Variable | Where | Required | Purpose |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | backend | For the AI features | Calls Claude Haiku 5.5 for "Beskriv situasjonen" and roleplay |
+| `ANTHROPIC_API_KEY` | backend | For the AI features | Calls Claude Haiku 5.5 for "Beskriv situasjonen", photo lessons and roleplay |
 | `FIREBASE_SERVICE_ACCOUNT_JSON` | backend | Only if whitelist enabled | Firestore credentials for the email whitelist |
 | `APP_ACCESS_WHITELIST_ENABLED` | backend | No (default `false`) | Turns the email whitelist gate on/off |
 | `APP_CORS_ALLOWED_ORIGINS` | backend | Yes in production | Comma-separated frontend origins allowed to call the API |
@@ -158,7 +161,7 @@ Never commit real values. See `backend/.env.example` and `frontend/.env.example`
 - **Backend is deliberately minimal.** Three controllers, a handful of services, no repository/entity layer, no Spring Security. The whitelist gate is a single `Filter` (`WhitelistFilter`) that's a no-op unless explicitly enabled — resisting the temptation to reach for a full auth framework for what's currently a single-flag gate.
 - **The whitelist gate is fully implemented, not stubbed — but off by default.** Flip `APP_ACCESS_WHITELIST_ENABLED=true` when you want v1 to be private; the Firestore-backed check, the frontend `EmailGate` screen, and the 403 handling are all already wired up.
 - **Free-text generation uses Anthropic's structured outputs** (`output_config.format`, derived from a `GeneratedLesson` record) rather than "prompt for JSON + manually parse the text." This makes the response validated JSON at the API level — a stronger version of "strict JSON only" than string parsing. A `try/catch` around the whole call still exists: if Anthropic errors, refuses, or the SDK throws for any reason, the backend serves a prebuilt "Turist-essensielt" lesson instead of an error page.
-- **Roleplay is stateless.** The frontend keeps the conversation and sends the whole history each turn, so the backend needs no sessions, database or accounts. Cost is capped three ways: max 8 user replies per conversation, max 300 characters per message, and an in-memory limit of 60 turns per hour per client IP (`RoleplayRateLimiter`, keyed on `CF-Connecting-IP`; resets on restart, which is fine for a single instance).
+- **Roleplay is stateless.** The frontend keeps the conversation and sends the whole history each turn, so the backend needs no sessions, database or accounts. Cost is capped three ways: max 8 user replies per conversation, max 300 characters per message, and an in-memory limit of 60 turns per hour per client IP (`HourlyRateLimiter`, keyed on `CF-Connecting-IP`; resets on restart, which is fine for a single instance).
 - **Trip plans are recomputed, not stored.** Only the trip (destination, date, chosen situations, completed situations) is saved; the day-by-day plan is rebuilt from "what's left" and "days left" every time, so a skipped day simply reflows.
 - **Progress storage lives behind a `ProgressStore` interface** (`frontend/src/lib/progress.ts`), with only a `localStorage` implementation for now. The comment in that file marks it as the seam for a future account-backed implementation — the UI only ever calls the interface, never `localStorage` directly.
 
@@ -168,6 +171,7 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 
 **What personal data is processed, and by whom:**
 
+- **Photos (📸 Bilde av meny/skilt).** The photo is downscaled in the browser and sent to Anthropic to build the lesson, then discarded — the backend never stores or logs it. A note next to the button asks users not to photograph people or sensitive information.
 - **The free-text "Beskriv situasjonen" box and roleplay chat.** Whatever the user types is sent to Anthropic (a third-party AI provider) to generate a lesson. It could technically contain personal information if a user chose to type some in, though the feature doesn't ask for or need any. The backend does not log or persist this text anywhere — it's forwarded to Anthropic and the response is returned to the browser in the same request/response cycle. A line next to each input discloses this before the user submits anything (e.g. *"Teksten du skriver her sendes til Anthropic (tredjepart) for å generere frasene. Ikke skriv sensitiv informasjon."*).
 - **Progress data** (which modes have been read/drilled/quizzed, last quiz score, streak, trip plan) lives entirely in the browser's `localStorage`. It is never sent to any Pocket Phrases server — from a GDPR standpoint this isn't "processing" by the app operator at all, it's local application state the user's own device holds.
 - **Server logs.** The backend's default web server access logs (Spring Boot, Coolify's proxy, Cloudflare) will contain client IP addresses, as with essentially any web server. Nothing app-specific is added to them; the app doesn't read, aggregate, or act on this data. The roleplay rate limiter also keeps client IPs and timestamps **in memory only** (never written to disk), dropped after an hour or on restart. If you deploy this for real, keep default log retention short and don't repurpose these logs for anything beyond debugging.
@@ -191,5 +195,4 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 - Orforråd reisen skal helst unngå ord som de, est, le, la, osv. siden de alltid hører sammen med noe annet feks la maison.
 - Norwegian sentence displayed, mix of drag and drop words for the user to create the sentence themselves, with many (minimum 5, max 10) words that are not correct but are there to confuse the user.
 - AI version where the user can type the sentence themselves and the LLM will check to see if the user got it somewhat right- it would be nice to give feks score based on percentage of correctness. Example for spanish, "Jeg elsker deg" is displayed in norwegian and the user writes "Te amo" is 100% correct (?) but if the user writes "Tu amo" they get some points say 90% since they may have thought te amo but missed one letter.
-- **Photograph a menu/sign → lesson:** user snaps a photo, Claude (vision) reads it and returns a `Lesson` with the useful words/phrases from it. Reuses the existing `generate` flow with an image input.
 - **Travel buddy mode:** share a link to a lesson (or a whole trip plan) with travel companions — no accounts needed, e.g. lesson encoded in the URL or stored under a short share id.

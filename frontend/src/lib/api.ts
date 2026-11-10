@@ -89,3 +89,16 @@ export async function fetchRoleplayTurn(
   });
   return handle<RoleplayTurn>(res);
 }
+
+export async function generateLessonFromImage(
+  language: Language,
+  imageBase64: string,
+  mediaType: string,
+): Promise<Lesson> {
+  const res = await fetch(`${BASE_URL}/api/lessons/from-image`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ language, imageBase64, mediaType }),
+  });
+  return handle<Lesson>(res);
+}

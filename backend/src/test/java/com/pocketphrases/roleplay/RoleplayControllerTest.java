@@ -1,5 +1,7 @@
 package com.pocketphrases.roleplay;
 
+import com.pocketphrases.ratelimit.ClientIp;
+import com.pocketphrases.ratelimit.HourlyRateLimiter;
 import com.pocketphrases.roleplay.RoleplayRequest.Message;
 import com.pocketphrases.roleplay.RoleplayRequest.Role;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +40,7 @@ class RoleplayControllerTest {
         service = mock(RoleplayService.class);
         when(service.nextTurn(anyString(), anyString(), anyList(), org.mockito.ArgumentMatchers.anyBoolean()))
                 .thenReturn(TURN);
-        controller = new RoleplayController(service, new RoleplayRateLimiter());
+        controller = new RoleplayController(service, new HourlyRateLimiter(60));
         http = new MockHttpServletRequest();
     }
 
@@ -82,8 +84,8 @@ class RoleplayControllerTest {
     @Test
     void rateLimiterBlocksAfterLimitAndResetsAfterAnHour() {
         MutableClock clock = new MutableClock(Instant.parse("2026-01-01T00:00:00Z"));
-        RoleplayRateLimiter limiter = new RoleplayRateLimiter(clock);
-        for (int i = 0; i < RoleplayRateLimiter.MAX_TURNS_PER_HOUR; i++) {
+        HourlyRateLimiter limiter = new HourlyRateLimiter(60, clock);
+        for (int i = 0; i < limiter.maxPerHour(); i++) {
             assertTrue(limiter.tryAcquire("1.2.3.4"));
         }
         assertFalse(limiter.tryAcquire("1.2.3.4"));
@@ -136,7 +138,7 @@ class RoleplayControllerTest {
     void prefersCloudflareClientIpOverSpoofableForwardedFor() {
         http.addHeader("X-Forwarded-For", "6.6.6.6, 10.0.0.1");
         http.addHeader("CF-Connecting-IP", "1.2.3.4");
-        assertEquals("1.2.3.4", RoleplayController.clientId(http));
+        assertEquals("1.2.3.4", ClientIp.of(http));
     }
 
     /** assistant, user, assistant, user ... ending on the given number of user turns. */
