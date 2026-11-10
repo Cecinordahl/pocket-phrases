@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   AccessDeniedError,
   fetchModes,
@@ -11,7 +11,7 @@ import { prepareImage } from "../lib/image";
 import type { Language, Lesson, ModeInfo } from "../types/lesson";
 import { getWordCount } from "../lib/frequency";
 import { getTopicWordCount, TOPICS, type TopicId } from "../lib/topicVocab";
-import { daysUntil, tripStore } from "../lib/trip";
+import { buildPlan, daysUntil, tripStore } from "../lib/trip";
 
 type ModePickerProps = {
   language: Language;
@@ -51,6 +51,7 @@ export function ModePicker({
   const [slowLoad, setSlowLoad] = useState(false);
   const [slowGenerate, setSlowGenerate] = useState(false);
   const photoInputRef = useRef<HTMLInputElement>(null);
+  const [describeOpen, setDescribeOpen] = useState(false);
 
   // Calling Anthropic genuinely takes a few seconds even on a warm backend,
   // so — unlike the mode-list load — this hint shows immediately rather
@@ -117,14 +118,24 @@ export function ModePicker({
   const busy = loadingKey !== null;
   const trip = tripStore.get(language);
   const tripDaysLeft = trip ? daysUntil(trip.departureDate) : null;
+  const tripActive = trip !== null && tripDaysLeft !== null && tripDaysLeft >= 0;
+  const todaysPlan = tripActive && trip ? buildPlan(trip).find((d) => d.offset === 0) : undefined;
+  const todayKeys = new Set(todaysPlan?.modes.map((m) => m.key) ?? []);
+  const showVocab = getWordCount(language) > 0 || getTopicWordCount("tourist", language) > 0;
+
+  function situationMarker(key: string): string {
+    if (!tripActive || !trip) return "";
+    if (trip.completed.includes(key)) return "✓ ";
+    if (todayKeys.has(key)) return "📅 ";
+    return "";
+  }
 
   return (
     <div style={{ marginTop: 24 }}>
       <button className="button-secondary button" style={{ marginBottom: 16 }} onClick={onBack}>
         ← Bytt språk
       </button>
-      <h2>Velg situasjon</h2>
-      <p className="text-muted">Hva slags situasjon gjør du deg klar for?</p>
+      <h2>Hva vil du øve på?</h2>
 
       {error && (
         <p style={{ color: "var(--color-warning)" }} role="alert">
@@ -132,115 +143,101 @@ export function ModePicker({
         </p>
       )}
 
-      <div className="card" style={{ marginTop: 16 }}>
-        <h3>
-          🧳{" "}
-          {trip && tripDaysLeft !== null && tripDaysLeft > 0
-            ? `${tripDaysLeft} ${tripDaysLeft === 1 ? "dag" : "dager"} til ${trip.destination || "turen"}`
-            : trip
-              ? "Reiseplan"
-              : "Skal du ut og reise?"}
-        </h3>
-        <p className="text-muted" style={{ marginBottom: 12 }}>
-          {trip
-            ? "Se hva du skal øve på i dag for å være klar til turen."
-            : "Legg inn når du reiser, så får du en plan for hva du skal øve på hver dag fram til avreise."}
-        </p>
-        <button className="button" style={{ width: "100%" }} onClick={onEnterTrip}>
-          {trip ? "Åpne reiseplan" : "Lag en reiseplan"}
-        </button>
-      </div>
+      {/* --- Situasjoner (+ optional trip plan) -------------------------- */}
+      <Section title="💬 Situasjoner" subtitle="Fraser for vanlige situasjoner på reise.">
+        <div className="card" style={{ padding: 12 }}>
+          {tripActive && trip ? (
+            <button className="trip-banner" onClick={onEnterTrip}>
+              <span>
+                <strong>
+                  🧳{" "}
+                  {tripDaysLeft === 0
+                    ? `Du reiser i dag${trip.destination ? ` til ${trip.destination}` : ""}!`
+                    : `${tripDaysLeft} ${tripDaysLeft === 1 ? "dag" : "dager"} til ${trip.destination || "turen"}`}
+                </strong>
+                {" · "}
+                {trip.modes.filter((m) => trip.completed.includes(m.key)).length}/{trip.modes.length} klar
+                <br />
+                <span className="text-muted">
+                  {todaysPlan
+                    ? todaysPlan.rehearsal
+                      ? "I dag: 🎭 generalprøve"
+                      : `I dag: ${todaysPlan.modes.map((m) => m.title).join(", ")}`
+                    : "Ingenting igjen i dag 🎉"}
+                </span>
+              </span>
+              <span aria-hidden="true">→</span>
+            </button>
+          ) : (
+            <button className="trip-banner" onClick={onEnterTrip}>
+              <span>
+                <strong>📅 Skal du reise?</strong>
+                <br />
+                <span className="text-muted">Legg inn dato, så får du en plan for hver dag fram til avreise.</span>
+              </span>
+              <span aria-hidden="true">→</span>
+            </button>
+          )}
 
-      <div className="card" style={{ marginTop: 16 }}>
-        <h3>⚡ Her og nå</h3>
-        <p className="text-muted" style={{ marginBottom: 12 }}>
-          Er du i situasjonen akkurat nå? Lær de 5 frasene du trenger mest på to minutter — enten du skal
-          bestille, sjekke inn eller spørre om veien.
-        </p>
-        <button className="button" style={{ width: "100%" }} onClick={onEnterQuickPrep}>
-          Lær det jeg trenger nå
-        </button>
-      </div>
-
-      <div className="card" style={{ marginTop: 16 }}>
-        <h3>🗣️ Øv på en samtale</h3>
-        <p className="text-muted" style={{ marginBottom: 12 }}>
-          Snakk med en KI-servitør, -resepsjonist eller -sjåfør. Du får hint og vennlige rettelser
-          underveis.
-        </p>
-        <button className="button" style={{ width: "100%" }} onClick={onEnterRoleplay}>
-          Start en samtale
-        </button>
-      </div>
-
-      {/* Only shown once there's at least some fetched content for this
-          language — no point linking into a journey that's 100% locked. */}
-      {getWordCount(language) > 0 && (
-        <div className="card" style={{ marginTop: 16 }}>
-          <h3>📚 Lær de mest brukte ordene</h3>
-          <p className="text-muted" style={{ marginBottom: 12 }}>
-            En strukturert reise gjennom de vanligste ordene i språket, milepæl for milepæl —
-            fremfor fraser til én bestemt situasjon.
-          </p>
-          <button className="button" style={{ width: "100%" }} onClick={onEnterVocabJourney}>
-            Start ordforråd-reisen
-          </button>
-        </div>
-      )}
-
-      {/* Themed vocab sets (e.g. tourist words) — separate from the
-          frequency journey above, only shown once that topic has content
-          for this language. */}
-      {getTopicWordCount("tourist", language) > 0 && (
-        <div className="card" style={{ marginTop: 16 }}>
-          <h3>🧳 {TOPICS.tourist.title}</h3>
-          <p className="text-muted" style={{ marginBottom: 12 }}>
-            {TOPICS.tourist.description}
-          </p>
-          <button className="button" style={{ width: "100%" }} onClick={() => onEnterTopic("tourist")}>
-            Start {TOPICS.tourist.title.toLowerCase()}
-          </button>
-        </div>
-      )}
-
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>
-        {modes === null && (
-          <p className="text-muted">
-            {slowLoad
-              ? "Vekker serveren — dette kan ta opptil 30 sekunder hvis den har ligget i dvale."
-              : "Laster..."}
-          </p>
-        )}
-        {modes?.map((mode) => (
-          <button
-            key={mode.key}
-            className="button button-secondary"
-            disabled={busy}
-            onClick={() => run(mode.key, () => fetchPrebuiltLesson(language, mode.key))}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
+              gap: 8,
+              marginTop: 12,
+            }}
           >
-            {loadingKey === mode.key ? "Laster..." : mode.title}
-          </button>
-        ))}
+            {modes === null && (
+              <p className="text-muted" style={{ gridColumn: "1 / -1", margin: 0 }}>
+                {slowLoad
+                  ? "Vekker serveren — dette kan ta opptil 30 sekunder hvis den har ligget i dvale."
+                  : "Laster..."}
+              </p>
+            )}
+            {modes?.map((mode) => (
+              <button
+                key={mode.key}
+                className="button button-secondary"
+                disabled={busy}
+                onClick={() => run(mode.key, () => fetchPrebuiltLesson(language, mode.key))}
+              >
+                {loadingKey === mode.key ? "Laster..." : `${situationMarker(mode.key)}${mode.title}`}
+              </button>
+            ))}
+            {modes !== null && (
+              <button className="button" disabled={busy} onClick={() => run("random", () => fetchRandomLesson(language))}>
+                {loadingKey === "random" ? "Laster..." : "🎲 Tilfeldig"}
+              </button>
+            )}
+          </div>
+          {tripActive && (
+            <p className="text-muted" style={{ fontSize: "0.78rem", margin: "8px 0 0" }}>
+              ✓ ferdig til turen · 📅 på planen i dag
+            </p>
+          )}
+        </div>
+      </Section>
 
-        <button
-          className="button"
-          disabled={busy}
-          onClick={() => run("random", () => fetchRandomLesson(language))}
-        >
-          {loadingKey === "random" ? "Laster..." : "🎲 Tilfeldig"}
-        </button>
-      </div>
+      {/* --- Øv nå ------------------------------------------------------- */}
+      <Section title="⚡ Øv nå">
+        <TileGrid>
+          <Tile
+            emoji="⚡"
+            title="Her og nå"
+            description="De 5 viktigste frasene på 2 minutter, for situasjonen du står i."
+            onClick={onEnterQuickPrep}
+          />
+          <Tile
+            emoji="🗣️"
+            title="Øv på en samtale"
+            description="Snakk med en KI-servitør eller -sjåfør. Velg riktig svar av fire."
+            onClick={onEnterRoleplay}
+          />
+        </TileGrid>
+      </Section>
 
-      <div className="card" style={{ marginTop: 20 }}>
-        <h3>📸 Ta bilde av en meny eller et skilt</h3>
-        <p className="text-muted">
-          Vi leser det som står og lager en leksjon ut fra det — f.eks. rettene på menyen og hvordan du
-          bestiller dem.
-        </p>
-        <p className="text-muted" style={{ fontSize: "0.78rem" }}>
-          Bildet sendes til Anthropic (tredjepart) for å lage frasene, og lagres ikke. Ikke ta bilde av
-          personer eller sensitiv informasjon.
-        </p>
+      {/* --- Lag din egen ------------------------------------------------- */}
+      <Section title="✨ Lag din egen">
         <input
           ref={photoInputRef}
           type="file"
@@ -253,9 +250,24 @@ export function ModePicker({
             e.target.value = "";
           }}
         />
-        <button className="button" style={{ width: "100%" }} disabled={busy} onClick={() => photoInputRef.current?.click()}>
-          {loadingKey === "photo" ? "Leser bildet..." : "Ta bilde / velg bilde"}
-        </button>
+        <TileGrid>
+          <Tile
+            emoji="📸"
+            title={loadingKey === "photo" ? "Leser bildet..." : "Bilde av meny/skilt"}
+            description="Ta bilde, så lager vi en leksjon av det som står."
+            disabled={busy}
+            onClick={() => photoInputRef.current?.click()}
+          />
+          <Tile
+            emoji="✍️"
+            title="Beskriv situasjonen"
+            description="Skriv hva du skal gjøre, så lager vi fraser til det."
+            disabled={busy}
+            selected={describeOpen}
+            onClick={() => setDescribeOpen((o) => !o)}
+          />
+        </TileGrid>
+
         {loadingKey === "photo" && (
           <p className="text-muted animate-in" style={{ marginTop: 10, marginBottom: 0 }}>
             {slowGenerate
@@ -263,44 +275,115 @@ export function ModePicker({
               : "Leser bildet og lager fraser — dette tar gjerne 5–15 sekunder."}
           </p>
         )}
-      </div>
 
-      <div className="card" style={{ marginTop: 20 }}>
-        <h3>Beskriv situasjonen</h3>
-        <p className="text-muted">
-          Fungerer ikke noen av kategoriene? Beskriv situasjonen din, så lager vi en leksjon.
-        </p>
-        <p className="text-muted" style={{ fontSize: "0.78rem" }}>
-          Teksten du skriver her sendes til Anthropic (tredjepart) for å generere frasene. Ikke
-          skriv sensitiv informasjon.
-        </p>
-        <textarea
-          value={situation}
-          maxLength={MAX_SITUATION_LENGTH}
-          onChange={(e) => setSituation(e.target.value)}
-          placeholder="F.eks. «Jeg skal sjekke inn på et hotell og spørre om frokost»"
-          rows={3}
-          style={{
-            width: "100%",
-            padding: 12,
-            borderRadius: 12,
-            border: "1px solid var(--color-border)",
-            fontSize: "1rem",
-            resize: "vertical",
-            marginBottom: 10,
-          }}
-        />
-        <button className="button" disabled={busy || !situation.trim()} onClick={handleGenerate}>
-          {loadingKey === "generate" ? "Genererer..." : "Lag leksjon"}
-        </button>
-        {loadingKey === "generate" && (
-          <p className="text-muted animate-in" style={{ marginTop: 10, marginBottom: 0 }}>
-            {slowGenerate
-              ? "Tar litt lengre tid enn vanlig — kan hende serveren våkner fra dvale. Vent litt til..."
-              : "Lager fraser tilpasset situasjonen din — dette tar gjerne 5–15 sekunder."}
-          </p>
+        {describeOpen && (
+          <div className="card animate-in" style={{ marginTop: 10 }}>
+            <textarea
+              value={situation}
+              maxLength={MAX_SITUATION_LENGTH}
+              onChange={(e) => setSituation(e.target.value)}
+              placeholder="F.eks. «Jeg skal sjekke inn på et hotell og spørre om frokost»"
+              rows={3}
+              autoFocus
+              style={{
+                width: "100%",
+                padding: 12,
+                borderRadius: 12,
+                border: "1px solid var(--color-border)",
+                fontSize: "1rem",
+                resize: "vertical",
+                marginBottom: 10,
+              }}
+            />
+            <button className="button" disabled={busy || !situation.trim()} onClick={handleGenerate}>
+              {loadingKey === "generate" ? "Genererer..." : "Lag leksjon"}
+            </button>
+            {loadingKey === "generate" && (
+              <p className="text-muted animate-in" style={{ marginTop: 10, marginBottom: 0 }}>
+                {slowGenerate
+                  ? "Tar litt lengre tid enn vanlig — kan hende serveren våkner fra dvale. Vent litt til..."
+                  : "Lager fraser tilpasset situasjonen din — dette tar gjerne 5–15 sekunder."}
+              </p>
+            )}
+          </div>
         )}
-      </div>
+
+        <p className="text-muted" style={{ fontSize: "0.78rem", marginTop: 10, marginBottom: 0 }}>
+          Bilder og tekst du skriver her sendes til Anthropic (tredjepart) for å lage frasene, og lagres ikke.
+          Ikke del sensitiv informasjon eller bilder av personer.
+        </p>
+      </Section>
+
+      {/* --- Ordforråd ---------------------------------------------------- */}
+      {/* Only shown once there's fetched content for this language — no point
+          linking into a journey that's 100% locked. */}
+      {showVocab && (
+        <Section title="📚 Ordforråd">
+          <TileGrid>
+            {getWordCount(language) > 0 && (
+              <Tile
+                emoji="📚"
+                title="De mest brukte ordene"
+                description="En reise gjennom de vanligste ordene, milepæl for milepæl."
+                onClick={onEnterVocabJourney}
+              />
+            )}
+            {getTopicWordCount("tourist", language) > 0 && (
+              <Tile
+                emoji="🧳"
+                title={TOPICS.tourist.title}
+                description={TOPICS.tourist.description}
+                onClick={() => onEnterTopic("tourist")}
+              />
+            )}
+          </TileGrid>
+        </Section>
+      )}
     </div>
+  );
+}
+
+function Section({ title, subtitle, children }: { title: string; subtitle?: string; children: ReactNode }) {
+  return (
+    <section style={{ marginTop: 28 }}>
+      <h3 style={{ marginBottom: subtitle ? 2 : 10 }}>{title}</h3>
+      {subtitle && (
+        <p className="text-muted" style={{ marginTop: 0, marginBottom: 10, fontSize: "0.9rem" }}>
+          {subtitle}
+        </p>
+      )}
+      {children}
+    </section>
+  );
+}
+
+function TileGrid({ children }: { children: ReactNode }) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 10 }}>
+      {children}
+    </div>
+  );
+}
+
+type TileProps = {
+  emoji: string;
+  title: string;
+  description: string;
+  onClick: () => void;
+  disabled?: boolean;
+  selected?: boolean;
+};
+
+function Tile({ emoji, title, description, onClick, disabled, selected }: TileProps) {
+  return (
+    <button className={`tile${selected ? " tile-selected" : ""}`} onClick={onClick} disabled={disabled}>
+      <span style={{ fontSize: "1.4rem" }} aria-hidden="true">
+        {emoji}
+      </span>
+      <strong>{title}</strong>
+      <span className="text-muted" style={{ fontSize: "0.82rem" }}>
+        {description}
+      </span>
+    </button>
   );
 }

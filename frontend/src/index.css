@@ -222,3 +222,56 @@ textarea {
     scroll-behavior: auto !important;
   }
 }
+
+/* Home screen tiles (ModePicker): compact, tappable cards with emoji, title
+   and a one-line description — replaces the long stack of full cards. */
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.tile:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+.tile:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.tile:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.tile-selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* Trip banner at the top of the Situasjoner section. */
+.trip-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px dashed var(--color-border);
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+.trip-banner:hover {
+  border-color: var(--color-primary);
+}
