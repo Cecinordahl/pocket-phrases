@@ -19,6 +19,7 @@ No accounts.
 | **⚡ Her og nå** | 2-minute refresh of the 5 phrases you need for a situation you're in right now, then a large-text cheat sheet | No |
 | **🧳 Reiseplan** | Destination + departure date → a day-by-day plan that reflows if you skip a day, with a "generalprøve" the last day | No |
 | **🗣️ Øv på en samtale** | Roleplay with an AI waiter/receptionist/driver: pick the right reply out of 4 (or type your own), with feedback and gentle corrections (max 8 replies) | Yes |
+| **👫 Del med reisefølget** | Share a lesson or a trip plan as a link (native share sheet or copy). The recipient gets the exact same phrases / plan — no accounts | No |
 | **📚 Ordforråd-reisen** | Most-frequent words, milestone by milestone, with module quizzes and review tests (French prototype) | No |
 | **🧳 Turistord** | Themed tourist vocabulary with module quizzes (French prototype) | No |
 
@@ -45,6 +46,7 @@ pocket-phrases/
 │       ├── lib/progress.ts   localStorage progress, behind a ProgressStore seam
 │       ├── lib/trip.ts       trip plan storage + day-by-day plan logic
 │       ├── lib/srs.ts        spaced repetition (most-overdue phrases first)
+│       ├── lib/share.ts      travel-buddy links: lesson/trip compressed into #share=...
 │       └── screens/          LanguagePicker -> ModePicker -> LessonScreen, plus
 │                             QuickPrep ("Her og nå"), TripSetup/TripPlan, Roleplay, vocab journeys
 ├── render.yaml        legacy Render blueprint (no longer used, see Deploy)
@@ -163,6 +165,7 @@ Never commit real values. See `backend/.env.example` and `frontend/.env.example`
 - **Free-text generation uses Anthropic's structured outputs** (`output_config.format`, derived from a `GeneratedLesson` record) rather than "prompt for JSON + manually parse the text." This makes the response validated JSON at the API level — a stronger version of "strict JSON only" than string parsing. A `try/catch` around the whole call still exists: if Anthropic errors, refuses, or the SDK throws for any reason, the backend serves a prebuilt "Turist-essensielt" lesson instead of an error page.
 - **Roleplay is stateless.** The frontend keeps the conversation and sends the whole history each turn, so the backend needs no sessions, database or accounts. Cost is capped three ways: max 8 user replies per conversation, max 300 characters per message, and an in-memory limit of 60 turns per hour per client IP (`HourlyRateLimiter`, keyed on `CF-Connecting-IP`; resets on restart, which is fine for a single instance).
 - **Trip plans are recomputed, not stored.** Only the trip (destination, date, chosen situations, completed situations) is saved; the day-by-day plan is rebuilt from "what's left" and "days left" every time, so a skipped day simply reflows.
+- **Travel-buddy links carry the content themselves.** A shared lesson or trip is JSON, deflate-compressed and base64url-encoded into the URL fragment (`#share=…`, roughly 200–500 characters). No share table, no backend endpoint, nothing to expire. Links come from other people, so `lib/share.ts` treats them as untrusted: size-capped, and only known fields are rebuilt and validated before use. A shared trip never includes the sender's progress.
 - **Progress storage lives behind a `ProgressStore` interface** (`frontend/src/lib/progress.ts`), with only a `localStorage` implementation for now. The comment in that file marks it as the seam for a future account-backed implementation — the UI only ever calls the interface, never `localStorage` directly.
 
 ## Legal & privacy
@@ -175,6 +178,7 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 - **The free-text "Beskriv situasjonen" box and roleplay chat.** Whatever the user types is sent to Anthropic (a third-party AI provider) to generate a lesson. It could technically contain personal information if a user chose to type some in, though the feature doesn't ask for or need any. The backend does not log or persist this text anywhere — it's forwarded to Anthropic and the response is returned to the browser in the same request/response cycle. A line next to each input discloses this before the user submits anything (e.g. *"Teksten du skriver her sendes til Anthropic (tredjepart) for å generere frasene. Ikke skriv sensitiv informasjon."*).
 - **Progress data** (which modes have been read/drilled/quizzed, last quiz score, streak, trip plan) lives entirely in the browser's `localStorage`. It is never sent to any Pocket Phrases server — from a GDPR standpoint this isn't "processing" by the app operator at all, it's local application state the user's own device holds.
 - **Server logs.** The backend's default web server access logs (Spring Boot, Coolify's proxy, Cloudflare) will contain client IP addresses, as with essentially any web server. Nothing app-specific is added to them; the app doesn't read, aggregate, or act on this data. The roleplay rate limiter also keeps client IPs and timestamps **in memory only** (never written to disk), dropped after an hour or on restart. If you deploy this for real, keep default log retention short and don't repurpose these logs for anything beyond debugging.
+- **Shared links (👫 Del med reisefølget).** The lesson or trip lives in the URL fragment (`#…`), which browsers never send to the server, so shared content isn't logged by the app, Coolify or Cloudflare. Whoever receives the link can read it — it contains phrases and, for a trip, the destination and departure date the sender chose to share.
 - **No accounts, no analytics, no advertising, no cookies of any kind.**
 - **The optional email whitelist** (off by default): if enabled, the email address a user enters is stored as plain text in a Firestore `whitelist` collection you (the deployer) manage, solely to gate access. It isn't linked to any other data the app holds.
 
@@ -195,4 +199,3 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 - Orforråd reisen skal helst unngå ord som de, est, le, la, osv. siden de alltid hører sammen med noe annet feks la maison.
 - Norwegian sentence displayed, mix of drag and drop words for the user to create the sentence themselves, with many (minimum 5, max 10) words that are not correct but are there to confuse the user.
 - AI version where the user can type the sentence themselves and the LLM will check to see if the user got it somewhat right- it would be nice to give feks score based on percentage of correctness. Example for spanish, "Jeg elsker deg" is displayed in norwegian and the user writes "Te amo" is 100% correct (?) but if the user writes "Tu amo" they get some points say 90% since they may have thought te amo but missed one letter.
-- **Travel buddy mode:** share a link to a lesson (or a whole trip plan) with travel companions — no accounts needed, e.g. lesson encoded in the URL or stored under a short share id.

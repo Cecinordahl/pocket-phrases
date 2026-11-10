@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Language, Lesson } from "./types/lesson";
 import type { VocabReviewScope } from "./lib/frequency";
 import { LanguagePicker } from "./screens/LanguagePicker";
@@ -17,6 +17,8 @@ import { TripSetup } from "./screens/TripSetup";
 import { TripPlan } from "./screens/TripPlan";
 import { tripStore } from "./lib/trip";
 import { Roleplay } from "./screens/Roleplay";
+import { SharedTripImport } from "./screens/SharedTripImport";
+import { consumeShareFromLocation, type SharedTrip } from "./lib/share";
 import { frequencyProgressStore } from "./lib/frequencyProgress";
 import type { TopicId } from "./lib/topicVocab";
 
@@ -38,11 +40,29 @@ type Screen =
   | { name: "quick-prep"; language: Language }
   | { name: "trip-setup"; language: Language }
   | { name: "trip-plan"; language: Language }
-  | { name: "roleplay"; language: Language };
+  | { name: "roleplay"; language: Language }
+  | { name: "shared-trip"; trip: SharedTrip };
 
 function App() {
   const [screen, setScreen] = useState<Screen>({ name: "language" });
   const [accessDenied, setAccessDenied] = useState(false);
+  const [shareError, setShareError] = useState(false);
+
+  // Opened from a travel buddy's link (#share=...): jump straight to the shared lesson/trip.
+  useEffect(() => {
+    consumeShareFromLocation().then((shared) => {
+      if (shared === null) return;
+      if (shared === "invalid") {
+        setShareError(true);
+        return;
+      }
+      if (shared.kind === "lesson") {
+        setScreen({ name: "lesson", language: shared.lesson.language, lesson: shared.lesson });
+      } else {
+        setScreen({ name: "shared-trip", trip: shared.trip });
+      }
+    });
+  }, []);
 
   // Only ever triggered by a 403 from the backend's optional whitelist gate.
   if (accessDenied) {
@@ -50,7 +70,27 @@ function App() {
   }
 
   if (screen.name === "language") {
-    return <LanguagePicker onSelect={(language) => setScreen({ name: "mode", language })} />;
+    return (
+      <>
+        {shareError && (
+          <p style={{ color: "var(--color-warning)", marginTop: 16 }} role="alert">
+            Lenken du åpnet ser ut til å være ødelagt eller ufullstendig. Be om en ny lenke.
+          </p>
+        )}
+        <LanguagePicker onSelect={(language) => setScreen({ name: "mode", language })} />
+      </>
+    );
+  }
+
+  if (screen.name === "shared-trip") {
+    const { trip } = screen;
+    return (
+      <SharedTripImport
+        trip={trip}
+        onImported={() => setScreen({ name: "trip-plan", language: trip.language })}
+        onCancel={() => setScreen({ name: "mode", language: trip.language })}
+      />
+    );
   }
 
   if (screen.name === "mode") {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Lesson, ModeInfo } from "../types/lesson";
 import { AccessDeniedError, fetchPrebuiltLesson, fetchRandomLesson } from "../lib/api";
+import { ShareButton } from "../components/ShareButton";
 import { buildPlan, dayLabel, daysUntil, REHEARSAL_KEY, tripStore, type Trip } from "../lib/trip";
 
 type TripPlanProps = {
@@ -140,7 +141,25 @@ export function TripPlan({
         </div>
       )}
 
-      <div style={{ display: "flex", gap: 8, marginTop: 20 }}>
+      {left >= 0 && (
+        <div style={{ marginTop: 20 }}>
+          <ShareButton
+            payload={{
+              v: 1,
+              kind: "trip",
+              trip: {
+                language: trip.language,
+                destination: trip.destination,
+                departureDate: trip.departureDate,
+                modes: trip.modes,
+              },
+            }}
+            text={`Bli med og øv til ${trip.destination || "turen"} i Pocket Phrases`}
+          />
+        </div>
+      )}
+
+      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
         <button className="button button-secondary" style={{ flex: 1 }} onClick={onEdit}>
           Endre plan
         </button>

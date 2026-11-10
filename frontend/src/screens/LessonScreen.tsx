@@ -8,6 +8,7 @@ import { Read } from "../components/Read";
 import { Drill } from "../components/Drill";
 import { Quiz } from "../components/Quiz";
 import { Disclaimer } from "../components/Disclaimer";
+import { ShareButton } from "../components/ShareButton";
 
 type LessonScreenProps = {
   lesson: Lesson;
@@ -127,6 +128,13 @@ export function LessonScreen({ lesson: initialLesson, onBack, onAccessDenied }: 
           requestingNewSet={refreshing}
         />
       )}
+
+      <div style={{ marginTop: 24 }}>
+        <ShareButton
+          payload={{ v: 1, kind: "lesson", lesson }}
+          text={`Øv på «${lesson.title}» med meg i Pocket Phrases`}
+        />
+      </div>
     </div>
   );
 }
