@@ -72,7 +72,7 @@ export function VocabModuleQuiz({ language, moduleIndex, onBack, onModuleComplet
       {phase === "quiz" && (
         <>
           <p className="text-muted">Du må svare 100 % riktig for å låse opp neste modul.</p>
-          <Quiz phrases={phrases} direction="target-to-native" onComplete={handleQuizComplete} />
+          <Quiz phrases={phrases} language={language} direction="target-to-native" onComplete={handleQuizComplete} />
         </>
       )}
     </div>

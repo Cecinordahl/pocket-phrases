@@ -3,1200 +3,1600 @@
     "rank": 1,
     "target": "de",
     "native": "av / fra",
-    "pronunciation": "duh"
+    "pronunciation": "duh",
+    "example": "Je viens de Norvège.",
+    "exampleNative": "Jeg kommer fra Norge."
   },
   {
     "rank": 2,
     "target": "je",
     "native": "jeg",
-    "pronunciation": "zjuh"
+    "pronunciation": "zjuh",
+    "example": "Je voudrais un café.",
+    "exampleNative": "Jeg vil gjerne ha en kaffe."
   },
   {
     "rank": 3,
     "target": "est",
     "native": "er (han/hun/det er)",
-    "pronunciation": "eh"
+    "pronunciation": "eh",
+    "example": "Le musée est fermé.",
+    "exampleNative": "Museet er stengt."
   },
   {
     "rank": 4,
     "target": "pas",
     "native": "ikke",
-    "pronunciation": "pa"
+    "pronunciation": "pa",
+    "example": "Je ne comprends pas.",
+    "exampleNative": "Jeg forstår ikke."
   },
   {
     "rank": 5,
     "target": "le",
     "native": "den/det (hankjønn – bestemt artikkel)",
-    "pronunciation": "luh"
+    "pronunciation": "luh",
+    "example": "Le train arrive à midi.",
+    "exampleNative": "Toget kommer klokka tolv."
   },
   {
     "rank": 6,
     "target": "que",
     "native": "at / som / hva",
-    "pronunciation": "kuh"
+    "pronunciation": "kuh",
+    "example": "Je pense que c'est loin.",
+    "exampleNative": "Jeg tror at det er langt unna."
   },
   {
     "rank": 7,
     "target": "la",
     "native": "den/det (hunkjønn – bestemt artikkel)",
-    "pronunciation": "la"
+    "pronunciation": "la",
+    "example": "La gare est par là.",
+    "exampleNative": "Stasjonen er der borte."
   },
   {
     "rank": 8,
     "target": "vous",
     "native": "du/dere (høflig eller flertall)",
-    "pronunciation": "voo"
+    "pronunciation": "voo",
+    "example": "Vous parlez anglais ?",
+    "exampleNative": "Snakker du engelsk?"
   },
   {
     "rank": 9,
     "target": "tu",
     "native": "du",
-    "pronunciation": "tü"
+    "pronunciation": "tü",
+    "example": "Tu veux un verre ?",
+    "exampleNative": "Vil du ha noe å drikke?"
   },
   {
     "rank": 10,
     "target": "un",
     "native": "en/ett (hankjønn – ubestemt artikkel)",
-    "pronunciation": "ang"
+    "pronunciation": "ang",
+    "example": "Un billet, s'il vous plaît.",
+    "exampleNative": "En billett, takk."
   },
   {
     "rank": 11,
     "target": "à",
     "native": "til / på / i",
-    "pronunciation": "a"
+    "pronunciation": "a",
+    "example": "Je vais à Paris demain.",
+    "exampleNative": "Jeg drar til Paris i morgen."
   },
   {
     "rank": 12,
     "target": "et",
     "native": "og",
-    "pronunciation": "eh"
+    "pronunciation": "eh",
+    "example": "Un café et un croissant.",
+    "exampleNative": "En kaffe og en croissant."
   },
   {
     "rank": 13,
     "target": "il",
     "native": "han / det",
-    "pronunciation": "il"
+    "pronunciation": "il",
+    "example": "Il fait beau aujourd'hui.",
+    "exampleNative": "Det er fint vær i dag."
   },
   {
     "rank": 14,
     "target": "a",
     "native": "har (han/hun har)",
-    "pronunciation": "a"
+    "pronunciation": "a",
+    "example": "Il a deux enfants.",
+    "exampleNative": "Han har to barn."
   },
   {
     "rank": 15,
     "target": "ne",
     "native": "ikke (del 1 av nektelse)",
-    "pronunciation": "nuh"
+    "pronunciation": "nuh",
+    "example": "Je ne sais pas.",
+    "exampleNative": "Jeg vet ikke."
   },
   {
     "rank": 16,
     "target": "les",
     "native": "de (bestemt artikkel, flertall)",
-    "pronunciation": "lej"
+    "pronunciation": "lej",
+    "example": "Les toilettes sont en bas.",
+    "exampleNative": "Toalettene er nede."
   },
   {
     "rank": 17,
     "target": "en",
     "native": "av det / i (også preposisjon)",
-    "pronunciation": "ang"
+    "pronunciation": "ang",
+    "example": "Des croissants ? J'en veux deux.",
+    "exampleNative": "Croissanter? Jeg vil ha to."
   },
   {
     "rank": 18,
     "target": "on",
     "native": "man / vi (uformelt)",
-    "pronunciation": "ong"
+    "pronunciation": "ong",
+    "example": "On va à la plage ?",
+    "exampleNative": "Skal vi dra på stranden?"
   },
   {
     "rank": 19,
     "target": "ça",
     "native": "det (uformelt)",
-    "pronunciation": "sa"
+    "pronunciation": "sa",
+    "example": "Ça coûte combien ?",
+    "exampleNative": "Hva koster det?"
   },
   {
     "rank": 20,
     "target": "une",
     "native": "en/ei (hunkjønn – ubestemt artikkel)",
-    "pronunciation": "ün"
+    "pronunciation": "ün",
+    "example": "Une table pour deux, s'il vous plaît.",
+    "exampleNative": "Et bord for to, takk."
   },
   {
     "rank": 21,
     "target": "ce",
     "native": "denne / dette (hankjønn)",
-    "pronunciation": "suh"
+    "pronunciation": "suh",
+    "example": "Ce restaurant est très bon.",
+    "exampleNative": "Denne restauranten er veldig god."
   },
   {
     "rank": 22,
     "target": "pour",
     "native": "for",
-    "pronunciation": "puur"
+    "pronunciation": "puur",
+    "example": "Un billet pour Lyon, s'il vous plaît.",
+    "exampleNative": "En billett til Lyon, takk."
   },
   {
     "rank": 23,
     "target": "ai",
     "native": "har (jeg har)",
-    "pronunciation": "eh"
+    "pronunciation": "eh",
+    "example": "J'ai faim.",
+    "exampleNative": "Jeg er sulten."
   },
   {
     "rank": 24,
     "target": "des",
     "native": "noen (ubestemt artikkel, flertall)",
-    "pronunciation": "deh"
+    "pronunciation": "deh",
+    "example": "Il y a des taxis devant la gare.",
+    "exampleNative": "Det står drosjer foran stasjonen."
   },
   {
     "rank": 25,
     "target": "qui",
     "native": "hvem / som",
-    "pronunciation": "ki"
+    "pronunciation": "ki",
+    "example": "Qui est là ?",
+    "exampleNative": "Hvem er der?"
   },
   {
     "rank": 26,
     "target": "mais",
     "native": "men",
-    "pronunciation": "meh"
+    "pronunciation": "meh",
+    "example": "C'est bon, mais c'est cher.",
+    "exampleNative": "Det er godt, men det er dyrt."
   },
   {
     "rank": 27,
     "target": "dans",
     "native": "i (sted)",
-    "pronunciation": "dang"
+    "pronunciation": "dang",
+    "example": "Mon passeport est dans mon sac.",
+    "exampleNative": "Passet mitt er i veska mi."
   },
   {
     "rank": 28,
     "target": "nous",
     "native": "vi / oss",
-    "pronunciation": "noo"
+    "pronunciation": "noo",
+    "example": "Nous sommes norvégiens.",
+    "exampleNative": "Vi er norske."
   },
   {
     "rank": 29,
     "target": "elle",
     "native": "hun / den",
-    "pronunciation": "ell"
+    "pronunciation": "ell",
+    "example": "Elle parle français.",
+    "exampleNative": "Hun snakker fransk."
   },
   {
     "rank": 30,
     "target": "me",
     "native": "meg",
-    "pronunciation": "muh"
+    "pronunciation": "muh",
+    "example": "Vous me donnez l'addition ?",
+    "exampleNative": "Kan du gi meg regningen?"
   },
   {
     "rank": 31,
     "target": "bien",
     "native": "bra / godt",
-    "pronunciation": "bjang"
+    "pronunciation": "bjang",
+    "example": "Je vais bien, merci.",
+    "exampleNative": "Jeg har det bra, takk."
   },
   {
     "rank": 32,
     "target": "si",
     "native": "hvis / så / jo",
-    "pronunciation": "si"
+    "pronunciation": "si",
+    "example": "Si tu veux, on peut y aller.",
+    "exampleNative": "Hvis du vil, kan vi dra dit."
   },
   {
     "rank": 33,
     "target": "du",
     "native": "noe (partitiv) / av den",
-    "pronunciation": "dü"
+    "pronunciation": "dü",
+    "example": "Je voudrais du pain.",
+    "exampleNative": "Jeg vil gjerne ha brød."
   },
   {
     "rank": 34,
     "target": "y",
     "native": "der / dit",
-    "pronunciation": "i"
+    "pronunciation": "i",
+    "example": "On y va ?",
+    "exampleNative": "Skal vi dra?"
   },
   {
     "rank": 35,
     "target": "suis",
     "native": "er (jeg er)",
-    "pronunciation": "sui"
+    "pronunciation": "sui",
+    "example": "Je suis en vacances.",
+    "exampleNative": "Jeg er på ferie."
   },
   {
     "rank": 36,
     "target": "non",
     "native": "nei",
-    "pronunciation": "nong"
+    "pronunciation": "nong",
+    "example": "Non, merci.",
+    "exampleNative": "Nei takk."
   },
   {
     "rank": 37,
     "target": "avec",
     "native": "med",
-    "pronunciation": "avekk"
+    "pronunciation": "avekk",
+    "example": "Un café avec du lait, s'il vous plaît.",
+    "exampleNative": "En kaffe med melk, takk."
   },
   {
     "rank": 38,
     "target": "tout",
     "native": "alt / helt",
-    "pronunciation": "too"
+    "pronunciation": "too",
+    "example": "C'est tout, merci.",
+    "exampleNative": "Det var alt, takk."
   },
   {
     "rank": 39,
     "target": "plus",
     "native": "mer",
-    "pronunciation": "plü"
+    "pronunciation": "plü",
+    "example": "Un peu plus, s'il vous plaît.",
+    "exampleNative": "Litt mer, takk."
   },
   {
     "rank": 40,
     "target": "mon",
     "native": "min (hankjønn)",
-    "pronunciation": "mong"
+    "pronunciation": "mong",
+    "example": "Mon hôtel est près d'ici.",
+    "exampleNative": "Hotellet mitt er like her."
   },
   {
     "rank": 41,
     "target": "te",
     "native": "deg",
-    "pronunciation": "tuh"
+    "pronunciation": "tuh",
+    "example": "Je te remercie.",
+    "exampleNative": "Jeg takker deg."
   },
   {
     "rank": 42,
     "target": "au",
     "native": "til / på (sammentrukket)",
-    "pronunciation": "oo"
+    "pronunciation": "oo",
+    "example": "Je vais au musée.",
+    "exampleNative": "Jeg skal på museet."
   },
   {
     "rank": 43,
     "target": "fait",
     "native": "gjør / gjort",
-    "pronunciation": "feh"
+    "pronunciation": "feh",
+    "example": "Il fait chaud aujourd'hui.",
+    "exampleNative": "Det er varmt i dag."
   },
   {
     "rank": 44,
     "target": "moi",
     "native": "meg",
-    "pronunciation": "moa"
+    "pronunciation": "moa",
+    "example": "Pour moi, une bière.",
+    "exampleNative": "En øl til meg."
   },
   {
     "rank": 45,
     "target": "oui",
     "native": "ja",
-    "pronunciation": "wi"
+    "pronunciation": "wi",
+    "example": "Oui, bien sûr.",
+    "exampleNative": "Ja, selvfølgelig."
   },
   {
     "rank": 46,
     "target": "va",
     "native": "går (han/hun går)",
-    "pronunciation": "va"
+    "pronunciation": "va",
+    "example": "Ce bus va au centre ?",
+    "exampleNative": "Går denne bussen til sentrum?"
   },
   {
     "rank": 47,
     "target": "était",
     "native": "var (han/hun var)",
-    "pronunciation": "etee"
+    "pronunciation": "etee",
+    "example": "C'était délicieux !",
+    "exampleNative": "Det var nydelig!"
   },
   {
     "rank": 48,
     "target": "as",
     "native": "har (du har)",
-    "pronunciation": "a"
+    "pronunciation": "a",
+    "example": "Tu as l'heure ?",
+    "exampleNative": "Vet du hva klokka er?"
   },
   {
     "rank": 49,
     "target": "faire",
     "native": "å gjøre",
-    "pronunciation": "fair"
+    "pronunciation": "fair",
+    "example": "Qu'est-ce qu'on va faire ce soir ?",
+    "exampleNative": "Hva skal vi gjøre i kveld?"
   },
   {
     "rank": 50,
     "target": "ils",
     "native": "de (hankjønn)",
-    "pronunciation": "il"
+    "pronunciation": "il",
+    "example": "Ils sont très gentils.",
+    "exampleNative": "De er veldig hyggelige."
   },
   {
     "rank": 51,
     "target": "sur",
     "native": "på",
-    "pronunciation": "sür"
+    "pronunciation": "sür",
+    "example": "Les clés sont sur la table.",
+    "exampleNative": "Nøklene ligger på bordet."
   },
   {
     "rank": 52,
     "target": "quoi",
     "native": "hva",
-    "pronunciation": "koa"
+    "pronunciation": "koa",
+    "example": "Tu fais quoi ce soir ?",
+    "exampleNative": "Hva gjør du i kveld?"
   },
   {
     "rank": 53,
     "target": "se",
     "native": "seg",
-    "pronunciation": "suh"
+    "pronunciation": "suh",
+    "example": "On se voit demain ?",
+    "exampleNative": "Ses vi i morgen?"
   },
   {
     "rank": 54,
     "target": "comme",
     "native": "som / liksom",
-    "pronunciation": "komm"
+    "pronunciation": "komm",
+    "example": "Comme dessert, une glace.",
+    "exampleNative": "Til dessert, en is."
   },
   {
     "rank": 55,
     "target": "sais",
     "native": "vet (jeg/du vet)",
-    "pronunciation": "seh"
+    "pronunciation": "seh",
+    "example": "Je ne sais pas où c'est.",
+    "exampleNative": "Jeg vet ikke hvor det er."
   },
   {
     "rank": 56,
     "target": "être",
     "native": "å være",
-    "pronunciation": "etr"
+    "pronunciation": "etr",
+    "example": "Je veux être à l'heure.",
+    "exampleNative": "Jeg vil være i tide."
   },
   {
     "rank": 57,
     "target": "veux",
     "native": "vil (jeg/du vil)",
-    "pronunciation": "vøh"
+    "pronunciation": "vøh",
+    "example": "Je veux un taxi, s'il vous plaît.",
+    "exampleNative": "Jeg vil ha en drosje, takk."
   },
   {
     "rank": 58,
     "target": "ici",
     "native": "her",
-    "pronunciation": "isi"
+    "pronunciation": "isi",
+    "example": "Le métro est ici.",
+    "exampleNative": "T-banen er her."
   },
   {
     "rank": 59,
     "target": "ma",
     "native": "min (hunkjønn)",
-    "pronunciation": "ma"
+    "pronunciation": "ma",
+    "example": "Ma valise est trop lourde.",
+    "exampleNative": "Kofferten min er for tung."
   },
   {
     "rank": 60,
     "target": "toi",
     "native": "deg",
-    "pronunciation": "toa"
+    "pronunciation": "toa",
+    "example": "Et toi, ça va ?",
+    "exampleNative": "Og du, har du det bra?"
   },
   {
     "rank": 61,
     "target": "dit",
     "native": "sier / sa",
-    "pronunciation": "di"
+    "pronunciation": "di",
+    "example": "Il dit que c'est fermé.",
+    "exampleNative": "Han sier at det er stengt."
   },
   {
     "rank": 62,
     "target": "lui",
     "native": "ham / henne",
-    "pronunciation": "lui"
+    "pronunciation": "lui",
+    "example": "Je lui donne un pourboire.",
+    "exampleNative": "Jeg gir ham/henne driks."
   },
   {
     "rank": 63,
     "target": "votre",
     "native": "deres / din (høflig)",
-    "pronunciation": "votr"
+    "pronunciation": "votr",
+    "example": "Votre passeport, s'il vous plaît.",
+    "exampleNative": "Passet ditt, takk."
   },
   {
     "rank": 64,
     "target": "es",
     "native": "er (du er)",
-    "pronunciation": "eh"
+    "pronunciation": "eh",
+    "example": "Tu es d'où ?",
+    "exampleNative": "Hvor kommer du fra?"
   },
   {
     "rank": 65,
     "target": "pourquoi",
     "native": "hvorfor",
-    "pronunciation": "purkoa"
+    "pronunciation": "purkoa",
+    "example": "Pourquoi c'est fermé ?",
+    "exampleNative": "Hvorfor er det stengt?"
   },
   {
     "rank": 66,
     "target": "où",
     "native": "hvor",
-    "pronunciation": "oo"
+    "pronunciation": "oo",
+    "example": "Où sont les toilettes ?",
+    "exampleNative": "Hvor er toalettene?"
   },
   {
     "rank": 67,
     "target": "là",
     "native": "der",
-    "pronunciation": "la"
+    "pronunciation": "la",
+    "example": "La sortie est là.",
+    "exampleNative": "Utgangen er der."
   },
   {
     "rank": 68,
     "target": "rien",
     "native": "ingenting",
-    "pronunciation": "rjang"
+    "pronunciation": "rjang",
+    "example": "Je n'ai rien à déclarer.",
+    "exampleNative": "Jeg har ingenting å fortolle."
   },
   {
     "rank": 69,
     "target": "cette",
     "native": "denne / dette (hunkjønn)",
-    "pronunciation": "sett"
+    "pronunciation": "sett",
+    "example": "Cette rue est très jolie.",
+    "exampleNative": "Denne gata er veldig fin."
   },
   {
     "rank": 70,
     "target": "sont",
     "native": "er (de er)",
-    "pronunciation": "song"
+    "pronunciation": "song",
+    "example": "Les magasins sont fermés le dimanche.",
+    "exampleNative": "Butikkene er stengt på søndag."
   },
   {
     "rank": 71,
     "target": "quand",
     "native": "når",
-    "pronunciation": "kang"
+    "pronunciation": "kang",
+    "example": "Quand part le train ?",
+    "exampleNative": "Når går toget?"
   },
   {
     "rank": 72,
     "target": "peux",
     "native": "kan (jeg/du kan)",
-    "pronunciation": "pøh"
+    "pronunciation": "pøh",
+    "example": "Je peux payer par carte ?",
+    "exampleNative": "Kan jeg betale med kort?"
   },
   {
     "rank": 73,
     "target": "dire",
     "native": "å si",
-    "pronunciation": "diir"
+    "pronunciation": "diir",
+    "example": "Comment dire « merci » en français ?",
+    "exampleNative": "Hvordan sier man «takk» på fransk?"
   },
   {
     "rank": 74,
     "target": "son",
     "native": "hans / hennes (hankjønn)",
-    "pronunciation": "song"
+    "pronunciation": "song",
+    "example": "Il a perdu son billet.",
+    "exampleNative": "Han har mistet billetten sin."
   },
   {
     "rank": 75,
     "target": "avez",
     "native": "har (dere har)",
-    "pronunciation": "avee"
+    "pronunciation": "avee",
+    "example": "Vous avez une chambre libre ?",
+    "exampleNative": "Har dere et ledig rom?"
   },
   {
     "rank": 76,
     "target": "vais",
     "native": "skal / drar (jeg skal)",
-    "pronunciation": "veh"
+    "pronunciation": "veh",
+    "example": "Je vais à la gare.",
+    "exampleNative": "Jeg skal til stasjonen."
   },
   {
     "rank": 77,
     "target": "alors",
     "native": "så / da",
-    "pronunciation": "alor"
+    "pronunciation": "alor",
+    "example": "Alors, on y va ?",
+    "exampleNative": "Så, skal vi dra?"
   },
   {
     "rank": 78,
     "target": "ton",
     "native": "din (hankjønn)",
-    "pronunciation": "tong"
+    "pronunciation": "tong",
+    "example": "C'est ton sac ?",
+    "exampleNative": "Er det veska di?"
   },
   {
     "rank": 79,
     "target": "comment",
     "native": "hvordan",
-    "pronunciation": "komang"
+    "pronunciation": "komang",
+    "example": "Comment allez-vous ?",
+    "exampleNative": "Hvordan har du det?"
   },
   {
     "rank": 80,
     "target": "par",
     "native": "via / av",
-    "pronunciation": "par"
+    "pronunciation": "par",
+    "example": "Je paie par carte.",
+    "exampleNative": "Jeg betaler med kort."
   },
   {
     "rank": 81,
     "target": "ou",
     "native": "eller",
-    "pronunciation": "oo"
+    "pronunciation": "oo",
+    "example": "Du thé ou du café ?",
+    "exampleNative": "Te eller kaffe?"
   },
   {
     "rank": 82,
     "target": "chose",
     "native": "ting",
-    "pronunciation": "sjoos"
+    "pronunciation": "sjoos",
+    "example": "J'ai oublié une chose à l'hôtel.",
+    "exampleNative": "Jeg har glemt en ting på hotellet."
   },
   {
     "rank": 83,
     "target": "bon",
     "native": "god / bra",
-    "pronunciation": "bong"
+    "pronunciation": "bong",
+    "example": "Bon appétit !",
+    "exampleNative": "God appetitt!"
   },
   {
     "rank": 84,
     "target": "ont",
     "native": "har (de har)",
-    "pronunciation": "ong"
+    "pronunciation": "ong",
+    "example": "Ils ont une table pour nous.",
+    "exampleNative": "De har et bord til oss."
   },
   {
     "rank": 85,
     "target": "merci",
     "native": "takk",
-    "pronunciation": "mersi"
+    "pronunciation": "mersi",
+    "example": "Merci beaucoup !",
+    "exampleNative": "Tusen takk!"
   },
   {
     "rank": 86,
     "target": "juste",
     "native": "bare / rettferdig",
-    "pronunciation": "jüst"
+    "pronunciation": "jüst",
+    "example": "Juste un café, s'il vous plaît.",
+    "exampleNative": "Bare en kaffe, takk."
   },
   {
     "rank": 87,
     "target": "très",
     "native": "veldig",
-    "pronunciation": "treh"
+    "pronunciation": "treh",
+    "example": "C'est très joli.",
+    "exampleNative": "Det er veldig fint."
   },
   {
     "rank": 88,
     "target": "jamais",
     "native": "aldri",
-    "pronunciation": "jameh"
+    "pronunciation": "jameh",
+    "example": "Je ne suis jamais allé à Paris.",
+    "exampleNative": "Jeg har aldri vært i Paris."
   },
   {
     "rank": 89,
     "target": "été",
     "native": "vært / sommer",
-    "pronunciation": "etee"
+    "pronunciation": "etee",
+    "example": "J'ai été malade hier.",
+    "exampleNative": "Jeg var syk i går."
   },
   {
     "rank": 90,
     "target": "aussi",
     "native": "også",
-    "pronunciation": "osi"
+    "pronunciation": "osi",
+    "example": "Moi aussi !",
+    "exampleNative": "Jeg også!"
   },
   {
     "rank": 91,
     "target": "avoir",
     "native": "å ha",
-    "pronunciation": "avoar"
+    "pronunciation": "avoar",
+    "example": "Je voudrais avoir l'addition.",
+    "exampleNative": "Jeg vil gjerne få regningen."
   },
   {
     "rank": 92,
     "target": "vraiment",
     "native": "virkelig",
-    "pronunciation": "vremang"
+    "pronunciation": "vremang",
+    "example": "C'est vraiment bon !",
+    "exampleNative": "Det er virkelig godt!"
   },
   {
     "rank": 93,
     "target": "voir",
     "native": "å se",
-    "pronunciation": "voar"
+    "pronunciation": "voar",
+    "example": "Je veux voir la tour Eiffel.",
+    "exampleNative": "Jeg vil se Eiffeltårnet."
   },
   {
     "rank": 94,
     "target": "même",
     "native": "til og med / samme",
-    "pronunciation": "mem"
+    "pronunciation": "mem",
+    "example": "C'est le même prix.",
+    "exampleNative": "Det er samme pris."
   },
   {
     "rank": 95,
     "target": "sa",
     "native": "hans / hennes (hunkjønn)",
-    "pronunciation": "sa"
+    "pronunciation": "sa",
+    "example": "Elle cherche sa valise.",
+    "exampleNative": "Hun leter etter kofferten sin."
   },
   {
     "rank": 96,
     "target": "oh",
     "native": "å / oi",
-    "pronunciation": "o"
+    "pronunciation": "o",
+    "example": "Oh, c'est magnifique !",
+    "exampleNative": "Oi, så flott!"
   },
   {
     "rank": 97,
     "target": "maintenant",
     "native": "nå",
-    "pronunciation": "mangtenang"
+    "pronunciation": "mangtenang",
+    "example": "Je suis fatigué maintenant.",
+    "exampleNative": "Jeg er sliten nå."
   },
   {
     "rank": 98,
     "target": "tous",
     "native": "alle",
-    "pronunciation": "too"
+    "pronunciation": "too",
+    "example": "Nous sommes tous là.",
+    "exampleNative": "Vi er alle her."
   },
   {
     "rank": 99,
     "target": "peut",
     "native": "kan (han/hun kan)",
-    "pronunciation": "pøh"
+    "pronunciation": "pøh",
+    "example": "On peut entrer ?",
+    "exampleNative": "Kan man gå inn?"
   },
   {
     "rank": 100,
     "target": "deux",
     "native": "to",
-    "pronunciation": "døh"
+    "pronunciation": "døh",
+    "example": "Deux cafés, s'il vous plaît.",
+    "exampleNative": "To kaffer, takk."
   },
   {
     "rank": 101,
     "target": "ces",
     "native": "disse",
-    "pronunciation": "seh"
+    "pronunciation": "seh",
+    "example": "Ces chaussures sont trop petites.",
+    "exampleNative": "Disse skoene er for små."
   },
   {
     "rank": 102,
     "target": "êtes",
     "native": "er (dere er)",
-    "pronunciation": "ett"
+    "pronunciation": "ett",
+    "example": "Vous êtes d'où ?",
+    "exampleNative": "Hvor kommer dere fra?"
   },
   {
     "rank": 103,
     "target": "allez",
     "native": "drar / går (dere)",
-    "pronunciation": "aleh"
+    "pronunciation": "aleh",
+    "example": "Vous allez où ?",
+    "exampleNative": "Hvor skal dere?"
   },
   {
     "rank": 104,
     "target": "ta",
     "native": "din (hunkjønn)",
-    "pronunciation": "ta"
+    "pronunciation": "ta",
+    "example": "C'est ta chambre ?",
+    "exampleNative": "Er det rommet ditt?"
   },
   {
     "rank": 105,
     "target": "autre",
     "native": "annen / annet",
-    "pronunciation": "otr"
+    "pronunciation": "otr",
+    "example": "Vous avez une autre taille ?",
+    "exampleNative": "Har dere en annen størrelse?"
   },
   {
     "rank": 106,
     "target": "peu",
     "native": "lite / få",
-    "pronunciation": "pø"
+    "pronunciation": "pø",
+    "example": "Je parle un peu français.",
+    "exampleNative": "Jeg snakker litt fransk."
   },
   {
     "rank": 107,
     "target": "temps",
     "native": "tid / vær",
-    "pronunciation": "tang"
+    "pronunciation": "tang",
+    "example": "Je n'ai pas le temps.",
+    "exampleNative": "Jeg har ikke tid."
   },
   {
     "rank": 108,
     "target": "quelque",
     "native": "noen / litt",
-    "pronunciation": "kelk"
+    "pronunciation": "kelk",
+    "example": "Il y a quelque chose à manger ?",
+    "exampleNative": "Er det noe å spise?"
   },
   {
     "rank": 109,
     "target": "fais",
     "native": "gjør (jeg/du gjør)",
-    "pronunciation": "feh"
+    "pronunciation": "feh",
+    "example": "Qu'est-ce que tu fais ?",
+    "exampleNative": "Hva gjør du?"
   },
   {
     "rank": 110,
     "target": "toujours",
     "native": "alltid",
-    "pronunciation": "tuzjuur"
+    "pronunciation": "tuzjuur",
+    "example": "Il pleut toujours ici !",
+    "exampleNative": "Det regner alltid her!"
   },
   {
     "rank": 111,
     "target": "encore",
     "native": "enda / igjen",
-    "pronunciation": "ankor"
+    "pronunciation": "ankor",
+    "example": "Encore un café, s'il vous plaît.",
+    "exampleNative": "En kaffe til, takk."
   },
   {
     "rank": 112,
     "target": "notre",
     "native": "vår (entall)",
-    "pronunciation": "notr"
+    "pronunciation": "notr",
+    "example": "Notre train est en retard.",
+    "exampleNative": "Toget vårt er forsinket."
   },
   {
     "rank": 113,
     "target": "mes",
     "native": "mine",
-    "pronunciation": "meh"
+    "pronunciation": "meh",
+    "example": "J'ai perdu mes clés.",
+    "exampleNative": "Jeg har mistet nøklene mine."
   },
   {
     "rank": 114,
     "target": "besoin",
     "native": "behov",
-    "pronunciation": "bezoang"
+    "pronunciation": "bezoang",
+    "example": "J'ai besoin d'un médecin.",
+    "exampleNative": "Jeg trenger en lege."
   },
   {
     "rank": 115,
     "target": "avait",
     "native": "hadde (han/hun hadde)",
-    "pronunciation": "aveh"
+    "pronunciation": "aveh",
+    "example": "Il avait raison.",
+    "exampleNative": "Han hadde rett."
   },
   {
     "rank": 116,
     "target": "accord",
     "native": "enighet (d'accord = enig)",
-    "pronunciation": "akor"
+    "pronunciation": "akor",
+    "example": "D'accord, à demain !",
+    "exampleNative": "Greit, vi ses i morgen!"
   },
   {
     "rank": 117,
     "target": "faut",
     "native": "må (il faut = man må)",
-    "pronunciation": "foh"
+    "pronunciation": "foh",
+    "example": "Il faut réserver ?",
+    "exampleNative": "Må man bestille?"
   },
   {
     "rank": 118,
     "target": "dois",
     "native": "må (jeg/du må)",
-    "pronunciation": "doa"
+    "pronunciation": "doa",
+    "example": "Je dois partir.",
+    "exampleNative": "Jeg må gå."
   },
   {
     "rank": 119,
     "target": "vie",
     "native": "liv",
-    "pronunciation": "vi"
+    "pronunciation": "vi",
+    "example": "C'est la vie !",
+    "exampleNative": "Sånn er livet!"
   },
   {
     "rank": 120,
     "target": "peut-être",
     "native": "kanskje",
-    "pronunciation": "pø-etr"
+    "pronunciation": "pø-etr",
+    "example": "Peut-être demain.",
+    "exampleNative": "Kanskje i morgen."
   },
   {
     "rank": 121,
     "target": "aller",
     "native": "å dra / å gå",
-    "pronunciation": "aleh"
+    "pronunciation": "aleh",
+    "example": "Je veux aller à la plage.",
+    "exampleNative": "Jeg vil dra på stranden."
   },
   {
     "rank": 122,
     "target": "fois",
     "native": "gang(er)",
-    "pronunciation": "foa"
+    "pronunciation": "foa",
+    "example": "C'est la première fois que je viens ici.",
+    "exampleNative": "Det er første gang jeg er her."
   },
   {
     "rank": 123,
     "target": "vu",
     "native": "sett (perfektum av voir)",
-    "pronunciation": "vü"
+    "pronunciation": "vü",
+    "example": "Tu as vu le château ?",
+    "exampleNative": "Har du sett slottet?"
   },
   {
     "rank": 124,
     "target": "donc",
     "native": "altså / derfor",
-    "pronunciation": "dongk"
+    "pronunciation": "dongk",
+    "example": "Je suis fatigué, donc je rentre.",
+    "exampleNative": "Jeg er sliten, så jeg drar hjem."
   },
   {
     "rank": 125,
     "target": "sans",
     "native": "uten",
-    "pronunciation": "sang"
+    "pronunciation": "sang",
+    "example": "Un café sans sucre, s'il vous plaît.",
+    "exampleNative": "En kaffe uten sukker, takk."
   },
   {
     "rank": 126,
     "target": "monde",
     "native": "verden",
-    "pronunciation": "mongd"
+    "pronunciation": "mongd",
+    "example": "Il y a beaucoup de monde ici.",
+    "exampleNative": "Det er mange folk her."
   },
   {
     "rank": 127,
     "target": "étais",
     "native": "var (jeg/du var)",
-    "pronunciation": "eteh"
+    "pronunciation": "eteh",
+    "example": "J'étais à Nice hier.",
+    "exampleNative": "Jeg var i Nice i går."
   },
   {
     "rank": 128,
     "target": "parce",
     "native": "fordi (parce que)",
-    "pronunciation": "pars"
+    "pronunciation": "pars",
+    "example": "Je reste parce que c'est beau.",
+    "exampleNative": "Jeg blir fordi det er fint."
   },
   {
     "rank": 129,
     "target": "avant",
     "native": "før",
-    "pronunciation": "avang"
+    "pronunciation": "avang",
+    "example": "Avant le dîner, on se promène.",
+    "exampleNative": "Før middag går vi en tur."
   },
   {
     "rank": 130,
     "target": "sûr",
     "native": "sikker",
-    "pronunciation": "sür"
+    "pronunciation": "sür",
+    "example": "Tu es sûr ?",
+    "exampleNative": "Er du sikker?"
   },
   {
     "rank": 131,
     "target": "trop",
     "native": "for mye",
-    "pronunciation": "tro"
+    "pronunciation": "tro",
+    "example": "C'est trop cher.",
+    "exampleNative": "Det er for dyrt."
   },
   {
     "rank": 132,
     "target": "parler",
     "native": "å snakke",
-    "pronunciation": "parleh"
+    "pronunciation": "parleh",
+    "example": "Vous pouvez parler plus lentement ?",
+    "exampleNative": "Kan du snakke saktere?"
   },
   {
     "rank": 133,
     "target": "personne",
     "native": "person / ingen",
-    "pronunciation": "person"
+    "pronunciation": "person",
+    "example": "Il n'y a personne ici.",
+    "exampleNative": "Det er ingen her."
   },
   {
     "rank": 134,
     "target": "avais",
     "native": "hadde (jeg/du hadde)",
-    "pronunciation": "aveh"
+    "pronunciation": "aveh",
+    "example": "J'avais une réservation.",
+    "exampleNative": "Jeg hadde en reservasjon."
   },
   {
     "rank": 135,
     "target": "père",
     "native": "far",
-    "pronunciation": "pehr"
+    "pronunciation": "pehr",
+    "example": "Mon père est en Norvège.",
+    "exampleNative": "Faren min er i Norge."
   },
   {
     "rank": 136,
     "target": "crois",
     "native": "tror (jeg/du tror)",
-    "pronunciation": "kroa"
+    "pronunciation": "kroa",
+    "example": "Je crois que c'est à gauche.",
+    "exampleNative": "Jeg tror det er til venstre."
   },
   {
     "rank": 137,
     "target": "après",
     "native": "etter",
-    "pronunciation": "apreh"
+    "pronunciation": "apreh",
+    "example": "On se voit après le concert ?",
+    "exampleNative": "Ses vi etter konserten?"
   },
   {
     "rank": 138,
     "target": "aux",
     "native": "til / på (sammentrukket, flertall)",
-    "pronunciation": "oh"
+    "pronunciation": "oh",
+    "example": "Il parle aux touristes.",
+    "exampleNative": "Han snakker med turistene."
   },
   {
     "rank": 139,
     "target": "dieu",
     "native": "gud",
-    "pronunciation": "djø"
+    "pronunciation": "djø",
+    "example": "Mon Dieu, c'est cher !",
+    "exampleNative": "Herregud, så dyrt!"
   },
   {
     "rank": 140,
     "target": "ouais",
     "native": "jepp",
-    "pronunciation": "weh"
+    "pronunciation": "weh",
+    "example": "Ouais, c'est super !",
+    "exampleNative": "Jepp, det er kjempebra!"
   },
   {
     "rank": 141,
     "target": "ses",
     "native": "hans / hennes (flertall)",
-    "pronunciation": "seh"
+    "pronunciation": "seh",
+    "example": "Elle a oublié ses lunettes.",
+    "exampleNative": "Hun har glemt brillene sine."
   },
   {
     "rank": 142,
     "target": "pense",
     "native": "tenker (jeg/du tenker)",
-    "pronunciation": "pangs"
+    "pronunciation": "pangs",
+    "example": "Je pense que oui.",
+    "exampleNative": "Jeg tror det."
   },
   {
     "rank": 143,
     "target": "eu",
     "native": "hatt (perfektum av avoir)",
-    "pronunciation": "ü"
+    "pronunciation": "ü",
+    "example": "J'ai eu de la chance.",
+    "exampleNative": "Jeg hadde flaks."
   },
   {
     "rank": 144,
     "target": "aime",
     "native": "liker / elsker (jeg/du liker)",
-    "pronunciation": "em"
+    "pronunciation": "em",
+    "example": "J'aime beaucoup cette ville.",
+    "exampleNative": "Jeg liker denne byen veldig godt."
   },
   {
     "rank": 145,
     "target": "leur",
     "native": "deres",
-    "pronunciation": "lør"
+    "pronunciation": "lør",
+    "example": "Ils cherchent leur hôtel.",
+    "exampleNative": "De leter etter hotellet sitt."
   },
   {
     "rank": 146,
     "target": "homme",
     "native": "mann",
-    "pronunciation": "omm"
+    "pronunciation": "omm",
+    "example": "Cet homme est le guide.",
+    "exampleNative": "Den mannen er guiden."
   },
   {
     "rank": 147,
     "target": "viens",
     "native": "kommer (jeg/du kommer)",
-    "pronunciation": "vjang"
+    "pronunciation": "vjang",
+    "example": "Je viens avec toi.",
+    "exampleNative": "Jeg blir med deg."
   },
   {
     "rank": 148,
     "target": "vrai",
     "native": "sann / ekte",
-    "pronunciation": "vreh"
+    "pronunciation": "vreh",
+    "example": "C'est vrai ?",
+    "exampleNative": "Er det sant?"
   },
   {
     "rank": 149,
     "target": "femme",
     "native": "kvinne",
-    "pronunciation": "fam"
+    "pronunciation": "fam",
+    "example": "Cette femme parle anglais.",
+    "exampleNative": "Den kvinnen snakker engelsk."
   },
   {
     "rank": 150,
     "target": "ok",
     "native": "ok",
-    "pronunciation": "oke"
+    "pronunciation": "oke",
+    "example": "Ok, on y va.",
+    "exampleNative": "Ok, vi drar."
   },
   {
     "rank": 151,
     "target": "doit",
     "native": "må (han/hun må)",
-    "pronunciation": "doa"
+    "pronunciation": "doa",
+    "example": "Il doit partir tôt.",
+    "exampleNative": "Han må dra tidlig."
   },
   {
     "rank": 152,
     "target": "veut",
     "native": "vil (han/hun vil)",
-    "pronunciation": "vø"
+    "pronunciation": "vø",
+    "example": "Elle veut voir la mer.",
+    "exampleNative": "Hun vil se havet."
   },
   {
     "rank": 153,
     "target": "ans",
     "native": "år",
-    "pronunciation": "ang"
+    "pronunciation": "ang",
+    "example": "J'ai trente ans.",
+    "exampleNative": "Jeg er tretti år."
   },
   {
     "rank": 154,
     "target": "mal",
     "native": "vondt / dårlig",
-    "pronunciation": "mal"
+    "pronunciation": "mal",
+    "example": "J'ai mal à la tête.",
+    "exampleNative": "Jeg har vondt i hodet."
   },
   {
     "rank": 155,
     "target": "chez",
     "native": "hjemme hos",
-    "pronunciation": "sjeh"
+    "pronunciation": "sjeh",
+    "example": "On mange chez Marie ce soir.",
+    "exampleNative": "Vi spiser hos Marie i kveld."
   },
   {
     "rank": 156,
     "target": "déjà",
     "native": "allerede",
-    "pronunciation": "dezja"
+    "pronunciation": "dezja",
+    "example": "J'ai déjà payé.",
+    "exampleNative": "Jeg har allerede betalt."
   },
   {
     "rank": 157,
     "target": "depuis",
     "native": "siden",
-    "pronunciation": "dupui"
+    "pronunciation": "dupui",
+    "example": "J'habite ici depuis un an.",
+    "exampleNative": "Jeg har bodd her i ett år."
   },
   {
     "rank": 158,
     "target": "beaucoup",
     "native": "mye",
-    "pronunciation": "bokuu"
+    "pronunciation": "bokuu",
+    "example": "Il y a beaucoup de touristes.",
+    "exampleNative": "Det er mange turister."
   },
   {
     "rank": 159,
     "target": "vos",
     "native": "deres (høflig/flertall)",
-    "pronunciation": "vo"
+    "pronunciation": "vo",
+    "example": "Vos billets, s'il vous plaît.",
+    "exampleNative": "Billettene deres, takk."
   },
   {
     "rank": 160,
     "target": "bonne",
     "native": "god / bra (hunkjønn)",
-    "pronunciation": "bonn"
+    "pronunciation": "bonn",
+    "example": "Bonne nuit !",
+    "exampleNative": "God natt!"
   },
   {
     "rank": 161,
     "target": "mort",
     "native": "død",
-    "pronunciation": "mor"
+    "pronunciation": "mor",
+    "example": "Je suis mort de fatigue !",
+    "exampleNative": "Jeg er dødssliten!"
   },
   {
     "rank": 162,
     "target": "mieux",
     "native": "bedre",
-    "pronunciation": "mjø"
+    "pronunciation": "mjø",
+    "example": "Ça va mieux aujourd'hui.",
+    "exampleNative": "Det går bedre i dag."
   },
   {
     "rank": 163,
     "target": "vas",
     "native": "går / drar (du)",
-    "pronunciation": "va"
+    "pronunciation": "va",
+    "example": "Tu vas où ?",
+    "exampleNative": "Hvor skal du?"
   },
   {
     "rank": 164,
     "target": "mère",
     "native": "mor",
-    "pronunciation": "mehr"
+    "pronunciation": "mehr",
+    "example": "Ma mère adore Paris.",
+    "exampleNative": "Moren min elsker Paris."
   },
   {
     "rank": 165,
     "target": "sera",
     "native": "vil bli / blir (han/hun)",
-    "pronunciation": "sera"
+    "pronunciation": "sera",
+    "example": "Il sera là à huit heures.",
+    "exampleNative": "Han kommer klokka åtte."
   },
   {
     "rank": 166,
     "target": "dis",
     "native": "sier (jeg/du sier)",
-    "pronunciation": "di"
+    "pronunciation": "di",
+    "example": "Je te dis merci.",
+    "exampleNative": "Jeg sier takk til deg."
   },
   {
     "rank": 167,
     "target": "fille",
     "native": "jente / datter",
-    "pronunciation": "fii"
+    "pronunciation": "fii",
+    "example": "Ma fille a dix ans.",
+    "exampleNative": "Datteren min er ti år."
   },
   {
     "rank": 168,
     "target": "tes",
     "native": "dine",
-    "pronunciation": "teh"
+    "pronunciation": "teh",
+    "example": "Tu as tes billets ?",
+    "exampleNative": "Har du billettene dine?"
   },
   {
     "rank": 169,
     "target": "gens",
     "native": "folk",
-    "pronunciation": "zjang"
+    "pronunciation": "zjang",
+    "example": "Les gens sont très sympas ici.",
+    "exampleNative": "Folk er veldig hyggelige her."
   },
   {
     "rank": 170,
     "target": "quel",
     "native": "hvilken (hankjønn)",
-    "pronunciation": "kel"
+    "pronunciation": "kel",
+    "example": "Quel bus va à la gare ?",
+    "exampleNative": "Hvilken buss går til stasjonen?"
   },
   {
     "rank": 171,
     "target": "vois",
     "native": "ser (jeg/du ser)",
-    "pronunciation": "voa"
+    "pronunciation": "voa",
+    "example": "Je vois la mer d'ici !",
+    "exampleNative": "Jeg ser havet herfra!"
   },
   {
     "rank": 172,
     "target": "désolé",
     "native": "lei meg",
-    "pronunciation": "dezoleh"
+    "pronunciation": "dezoleh",
+    "example": "Désolé, je ne comprends pas.",
+    "exampleNative": "Beklager, jeg forstår ikke."
   },
   {
     "rank": 173,
     "target": "voilà",
     "native": "sånn / her har du",
-    "pronunciation": "voala"
+    "pronunciation": "voala",
+    "example": "Voilà votre café.",
+    "exampleNative": "Vær så god, her er kaffen din."
   },
   {
     "rank": 174,
     "target": "avons",
     "native": "har (vi har)",
-    "pronunciation": "avong"
+    "pronunciation": "avong",
+    "example": "Nous avons une réservation.",
+    "exampleNative": "Vi har en reservasjon."
   },
   {
     "rank": 175,
     "target": "petit",
     "native": "liten",
-    "pronunciation": "pəti"
+    "pronunciation": "pəti",
+    "example": "Un petit café, s'il vous plaît.",
+    "exampleNative": "En liten kaffe, takk."
   },
   {
     "rank": 176,
     "target": "maison",
     "native": "hus",
-    "pronunciation": "mezong"
+    "pronunciation": "mezong",
+    "example": "La maison est grande.",
+    "exampleNative": "Huset er stort."
   },
   {
     "rank": 177,
     "target": "soit",
     "native": "enten / (konjunktiv av être)",
-    "pronunciation": "soa"
+    "pronunciation": "soa",
+    "example": "Soit le train, soit le bus.",
+    "exampleNative": "Enten toget eller bussen."
   },
   {
     "rank": 178,
     "target": "cela",
     "native": "det (formelt)",
-    "pronunciation": "sla"
+    "pronunciation": "sla",
+    "example": "Cela ne fait rien.",
+    "exampleNative": "Det gjør ingenting."
   },
   {
     "rank": 179,
     "target": "autres",
     "native": "andre",
-    "pronunciation": "otr"
+    "pronunciation": "otr",
+    "example": "Les autres sont déjà partis.",
+    "exampleNative": "De andre har allerede dratt."
   },
   {
     "rank": 180,
     "target": "toute",
     "native": "hel / all (hunkjønn)",
-    "pronunciation": "tut"
+    "pronunciation": "tut",
+    "example": "Je suis resté toute la journée à la plage.",
+    "exampleNative": "Jeg var på stranden hele dagen."
   },
   {
     "rank": 181,
     "target": "soir",
     "native": "kveld",
-    "pronunciation": "soar"
+    "pronunciation": "soar",
+    "example": "On se voit ce soir ?",
+    "exampleNative": "Ses vi i kveld?"
   },
   {
     "rank": 182,
     "target": "passé",
     "native": "fortid / tilbrakt",
-    "pronunciation": "paseh"
+    "pronunciation": "paseh",
+    "example": "J'ai passé une semaine à Paris.",
+    "exampleNative": "Jeg tilbrakte en uke i Paris."
   },
   {
     "rank": 183,
     "target": "prendre",
     "native": "å ta",
-    "pronunciation": "prangdr"
+    "pronunciation": "prangdr",
+    "example": "Je vais prendre le menu du jour.",
+    "exampleNative": "Jeg tar dagens meny."
   },
   {
     "rank": 184,
     "target": "jour",
     "native": "dag",
-    "pronunciation": "zjuur"
+    "pronunciation": "zjuur",
+    "example": "Quel jour sommes-nous ?",
+    "exampleNative": "Hvilken dag er det i dag?"
   },
   {
     "rank": 185,
     "target": "monsieur",
     "native": "herr / høflig tiltale til mann",
-    "pronunciation": "møsjø"
+    "pronunciation": "møsjø",
+    "example": "Pardon, monsieur !",
+    "exampleNative": "Unnskyld meg! (til en mann)"
   },
   {
     "rank": 186,
     "target": "nos",
     "native": "våre",
-    "pronunciation": "no"
+    "pronunciation": "no",
+    "example": "Nos bagages sont à l'hôtel.",
+    "exampleNative": "Bagasjen vår er på hotellet."
   },
   {
     "rank": 187,
     "target": "savoir",
     "native": "å vite",
-    "pronunciation": "savoar"
+    "pronunciation": "savoar",
+    "example": "Je voudrais savoir l'heure du train.",
+    "exampleNative": "Jeg vil gjerne vite når toget går."
   },
   {
     "rank": 188,
     "target": "choses",
     "native": "ting (flertall)",
-    "pronunciation": "sjoos"
+    "pronunciation": "sjoos",
+    "example": "J'ai beaucoup de choses à faire.",
+    "exampleNative": "Jeg har mye å gjøre."
   },
   {
     "rank": 189,
     "target": "salut",
     "native": "hei / hade",
-    "pronunciation": "salü"
+    "pronunciation": "salü",
+    "example": "Salut, ça va ?",
+    "exampleNative": "Hei, går det bra?"
   },
   {
     "rank": 190,
     "target": "cet",
     "native": "denne / dette (hankjønn foran vokal)",
-    "pronunciation": "set"
+    "pronunciation": "set",
+    "example": "Cet hôtel est très calme.",
+    "exampleNative": "Dette hotellet er veldig rolig."
   },
   {
     "rank": 191,
     "target": "nom",
     "native": "navn",
-    "pronunciation": "nong"
+    "pronunciation": "nong",
+    "example": "C'est quoi, ton nom ?",
+    "exampleNative": "Hva heter du?"
   },
   {
     "rank": 192,
     "target": "argent",
     "native": "penger",
-    "pronunciation": "arzjang"
+    "pronunciation": "arzjang",
+    "example": "Je n'ai plus d'argent.",
+    "exampleNative": "Jeg har ikke mer penger."
   },
   {
     "rank": 193,
     "target": "bonjour",
     "native": "god dag / hei",
-    "pronunciation": "bongzjuur"
+    "pronunciation": "bongzjuur",
+    "example": "Bonjour, une table pour deux ?",
+    "exampleNative": "Hei, et bord for to?"
   },
   {
     "rank": 194,
     "target": "nuit",
     "native": "natt",
-    "pronunciation": "nui"
+    "pronunciation": "nui",
+    "example": "Une nuit, s'il vous plaît.",
+    "exampleNative": "Én natt, takk."
   },
   {
     "rank": 195,
     "target": "raison",
     "native": "grunn / rett (å ha rett)",
-    "pronunciation": "rezong"
+    "pronunciation": "rezong",
+    "example": "Tu as raison.",
+    "exampleNative": "Du har rett."
   },
   {
     "rank": 196,
     "target": "moins",
     "native": "mindre",
-    "pronunciation": "moang"
+    "pronunciation": "moang",
+    "example": "Un peu moins, s'il vous plaît.",
+    "exampleNative": "Litt mindre, takk."
   },
   {
     "rank": 197,
     "target": "arrive",
     "native": "kommer / skjer (jeg/du kommer)",
-    "pronunciation": "ariv"
+    "pronunciation": "ariv",
+    "example": "J'arrive dans cinq minutes.",
+    "exampleNative": "Jeg kommer om fem minutter."
   },
   {
     "rank": 198,
     "target": "maman",
     "native": "mamma",
-    "pronunciation": "mamang"
+    "pronunciation": "mamang",
+    "example": "Maman, regarde la mer !",
+    "exampleNative": "Mamma, se på havet!"
   },
   {
     "rank": 199,
     "target": "reste",
     "native": "blir igjen / resten",
-    "pronunciation": "rest"
+    "pronunciation": "rest",
+    "example": "Je reste deux nuits.",
+    "exampleNative": "Jeg blir to netter."
   },
   {
     "rank": 200,
     "target": "moment",
     "native": "øyeblikk",
-    "pronunciation": "momang"
+    "pronunciation": "momang",
+    "example": "Un moment, s'il vous plaît.",
+    "exampleNative": "Et øyeblikk, takk."
   }
 ]

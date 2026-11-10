@@ -10,6 +10,8 @@ export type TopicWord = {
   target: string;
   native: string;
   pronunciation: string;
+  example?: string;
+  exampleNative?: string;
 };
 
 export type TopicId = "tourist";
@@ -65,5 +67,7 @@ export function toTopicPhrase(word: TopicWord, language: Language, topic: TopicI
     native: word.native,
     category: "annet",
     icon: "general",
+    example: word.example,
+    exampleNative: word.exampleNative,
   };
 }

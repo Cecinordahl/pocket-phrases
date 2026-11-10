@@ -112,6 +112,7 @@ export function LessonScreen({ lesson: initialLesson, onBack, onAccessDenied }: 
         <Drill
           key={lessonVersion}
           phrases={lesson.phrases}
+          language={lesson.language}
           onComplete={() => progressStore.markDrilled(lesson.language, lesson.mode)}
         />
       )}
@@ -119,6 +120,7 @@ export function LessonScreen({ lesson: initialLesson, onBack, onAccessDenied }: 
         <Quiz
           key={lessonVersion}
           phrases={lesson.phrases}
+          language={lesson.language}
           onComplete={(score) => {
             progressStore.markQuizzed(lesson.language, lesson.mode, score);
             streakStore.recordActivity();

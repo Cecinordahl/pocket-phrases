@@ -6,6 +6,8 @@ export type FrequencyWord = {
   target: string;
   native: string;
   pronunciation: string;
+  example?: string;
+  exampleNative?: string;
 };
 
 // One JSON file per language, grown incrementally (100 words at a time) as
@@ -107,5 +109,7 @@ export function toPhrase(word: FrequencyWord, language: Language): Phrase {
     native: word.native,
     category: "annet",
     icon: "general",
+    example: word.example,
+    exampleNative: word.exampleNative,
   };
 }

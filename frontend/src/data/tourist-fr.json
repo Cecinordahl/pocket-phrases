@@ -3,180 +3,240 @@
     "order": 1,
     "target": "l'office de tourisme",
     "native": "turistkontoret",
-    "pronunciation": "lo-fees duh too-riz-muh"
+    "pronunciation": "lo-fees duh too-riz-muh",
+    "example": "Où est l'office de tourisme ?",
+    "exampleNative": "Hvor er turistkontoret?"
   },
   {
     "order": 2,
     "target": "le musée",
     "native": "museet",
-    "pronunciation": "luh mew-zay"
+    "pronunciation": "luh mew-zay",
+    "example": "Le musée est fermé le lundi.",
+    "exampleNative": "Museet er stengt på mandager."
   },
   {
     "order": 3,
     "target": "le château",
     "native": "slottet",
-    "pronunciation": "luh sha-toh"
+    "pronunciation": "luh sha-toh",
+    "example": "On visite le château demain.",
+    "exampleNative": "Vi besøker slottet i morgen."
   },
   {
     "order": 4,
     "target": "la cathédrale",
     "native": "katedralen",
-    "pronunciation": "la ka-tay-dral"
+    "pronunciation": "la ka-tay-dral",
+    "example": "La cathédrale est magnifique.",
+    "exampleNative": "Katedralen er storslått."
   },
   {
     "order": 5,
     "target": "le monument",
     "native": "monumentet",
-    "pronunciation": "luh mo-new-mang"
+    "pronunciation": "luh mo-new-mang",
+    "example": "Le monument est près de la gare.",
+    "exampleNative": "Monumentet ligger nær stasjonen."
   },
   {
     "order": 6,
     "target": "la billetterie",
     "native": "billettluken",
-    "pronunciation": "la bee-yeh-tree"
+    "pronunciation": "la bee-yeh-tree",
+    "example": "La billetterie est à gauche.",
+    "exampleNative": "Billettluken er til venstre."
   },
   {
     "order": 7,
     "target": "le guichet",
     "native": "luken / skranken",
-    "pronunciation": "luh gee-sheh"
+    "pronunciation": "luh gee-sheh",
+    "example": "Le guichet est fermé.",
+    "exampleNative": "Luken er stengt."
   },
   {
     "order": 8,
     "target": "la visite guidée",
     "native": "guidet omvisning",
-    "pronunciation": "la vee-zeet gee-day"
+    "pronunciation": "la vee-zeet gee-day",
+    "example": "La visite guidée commence à dix heures.",
+    "exampleNative": "Den guidede omvisningen starter klokka ti."
   },
   {
     "order": 9,
     "target": "l'entrée",
     "native": "inngangen",
-    "pronunciation": "lang-tray"
+    "pronunciation": "lang-tray",
+    "example": "L'entrée est par ici.",
+    "exampleNative": "Inngangen er her borte."
   },
   {
     "order": 10,
     "target": "la sortie",
     "native": "utgangen",
-    "pronunciation": "la sor-tee"
+    "pronunciation": "la sor-tee",
+    "example": "Où est la sortie ?",
+    "exampleNative": "Hvor er utgangen?"
   },
   {
     "order": 11,
     "target": "l'horaire d'ouverture",
     "native": "åpningstidene",
-    "pronunciation": "lo-rair doo-vair-tewr"
+    "pronunciation": "lo-rair doo-vair-tewr",
+    "example": "Quel est l'horaire d'ouverture ?",
+    "exampleNative": "Hva er åpningstidene?"
   },
   {
     "order": 12,
     "target": "le plan de la ville",
     "native": "bykartet",
-    "pronunciation": "luh plang duh la veel"
+    "pronunciation": "luh plang duh la veel",
+    "example": "Vous avez le plan de la ville ?",
+    "exampleNative": "Har dere et kart over byen?"
   },
   {
     "order": 13,
     "target": "la consigne",
     "native": "bagasjeoppbevaringen",
-    "pronunciation": "la kong-see-nyuh"
+    "pronunciation": "la kong-see-nyuh",
+    "example": "La consigne est à côté du quai.",
+    "exampleNative": "Bagasjeoppbevaringen er ved siden av plattformen."
   },
   {
     "order": 14,
     "target": "les bagages",
     "native": "bagasjen",
-    "pronunciation": "lay ba-gazh"
+    "pronunciation": "lay ba-gazh",
+    "example": "Je peux laisser les bagages ici ?",
+    "exampleNative": "Kan jeg sette fra meg bagasjen her?"
   },
   {
     "order": 15,
     "target": "le point de vue",
     "native": "utsiktspunktet",
-    "pronunciation": "luh pwang duh vew"
+    "pronunciation": "luh pwang duh vew",
+    "example": "Le point de vue est en haut de la colline.",
+    "exampleNative": "Utsiktspunktet er på toppen av bakken."
   },
   {
     "order": 16,
     "target": "la réduction",
     "native": "rabatten",
-    "pronunciation": "la ray-dewk-syong"
+    "pronunciation": "la ray-dewk-syong",
+    "example": "La réduction est de dix pour cent.",
+    "exampleNative": "Rabatten er på ti prosent."
   },
   {
     "order": 17,
     "target": "la file d'attente",
     "native": "køen",
-    "pronunciation": "la feel da-tangt"
+    "pronunciation": "la feel da-tangt",
+    "example": "La file d'attente est très longue.",
+    "exampleNative": "Køen er veldig lang."
   },
   {
     "order": 18,
     "target": "le pourboire",
     "native": "driksen",
-    "pronunciation": "luh poor-bwar"
+    "pronunciation": "luh poor-bwar",
+    "example": "Le pourboire est compris ?",
+    "exampleNative": "Er driksen inkludert?"
   },
   {
     "order": 19,
     "target": "la carte postale",
     "native": "postkortet",
-    "pronunciation": "la kart pos-tal"
+    "pronunciation": "la kart pos-tal",
+    "example": "J'achète la carte postale pour ma mère.",
+    "exampleNative": "Jeg kjøper postkortet til moren min."
   },
   {
     "order": 20,
     "target": "le souvenir",
     "native": "suveniren",
-    "pronunciation": "luh soo-vuh-neer"
+    "pronunciation": "luh soo-vuh-neer",
+    "example": "Le souvenir coûte dix euros.",
+    "exampleNative": "Suveniren koster ti euro."
   },
   {
     "order": 21,
     "target": "le bureau de change",
     "native": "vekslingskontoret",
-    "pronunciation": "luh bew-roh duh shangzh"
+    "pronunciation": "luh bew-roh duh shangzh",
+    "example": "Où est le bureau de change ?",
+    "exampleNative": "Hvor er vekslingskontoret?"
   },
   {
     "order": 22,
     "target": "le passeport",
     "native": "passet",
-    "pronunciation": "luh pas-por"
+    "pronunciation": "luh pas-por",
+    "example": "Le passeport est obligatoire.",
+    "exampleNative": "Pass er påkrevd."
   },
   {
     "order": 23,
     "target": "les objets trouvés",
     "native": "hittegodskontoret",
-    "pronunciation": "lay-zob-zheh troo-vay"
+    "pronunciation": "lay-zob-zheh troo-vay",
+    "example": "Où sont les objets trouvés ?",
+    "exampleNative": "Hvor er hittegodskontoret?"
   },
   {
     "order": 24,
     "target": "la sortie de secours",
     "native": "nødutgangen",
-    "pronunciation": "la sor-tee duh suh-koor"
+    "pronunciation": "la sor-tee duh suh-koor",
+    "example": "La sortie de secours est au fond.",
+    "exampleNative": "Nødutgangen er innerst."
   },
   {
     "order": 25,
     "target": "le quai",
     "native": "plattformen",
-    "pronunciation": "luh kay"
+    "pronunciation": "luh kay",
+    "example": "Le quai est à droite.",
+    "exampleNative": "Plattformen er til høyre."
   },
   {
     "order": 26,
     "target": "le distributeur",
     "native": "minibanken",
-    "pronunciation": "luh dee-stree-bew-ter"
+    "pronunciation": "luh dee-stree-bew-ter",
+    "example": "Le distributeur ne marche pas.",
+    "exampleNative": "Minibanken virker ikke."
   },
   {
     "order": 27,
     "target": "la réservation",
     "native": "reservasjonen",
-    "pronunciation": "la ray-zair-va-syong"
+    "pronunciation": "la ray-zair-va-syong",
+    "example": "La réservation est au nom de Hansen.",
+    "exampleNative": "Reservasjonen er i navnet Hansen."
   },
   {
     "order": 28,
     "target": "gratuit",
     "native": "gratis",
-    "pronunciation": "gra-twee"
+    "pronunciation": "gra-twee",
+    "example": "Le musée est gratuit le dimanche.",
+    "exampleNative": "Museet er gratis på søndager."
   },
   {
     "order": 29,
     "target": "fermé",
     "native": "stengt",
-    "pronunciation": "fair-may"
+    "pronunciation": "fair-may",
+    "example": "Le magasin est fermé aujourd'hui.",
+    "exampleNative": "Butikken er stengt i dag."
   },
   {
     "order": 30,
     "target": "ouvert",
     "native": "åpent",
-    "pronunciation": "oo-vair"
+    "pronunciation": "oo-vair",
+    "example": "Le café est ouvert jusqu'à vingt heures.",
+    "exampleNative": "Kafeen er åpen til klokka åtte."
   }
 ]

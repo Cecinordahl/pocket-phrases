@@ -16,11 +16,12 @@ No accounts.
 | **🎲 Tilfeldig** | A random mix across all situations | No |
 | **Beskriv situasjonen** | Describe any situation in free text → a generated lesson | Yes |
 | **📸 Bilde av meny/skilt** | Photograph a menu, sign or ticket machine → a lesson built from what's on it | Yes |
+| **🔁 Repetisjon** | Spaced repetition across everything you've practised: due phrases and words from any lesson or vocab module, the ones you got wrong first, 10 at a time | No |
 | **⚡ Her og nå** | 2-minute refresh of the 5 phrases you need for a situation you're in right now, then a large-text cheat sheet | No |
 | **🧳 Reiseplan** | Destination + departure date → a day-by-day plan that reflows if you skip a day, with a "generalprøve" the last day | No |
 | **🗣️ Øv på en samtale** | Roleplay with an AI waiter/receptionist/driver: pick the right reply out of 4 (or type your own), with feedback and gentle corrections (max 8 replies) | Yes |
 | **👫 Del med reisefølget** | Share a lesson or a trip plan as a link (native share sheet or copy). The recipient gets the exact same phrases / plan — no accounts | No |
-| **📚 Ordforråd-reisen** | Most-frequent words, milestone by milestone, with module quizzes and review tests (French prototype) | No |
+| **📚 Ordforråd-reisen** | Most-frequent words, milestone by milestone, with module quizzes and review tests. Every word comes with an example sentence (word highlighted) so it's learned in context (French prototype) | No |
 | **🧳 Turistord** | Themed tourist vocabulary with module quizzes (French prototype) | No |
 
 All progress (lessons, spaced repetition, streak, trip plan) lives in the browser's `localStorage`.
@@ -45,7 +46,7 @@ pocket-phrases/
 │       ├── lib/api.ts        fetch wrapper for the backend
 │       ├── lib/progress.ts   localStorage progress, behind a ProgressStore seam
 │       ├── lib/trip.ts       trip plan storage + day-by-day plan logic
-│       ├── lib/srs.ts        spaced repetition (most-overdue phrases first)
+│       ├── lib/srs.ts        spaced repetition (SM-2) + the 🔁 Repetisjon deck
 │       ├── lib/share.ts      travel-buddy links: lesson/trip compressed into #share=...
 │       └── screens/          LanguagePicker -> ModePicker -> LessonScreen, plus
 │                             QuickPrep ("Her og nå"), TripSetup/TripPlan, Roleplay, vocab journeys
@@ -165,6 +166,8 @@ Never commit real values. See `backend/.env.example` and `frontend/.env.example`
 - **Free-text generation uses Anthropic's structured outputs** (`output_config.format`, derived from a `GeneratedLesson` record) rather than "prompt for JSON + manually parse the text." This makes the response validated JSON at the API level — a stronger version of "strict JSON only" than string parsing. A `try/catch` around the whole call still exists: if Anthropic errors, refuses, or the SDK throws for any reason, the backend serves a prebuilt "Turist-essensielt" lesson instead of an error page.
 - **Roleplay is stateless.** The frontend keeps the conversation and sends the whole history each turn, so the backend needs no sessions, database or accounts. Cost is capped three ways: max 8 user replies per conversation, max 300 characters per message, and an in-memory limit of 60 turns per hour per client IP (`HourlyRateLimiter`, keyed on `CF-Connecting-IP`; resets on restart, which is fine for a single instance).
 - **Trip plans are recomputed, not stored.** Only the trip (destination, date, chosen situations, completed situations) is saved; the day-by-day plan is rebuilt from "what's left" and "days left" every time, so a skipped day simply reflows.
+- **The repetition deck lives in the SRS store.** Every reviewed phrase already had an SM-2 schedule in `localStorage`; reviews recorded with a language now also keep a snapshot of the phrase, so `getDuePhrases()` can resurface due items from *any* lesson or vocab module instead of only reordering the lesson in front of you. Items you got wrong last time come first.
+- **Vocab words carry an example sentence** (`example` / `exampleNative` in `frontend/src/data/*.json`, French only for now). The `Example` component highlights the word inside the sentence; in a target→Norwegian quiz only the French sentence is shown, so the context helps without giving the answer away.
 - **Travel-buddy links carry the content themselves.** A shared lesson or trip is JSON, deflate-compressed and base64url-encoded into the URL fragment (`#share=…`, roughly 200–500 characters). No share table, no backend endpoint, nothing to expire. Links come from other people, so `lib/share.ts` treats them as untrusted: size-capped, and only known fields are rebuilt and validated before use. A shared trip never includes the sender's progress.
 - **Progress storage lives behind a `ProgressStore` interface** (`frontend/src/lib/progress.ts`), with only a `localStorage` implementation for now. The comment in that file marks it as the seam for a future account-backed implementation — the UI only ever calls the interface, never `localStorage` directly.
 

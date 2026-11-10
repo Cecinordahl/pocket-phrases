@@ -12,6 +12,7 @@ import type { Language, Lesson, ModeInfo } from "../types/lesson";
 import { getWordCount } from "../lib/frequency";
 import { getTopicWordCount, TOPICS, type TopicId } from "../lib/topicVocab";
 import { buildPlan, daysUntil, tripStore } from "../lib/trip";
+import { dueSummary } from "../lib/srs";
 
 type ModePickerProps = {
   language: Language;
@@ -23,6 +24,7 @@ type ModePickerProps = {
   onEnterQuickPrep: () => void;
   onEnterTrip: () => void;
   onEnterRoleplay: () => void;
+  onEnterReview: () => void;
 };
 
 const MAX_SITUATION_LENGTH = 300;
@@ -43,6 +45,7 @@ export function ModePicker({
   onEnterQuickPrep,
   onEnterTrip,
   onEnterRoleplay,
+  onEnterReview,
 }: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
@@ -121,6 +124,7 @@ export function ModePicker({
   const tripActive = trip !== null && tripDaysLeft !== null && tripDaysLeft >= 0;
   const todaysPlan = tripActive && trip ? buildPlan(trip).find((d) => d.offset === 0) : undefined;
   const todayKeys = new Set(todaysPlan?.modes.map((m) => m.key) ?? []);
+  const review = dueSummary(language);
   const showVocab = getWordCount(language) > 0 || getTopicWordCount("tourist", language) > 0;
 
   function situationMarker(key: string): string {
@@ -221,6 +225,18 @@ export function ModePicker({
       {/* --- Øv nå ------------------------------------------------------- */}
       <Section title="⚡ Øv nå">
         <TileGrid>
+          <Tile
+            emoji="🔁"
+            title={review.due > 0 ? `Repetisjon (${review.due})` : "Repetisjon"}
+            description={
+              review.due === 0
+                ? "Ingenting å repetere nå — kom tilbake senere."
+                : review.weak > 0
+                  ? `${review.weak} du bommet på sist, pluss det som er klart for repetisjon.`
+                  : "Fraser og ord som er klare for repetisjon."
+            }
+            onClick={onEnterReview}
+          />
           <Tile
             emoji="⚡"
             title="Her og nå"

@@ -40,7 +40,7 @@ export function TopicReviewQuiz({ topic, language, onBack }: TopicReviewQuizProp
       </button>
       <h2>Repetisjon: {TOPICS[topic].title}</h2>
       <p className="text-muted">Dette er bare øving — det påvirker ikke fremgangen din.</p>
-      <Quiz phrases={phrases} direction="target-to-native" onComplete={() => {}} />
+      <Quiz phrases={phrases} language={language} direction="target-to-native" onComplete={() => {}} />
     </div>
   );
 }

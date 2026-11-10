@@ -1,6 +1,7 @@
 import { useMemo, useState, type CSSProperties } from "react";
-import type { Phrase } from "../types/lesson";
+import type { Language, Phrase } from "../types/lesson";
 import { recordReview, sortByDue } from "../lib/srs";
+import { Example } from "./Example";
 
 // "native-to-target" (default) shows the Norwegian phrase and asks for the
 // foreign-language match — the original situational-lesson direction.
@@ -19,6 +20,8 @@ type QuizProps = {
   onRequestNewSet?: () => void;
   requestingNewSet?: boolean;
   direction?: QuizDirection;
+  /** Lets the repetition deck resurface these phrases later (see lib/srs.ts). */
+  language?: Language;
 };
 
 type Question = {
@@ -73,6 +76,7 @@ export function Quiz({
   onRequestNewSet,
   requestingNewSet,
   direction = "native-to-target",
+  language,
 }: QuizProps) {
   const [runId, setRunId] = useState(0);
   // runId is in the deps purely to force a reshuffle on "ta testen på nytt" —
@@ -160,6 +164,7 @@ export function Quiz({
                     <span aria-hidden="true">✓</span> Riktig svar: {a.answerText}
                   </div>
                 )}
+                <Example phrase={a.phrase} />
               </li>
             ))}
           </ul>
@@ -178,7 +183,7 @@ export function Quiz({
     setTimeout(() => {
       setRevealed(true);
       const correct = option === question.answerText;
-      recordReview(question.phrase.id, correct);
+      recordReview(question.phrase, correct, language);
       setAnswers((prev) => [
         ...prev,
         {
@@ -210,6 +215,9 @@ export function Quiz({
       </p>
       <div className="card">
         <h3>{question.questionText}</h3>
+        {/* The target-language sentence gives context without revealing the
+            Norwegian answer; in the other direction it would give it away. */}
+        {direction === "target-to-native" && <Example phrase={question.phrase} showNative={false} />}
         <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 12 }}>
           {question.options.map((option) => {
             const isSelected = option === selected;

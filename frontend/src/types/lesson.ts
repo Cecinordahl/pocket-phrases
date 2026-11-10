@@ -9,6 +9,10 @@ export type Phrase = {
   native: string;
   category: PhraseCategory;
   icon: PhraseIcon;
+  // Optional context for single words (vocab journeys): a short sentence in
+  // the target language that uses the word, plus its Norwegian meaning.
+  example?: string;
+  exampleNative?: string;
 };
 
 export type Lesson = {

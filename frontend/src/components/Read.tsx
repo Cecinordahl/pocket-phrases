@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Phrase } from "../types/lesson";
 import { categoryStyle } from "../lib/categories";
+import { Example } from "./Example";
 
 type ReadProps = {
   phrases: Phrase[];
@@ -61,7 +62,10 @@ export function Read({ phrases }: ReadProps) {
                 {phrase.pronunciation}
               </div>
               {isRevealed ? (
-                <div style={{ marginTop: 6 }}>{phrase.native}</div>
+                <>
+                  <div style={{ marginTop: 6 }}>{phrase.native}</div>
+                  <Example phrase={phrase} />
+                </>
               ) : (
                 <div className="text-muted" style={{ marginTop: 6 }}>
                   Trykk for å se betydningen

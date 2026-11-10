@@ -70,6 +70,7 @@ export function QuickPrep({ language, onBack, onAccessDenied }: QuickPrepProps) 
         <p className="text-muted">{QUICK_PREP_SIZE} fraser — rask oppfriskning.</p>
         <Drill
           phrases={step.phrases}
+          language={language}
           onComplete={() => {
             streakStore.recordActivity();
             setStep({ name: "ready", title: step.title, phrases: step.phrases });

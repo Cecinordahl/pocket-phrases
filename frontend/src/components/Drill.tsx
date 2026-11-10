@@ -1,15 +1,18 @@
 import { useMemo, useState } from "react";
-import type { Phrase } from "../types/lesson";
+import type { Language, Phrase } from "../types/lesson";
 import { categoryStyle } from "../lib/categories";
 import { iconFor } from "../lib/icons";
 import { recordReview, sortByDue } from "../lib/srs";
+import { Example } from "./Example";
 
 type DrillProps = {
   phrases: Phrase[];
   onComplete: () => void;
+  /** Lets the repetition deck resurface these phrases later (see lib/srs.ts). */
+  language?: Language;
 };
 
-export function Drill({ phrases, onComplete }: DrillProps) {
+export function Drill({ phrases, onComplete, language }: DrillProps) {
   // Most-overdue-first, computed once per lesson so the order doesn't jump
   // around as reviews are recorded mid-session.
   const ordered = useMemo(() => sortByDue(phrases), [phrases]);
@@ -74,6 +77,7 @@ export function Drill({ phrases, onComplete }: DrillProps) {
                       {p.pronunciation}
                     </div>
                     <div style={{ marginTop: 4 }}>{p.native}</div>
+                    <Example phrase={p} />
                   </li>
                 );
               })}
@@ -90,7 +94,7 @@ export function Drill({ phrases, onComplete }: DrillProps) {
   const style = categoryStyle(phrase.category);
 
   function rate(remembered: boolean) {
-    recordReview(phrase.id, remembered);
+    recordReview(phrase, remembered, language);
     if (remembered) setKnewCount((c) => c + 1);
     else setThinkPhrases((prev) => [...prev, phrase]);
 
@@ -153,6 +157,7 @@ export function Drill({ phrases, onComplete }: DrillProps) {
                 {phrase.pronunciation}
               </div>
             </div>
+            <Example phrase={phrase} align="center" />
           </div>
         )}
       </button>
