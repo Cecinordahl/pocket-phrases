@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Calls the Anthropic API (Claude Haiku) to turn a free-text situation
+ * Calls the Anthropic API (Claude Haiku 5.5) to turn a free-text situation
  * description into a Lesson. The API key is read from an environment
  * variable (spring.config "anthropic.api-key" -> ANTHROPIC_API_KEY) and
  * never appears in frontend code or the repo.
@@ -25,8 +25,10 @@ import java.util.List;
 @Service
 public class AnthropicService {
 
-    private static final String MODEL = "claude-haiku-4-5";
-    private static final long MAX_TOKENS = 1500L;
+    private static final String MODEL = "claude-haiku-5-5";
+    // Haiku 5.5 thinks by default and thinking counts toward max_tokens,
+    // so leave headroom above the ~1500 tokens the JSON lesson itself needs.
+    private static final long MAX_TOKENS = 4000L;
     private static final int MAX_PHRASES = 20;
 
     private static final String SYSTEM_PROMPT = """
