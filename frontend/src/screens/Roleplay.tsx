@@ -7,7 +7,7 @@ import {
   type RoleplayMessage,
   type RoleplayOption,
 } from "../lib/api";
-import { streakStore } from "../lib/streak";
+import { award } from "../lib/rewards";
 import { Disclaimer } from "../components/Disclaimer";
 
 type RoleplayProps = {
@@ -94,7 +94,7 @@ export function Roleplay({ language, onBack, onAccessDenied }: RoleplayProps) {
       const finished = turn.done || updated.filter((m) => m.role === "user").length >= MAX_USER_TURNS;
       if (finished) {
         setDone(true);
-        streakStore.recordActivity();
+        award({ kind: "conversation", turns: updated.filter((m) => m.role === "user").length }, language);
       }
       return true;
     } catch (e) {

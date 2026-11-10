@@ -4,6 +4,7 @@ import { getTopicModule, toTopicPhrase, type TopicId } from "../lib/topicVocab";
 import { topicProgressStore } from "../lib/topicVocabProgress";
 import { Read } from "../components/Read";
 import { Quiz } from "../components/Quiz";
+import { award } from "../lib/rewards";
 
 type TopicModuleQuizProps = {
   topic: TopicId;
@@ -42,6 +43,8 @@ export function TopicModuleQuiz({ topic, language, moduleIndex, onBack, onModule
   // Same rule as VocabModuleQuiz: only a 100 %-correct run clears the
   // module — anything less leaves the user on Quiz's own retry screen.
   function handleQuizComplete(score: number) {
+    const cleared = module !== null && score === phrases.length;
+    award(cleared ? { kind: "module" } : { kind: "quiz", score, total: phrases.length }, language);
     if (module && score === phrases.length) {
       topicProgressStore.completeModule(topic, language, moduleIndex);
       onModuleComplete();

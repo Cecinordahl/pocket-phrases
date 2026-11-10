@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Lesson } from "../types/lesson";
 import { progressStore } from "../lib/progress";
-import { streakStore } from "../lib/streak";
+import { award } from "../lib/rewards";
 import { tripStore } from "../lib/trip";
 import { AccessDeniedError, fetchPrebuiltLesson, fetchRandomLesson } from "../lib/api";
 import { Read } from "../components/Read";
@@ -113,7 +113,10 @@ export function LessonScreen({ lesson: initialLesson, onBack, onAccessDenied }: 
           key={lessonVersion}
           phrases={lesson.phrases}
           language={lesson.language}
-          onComplete={() => progressStore.markDrilled(lesson.language, lesson.mode)}
+          onComplete={() => {
+            progressStore.markDrilled(lesson.language, lesson.mode);
+            award({ kind: "drill" }, lesson.language);
+          }}
         />
       )}
       {tab === "test" && (
@@ -123,7 +126,7 @@ export function LessonScreen({ lesson: initialLesson, onBack, onAccessDenied }: 
           language={lesson.language}
           onComplete={(score) => {
             progressStore.markQuizzed(lesson.language, lesson.mode, score);
-            streakStore.recordActivity();
+            award({ kind: "quiz", score, total: lesson.phrases.length, situation: lesson.mode }, lesson.language);
             tripStore.markCompleted(lesson.language, lesson.mode);
           }}
           onRequestNewSet={isGenerated ? undefined : runAnotherTest}

@@ -4,6 +4,7 @@ import { getModule, toPhrase } from "../lib/frequency";
 import { frequencyProgressStore } from "../lib/frequencyProgress";
 import { Read } from "../components/Read";
 import { Quiz } from "../components/Quiz";
+import { award } from "../lib/rewards";
 
 type VocabModuleQuizProps = {
   language: Language;
@@ -40,6 +41,8 @@ export function VocabModuleQuiz({ language, moduleIndex, onBack, onModuleComplet
   // "Ta testen på nytt" button is the retry path, so nothing extra is
   // needed here for the fail case.
   function handleQuizComplete(score: number) {
+    const cleared = module !== null && score === phrases.length;
+    award(cleared ? { kind: "module" } : { kind: "quiz", score, total: phrases.length }, language);
     if (module && score === phrases.length) {
       frequencyProgressStore.completeModule(language, moduleIndex);
       onModuleComplete();

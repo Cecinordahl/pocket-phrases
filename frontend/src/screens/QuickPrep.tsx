@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Language, ModeInfo, Phrase } from "../types/lesson";
 import { AccessDeniedError, fetchModes, fetchPrebuiltLesson } from "../lib/api";
 import { sortByDue } from "../lib/srs";
-import { streakStore } from "../lib/streak";
+import { award } from "../lib/rewards";
 import { Drill } from "../components/Drill";
 
 type QuickPrepProps = {
@@ -72,7 +72,7 @@ export function QuickPrep({ language, onBack, onAccessDenied }: QuickPrepProps) 
           phrases={step.phrases}
           language={language}
           onComplete={() => {
-            streakStore.recordActivity();
+            award({ kind: "quick-prep" }, language);
             setStep({ name: "ready", title: step.title, phrases: step.phrases });
           }}
         />

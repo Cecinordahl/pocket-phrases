@@ -3,6 +3,7 @@ import type { Language } from "../types/lesson";
 import { getTopicModules, toTopicPhrase, TOPICS, type TopicId } from "../lib/topicVocab";
 import { topicProgressStore } from "../lib/topicVocabProgress";
 import { Quiz } from "../components/Quiz";
+import { award } from "../lib/rewards";
 
 type TopicReviewQuizProps = {
   topic: TopicId;
@@ -40,7 +41,7 @@ export function TopicReviewQuiz({ topic, language, onBack }: TopicReviewQuizProp
       </button>
       <h2>Repetisjon: {TOPICS[topic].title}</h2>
       <p className="text-muted">Dette er bare øving — det påvirker ikke fremgangen din.</p>
-      <Quiz phrases={phrases} language={language} direction="target-to-native" onComplete={() => {}} />
+      <Quiz phrases={phrases} language={language} direction="target-to-native" onComplete={(score) => award({ kind: "quiz", score, total: phrases.length }, language)} />
     </div>
   );
 }

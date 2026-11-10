@@ -18,6 +18,7 @@ import { TripPlan } from "./screens/TripPlan";
 import { tripStore } from "./lib/trip";
 import { Roleplay } from "./screens/Roleplay";
 import { Review } from "./screens/Review";
+import { Trophies } from "./screens/Trophies";
 import { SharedTripImport } from "./screens/SharedTripImport";
 import { consumeShareFromLocation, type SharedTrip } from "./lib/share";
 import { frequencyProgressStore } from "./lib/frequencyProgress";
@@ -43,6 +44,7 @@ type Screen =
   | { name: "trip-plan"; language: Language }
   | { name: "roleplay"; language: Language }
   | { name: "review"; language: Language }
+  | { name: "trophies"; language: Language }
   | { name: "shared-trip"; trip: SharedTrip };
 
 function App() {
@@ -114,6 +116,7 @@ function App() {
         onEnterQuickPrep={() => setScreen({ name: "quick-prep", language })}
         onEnterRoleplay={() => setScreen({ name: "roleplay", language })}
         onEnterReview={() => setScreen({ name: "review", language })}
+        onOpenTrophies={() => setScreen({ name: "trophies", language })}
         onEnterTrip={() =>
           setScreen(tripStore.get(language) ? { name: "trip-plan", language } : { name: "trip-setup", language })
         }
@@ -130,6 +133,11 @@ function App() {
         onAccessDenied={() => setAccessDenied(true)}
       />
     );
+  }
+
+  if (screen.name === "trophies") {
+    const language = screen.language;
+    return <Trophies onBack={() => setScreen({ name: "mode", language })} />;
   }
 
   if (screen.name === "review") {

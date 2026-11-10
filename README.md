@@ -16,6 +16,7 @@ No accounts.
 | **🎲 Tilfeldig** | A random mix across all situations | No |
 | **Beskriv situasjonen** | Describe any situation in free text → a generated lesson | Yes |
 | **📸 Bilde av meny/skilt** | Photograph a menu, sign or ticket machine → a lesson built from what's on it | Yes |
+| **🏆 Fremgang** | XP for everything you finish, levels, a daily goal (50 XP), a 🔥 streak, 12 trophies, and a celebration (confetti for big wins). Situations turn green ✓ when tested, ⭐ when all correct | No |
 | **🔁 Repetisjon** | Spaced repetition across everything you've practised: due phrases and words from any lesson or vocab module, the ones you got wrong first, 10 at a time | No |
 | **⚡ Her og nå** | 2-minute refresh of the 5 phrases you need for a situation you're in right now, then a large-text cheat sheet | No |
 | **🧳 Reiseplan** | Destination + departure date → a day-by-day plan that reflows if you skip a day, with a "generalprøve" the last day | No |
@@ -47,6 +48,7 @@ pocket-phrases/
 │       ├── lib/progress.ts   localStorage progress, behind a ProgressStore seam
 │       ├── lib/trip.ts       trip plan storage + day-by-day plan logic
 │       ├── lib/srs.ts        spaced repetition (SM-2) + the 🔁 Repetisjon deck
+│       ├── lib/rewards.ts    XP, levels, daily goal, trophies (award() + a window event for <Celebration/>)
 │       ├── lib/share.ts      travel-buddy links: lesson/trip compressed into #share=...
 │       └── screens/          LanguagePicker -> ModePicker -> LessonScreen, plus
 │                             QuickPrep ("Her og nå"), TripSetup/TripPlan, Roleplay, vocab journeys
@@ -198,7 +200,6 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 
 **TODOs:** 
 - When selecting "Prøv med andre fraser", remove the phrases that were just used from the selection pool. If selecting this again, all previous removed phrases should remain removed.
-- The daily streak is not working as intended. The streak should stop if a user has not done any lesson/test/practice during one entire day.
 - Orforråd reisen skal helst unngå ord som de, est, le, la, osv. siden de alltid hører sammen med noe annet feks la maison.
 - Norwegian sentence displayed, mix of drag and drop words for the user to create the sentence themselves, with many (minimum 5, max 10) words that are not correct but are there to confuse the user.
 - AI version where the user can type the sentence themselves and the LLM will check to see if the user got it somewhat right- it would be nice to give feks score based on percentage of correctness. Example for spanish, "Jeg elsker deg" is displayed in norwegian and the user writes "Te amo" is 100% correct (?) but if the user writes "Tu amo" they get some points say 90% since they may have thought te amo but missed one letter.

@@ -13,6 +13,8 @@ import { getWordCount } from "../lib/frequency";
 import { getTopicWordCount, TOPICS, type TopicId } from "../lib/topicVocab";
 import { buildPlan, daysUntil, tripStore } from "../lib/trip";
 import { dueSummary } from "../lib/srs";
+import { progressStore } from "../lib/progress";
+import { ProgressHeader } from "../components/ProgressHeader";
 
 type ModePickerProps = {
   language: Language;
@@ -25,6 +27,7 @@ type ModePickerProps = {
   onEnterTrip: () => void;
   onEnterRoleplay: () => void;
   onEnterReview: () => void;
+  onOpenTrophies: () => void;
 };
 
 const MAX_SITUATION_LENGTH = 300;
@@ -46,6 +49,7 @@ export function ModePicker({
   onEnterTrip,
   onEnterRoleplay,
   onEnterReview,
+  onOpenTrophies,
 }: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
@@ -127,11 +131,17 @@ export function ModePicker({
   const review = dueSummary(language);
   const showVocab = getWordCount(language) > 0 || getTopicWordCount("tourist", language) > 0;
 
-  function situationMarker(key: string): string {
-    if (!tripActive || !trip) return "";
-    if (trip.completed.includes(key)) return "✓ ";
-    if (todayKeys.has(key)) return "📅 ";
-    return "";
+  // Done = test taken; mastered = last test was all correct (prebuilt lessons have 6 phrases).
+  const PREBUILT_LESSON_SIZE = 6;
+  function situationState(key: string): { className: string; label: string } {
+    const p = progressStore.get(language, key);
+    const today = todayKeys.has(key) && !(trip?.completed.includes(key) ?? false);
+    const todayClass = today ? " situation-today" : "";
+    if (p.quizzed && (p.lastQuizScore ?? 0) >= PREBUILT_LESSON_SIZE) {
+      return { className: "situation-mastered" + todayClass, label: "⭐ " };
+    }
+    if (p.quizzed) return { className: "situation-done" + todayClass, label: "✓ " };
+    return { className: todayClass, label: today ? "📅 " : "" };
   }
 
   return (
@@ -139,6 +149,7 @@ export function ModePicker({
       <button className="button-secondary button" style={{ marginBottom: 16 }} onClick={onBack}>
         ← Bytt språk
       </button>
+      <ProgressHeader onOpenTrophies={onOpenTrophies} />
       <h2>Hva vil du øve på?</h2>
 
       {error && (
@@ -198,27 +209,28 @@ export function ModePicker({
                   : "Laster..."}
               </p>
             )}
-            {modes?.map((mode) => (
-              <button
-                key={mode.key}
-                className="button button-secondary"
-                disabled={busy}
-                onClick={() => run(mode.key, () => fetchPrebuiltLesson(language, mode.key))}
-              >
-                {loadingKey === mode.key ? "Laster..." : `${situationMarker(mode.key)}${mode.title}`}
-              </button>
-            ))}
+            {modes?.map((mode) => {
+              const state = situationState(mode.key);
+              return (
+                <button
+                  key={mode.key}
+                  className={`button button-secondary ${state.className}`}
+                  disabled={busy}
+                  onClick={() => run(mode.key, () => fetchPrebuiltLesson(language, mode.key))}
+                >
+                  {loadingKey === mode.key ? "Laster..." : `${state.label}${mode.title}`}
+                </button>
+              );
+            })}
             {modes !== null && (
               <button className="button" disabled={busy} onClick={() => run("random", () => fetchRandomLesson(language))}>
                 {loadingKey === "random" ? "Laster..." : "🎲 Tilfeldig"}
               </button>
             )}
           </div>
-          {tripActive && (
-            <p className="text-muted" style={{ fontSize: "0.78rem", margin: "8px 0 0" }}>
-              ✓ ferdig til turen · 📅 på planen i dag
-            </p>
-          )}
+          <p className="text-muted" style={{ fontSize: "0.78rem", margin: "8px 0 0" }}>
+            ✓ test tatt · ⭐ alt riktig{tripActive && " · 📅 på planen i dag"}
+          </p>
         </div>
       </Section>
 

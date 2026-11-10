@@ -39,6 +39,16 @@ export interface StreakStore {
 
 class LocalStorageStreakStore implements StreakStore {
   get(): StreakData {
+    const data = this.read();
+    // A whole day with no activity breaks the streak, even before the next
+    // activity is recorded — otherwise an old streak keeps showing for days.
+    if (data.lastActiveDate && daysSince(data.lastActiveDate) > 1) {
+      return { ...data, currentStreak: 0 };
+    }
+    return data;
+  }
+
+  private read(): StreakData {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       return raw ? (JSON.parse(raw) as StreakData) : EMPTY_STREAK;
@@ -48,7 +58,7 @@ class LocalStorageStreakStore implements StreakStore {
   }
 
   recordActivity(): StreakData {
-    const data = this.get();
+    const data = this.read();
     const today = todayKey();
 
     if (data.lastActiveDate === today) {
@@ -60,7 +70,11 @@ class LocalStorageStreakStore implements StreakStore {
     const longestStreak = Math.max(data.longestStreak, currentStreak);
 
     const updated: StreakData = { currentStreak, longestStreak, lastActiveDate: today };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    } catch {
+      // Storage full/blocked — the streak just won't persist.
+    }
     return updated;
   }
 }

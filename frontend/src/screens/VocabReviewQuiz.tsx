@@ -3,6 +3,7 @@ import type { Language } from "../types/lesson";
 import { getUnit, getUnits, toPhrase, unitWords, type VocabReviewScope } from "../lib/frequency";
 import { frequencyProgressStore } from "../lib/frequencyProgress";
 import { Quiz } from "../components/Quiz";
+import { award } from "../lib/rewards";
 
 type VocabReviewQuizProps = {
   language: Language;
@@ -56,7 +57,7 @@ export function VocabReviewQuiz({ language, scope, onBack }: VocabReviewQuizProp
       </button>
       <h2>{title}</h2>
       <p className="text-muted">Dette er bare øving — det påvirker ikke fremgangen din.</p>
-      <Quiz phrases={phrases} language={language} direction="target-to-native" onComplete={() => {}} />
+      <Quiz phrases={phrases} language={language} direction="target-to-native" onComplete={(score) => award({ kind: "quiz", score, total: phrases.length }, language)} />
     </div>
   );
 }

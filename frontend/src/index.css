@@ -275,3 +275,188 @@ textarea {
 .trip-banner:hover {
   border-color: var(--color-primary);
 }
+
+/* --- Gamification ------------------------------------------------------ */
+
+/* Situation buttons on the home screen. Green + ✓ follows the app's rule
+   that green always comes with a checkmark and means "done right". */
+.situation-done {
+  background: var(--color-correct-bg);
+  border-color: var(--color-correct);
+  color: var(--color-correct);
+  font-weight: 600;
+}
+.situation-mastered {
+  background: var(--color-correct);
+  border-color: var(--color-correct);
+  color: white;
+  font-weight: 600;
+}
+.situation-today {
+  border-style: dashed;
+  border-width: 2px;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.progress-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+  font-size: 0.95rem;
+}
+.bar {
+  height: 8px;
+  margin-top: 4px;
+  border-radius: 999px;
+  background: var(--color-surface-muted);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #eab308, #f59e0b);
+  transition: width 0.6s ease;
+}
+.goal-ring {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  background: conic-gradient(var(--color-correct) var(--goal, 0deg), var(--color-surface-muted) 0);
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.badge-earned {
+  border-color: #eab308;
+  background: #fefce8;
+}
+
+.xp-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 50;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.92rem;
+  box-shadow: var(--shadow-md);
+  animation: pocket-pop-in 0.3s ease-out;
+  cursor: pointer;
+}
+
+.celebration-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(20, 20, 20, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+}
+.celebration-card {
+  position: relative;
+  width: min(360px, 100%);
+  padding: 24px 20px;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  animation: pocket-pop-in 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.xp-pill {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 700;
+}
+.badge-unlocked {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background: #fefce8;
+  border: 1px solid #eab308;
+  text-align: left;
+  font-size: 0.88rem;
+}
+.badge-unlocked > span:first-child {
+  font-size: 1.6rem;
+}
+
+.confetti span {
+  position: absolute;
+  top: -12px;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  animation-name: pocket-confetti;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pocket-pop-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--tx, 0), 8px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--tx, 0), 0) scale(1);
+  }
+}
+.xp-toast {
+  --tx: -50%;
+}
+@keyframes pocket-confetti {
+  to {
+    top: 105%;
+    transform: rotate(720deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti {
+    display: none;
+  }
+  .xp-toast,
+  .celebration-card {
+    animation: none;
+  }
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Language, Phrase } from "../types/lesson";
 import { dueSummary, dueTomorrowCount, getDuePhrases } from "../lib/srs";
-import { streakStore } from "../lib/streak";
+import { award } from "../lib/rewards";
 import { Drill } from "../components/Drill";
 
 type ReviewProps = {
@@ -54,7 +54,7 @@ export function Review({ language, onBack }: ReviewProps) {
             phrases={phrases}
             language={language}
             onComplete={() => {
-              streakStore.recordActivity();
+              award({ kind: "review" }, language);
               setFinished(true);
             }}
           />
