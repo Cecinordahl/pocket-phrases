@@ -9,6 +9,7 @@ import {
 import type { Language, Lesson, ModeInfo } from "../types/lesson";
 import { getWordCount } from "../lib/frequency";
 import { getTopicWordCount, TOPICS, type TopicId } from "../lib/topicVocab";
+import { daysUntil, tripStore } from "../lib/trip";
 
 type ModePickerProps = {
   language: Language;
@@ -18,6 +19,7 @@ type ModePickerProps = {
   onEnterVocabJourney: () => void;
   onEnterTopic: (topic: TopicId) => void;
   onEnterQuickPrep: () => void;
+  onEnterTrip: () => void;
 };
 
 const MAX_SITUATION_LENGTH = 300;
@@ -36,6 +38,7 @@ export function ModePicker({
   onEnterVocabJourney,
   onEnterTopic,
   onEnterQuickPrep,
+  onEnterTrip,
 }: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
@@ -99,6 +102,8 @@ export function ModePicker({
   }
 
   const busy = loadingKey !== null;
+  const trip = tripStore.get(language);
+  const tripDaysLeft = trip ? daysUntil(trip.departureDate) : null;
 
   return (
     <div style={{ marginTop: 24 }}>
@@ -113,6 +118,25 @@ export function ModePicker({
           {error}
         </p>
       )}
+
+      <div className="card" style={{ marginTop: 16 }}>
+        <h3>
+          🧳{" "}
+          {trip && tripDaysLeft !== null && tripDaysLeft > 0
+            ? `${tripDaysLeft} ${tripDaysLeft === 1 ? "dag" : "dager"} til ${trip.destination || "turen"}`
+            : trip
+              ? "Reiseplan"
+              : "Skal du ut og reise?"}
+        </h3>
+        <p className="text-muted" style={{ marginBottom: 12 }}>
+          {trip
+            ? "Se hva du skal øve på i dag for å være klar til turen."
+            : "Legg inn når du reiser, så får du en plan for hva du skal øve på hver dag fram til avreise."}
+        </p>
+        <button className="button" style={{ width: "100%" }} onClick={onEnterTrip}>
+          {trip ? "Åpne reiseplan" : "Lag en reiseplan"}
+        </button>
+      </div>
 
       <div className="card" style={{ marginTop: 16 }}>
         <h3>⚡ Her og nå</h3>

@@ -13,13 +13,17 @@ import { TopicVocabMap } from "./screens/TopicVocabMap";
 import { TopicModuleQuiz } from "./screens/TopicModuleQuiz";
 import { TopicReviewQuiz } from "./screens/TopicReviewQuiz";
 import { QuickPrep } from "./screens/QuickPrep";
+import { TripSetup } from "./screens/TripSetup";
+import { TripPlan } from "./screens/TripPlan";
+import { tripStore } from "./lib/trip";
 import { frequencyProgressStore } from "./lib/frequencyProgress";
 import type { TopicId } from "./lib/topicVocab";
 
 type Screen =
   | { name: "language" }
   | { name: "mode"; language: Language }
-  | { name: "lesson"; language: Language; lesson: Lesson }
+  // returnTo lets a lesson opened from the trip plan go back there.
+  | { name: "lesson"; language: Language; lesson: Lesson; returnTo?: "trip" }
   // origin tracks whether the intro was reached from ModePicker (first
   // visit) or from the milestone map's "ⓘ" revisit link, so its back
   // button returns to the right place either way.
@@ -30,7 +34,9 @@ type Screen =
   | { name: "topic-map"; language: Language; topic: TopicId }
   | { name: "topic-module"; language: Language; topic: TopicId; moduleIndex: number }
   | { name: "topic-review"; language: Language; topic: TopicId }
-  | { name: "quick-prep"; language: Language };
+  | { name: "quick-prep"; language: Language }
+  | { name: "trip-setup"; language: Language }
+  | { name: "trip-plan"; language: Language };
 
 function App() {
   const [screen, setScreen] = useState<Screen>({ name: "language" });
@@ -62,6 +68,9 @@ function App() {
         }
         onEnterTopic={(topic) => setScreen({ name: "topic-map", language, topic })}
         onEnterQuickPrep={() => setScreen({ name: "quick-prep", language })}
+        onEnterTrip={() =>
+          setScreen(tripStore.get(language) ? { name: "trip-plan", language } : { name: "trip-setup", language })
+        }
       />
     );
   }
@@ -72,6 +81,46 @@ function App() {
       <QuickPrep
         language={language}
         onBack={() => setScreen({ name: "mode", language })}
+        onAccessDenied={() => setAccessDenied(true)}
+      />
+    );
+  }
+
+  if (screen.name === "trip-setup") {
+    const language = screen.language;
+    return (
+      <TripSetup
+        language={language}
+        onBack={() =>
+          setScreen(tripStore.get(language) ? { name: "trip-plan", language } : { name: "mode", language })
+        }
+        onSaved={() => setScreen({ name: "trip-plan", language })}
+        onAccessDenied={() => setAccessDenied(true)}
+      />
+    );
+  }
+
+  if (screen.name === "trip-plan") {
+    const language = screen.language;
+    const trip = tripStore.get(language);
+    if (!trip) {
+      return (
+        <TripSetup
+          language={language}
+          onBack={() => setScreen({ name: "mode", language })}
+          onSaved={() => setScreen({ name: "trip-plan", language })}
+          onAccessDenied={() => setAccessDenied(true)}
+        />
+      );
+    }
+    return (
+      <TripPlan
+        trip={trip}
+        onBack={() => setScreen({ name: "mode", language })}
+        onEdit={() => setScreen({ name: "trip-setup", language })}
+        onDeleted={() => setScreen({ name: "mode", language })}
+        onOpenLesson={(lesson) => setScreen({ name: "lesson", language, lesson, returnTo: "trip" })}
+        onOpenQuickPrep={() => setScreen({ name: "quick-prep", language })}
         onAccessDenied={() => setAccessDenied(true)}
       />
     );
@@ -170,7 +219,13 @@ function App() {
   return (
     <LessonScreen
       lesson={screen.lesson}
-      onBack={() => setScreen({ name: "mode", language: screen.language })}
+      onBack={() =>
+        setScreen(
+          screen.returnTo === "trip"
+            ? { name: "trip-plan", language: screen.language }
+            : { name: "mode", language: screen.language },
+        )
+      }
       onAccessDenied={() => setAccessDenied(true)}
     />
   );
