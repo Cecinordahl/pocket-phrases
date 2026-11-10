@@ -21,7 +21,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webmvc")
 	// Firestore access for the (optional, off-by-default) email whitelist gate.
 	implementation("com.google.firebase:firebase-admin:9.9.0")
-	// Official Anthropic SDK, used only by the free-text "describe your situation" endpoint.
+	// Official Anthropic SDK, used by the free-text lesson generator and the roleplay chat.
 	implementation("com.anthropic:anthropic-java:2.52.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")

@@ -49,6 +49,7 @@ The frontend calls the backend over plain REST under `/api`:
 | GET | `/api/lessons/prebuilt?language=es&mode=restaurant` | Samples 6 phrases from a pool of ~10, shuffled |
 | GET | `/api/lessons/random?language=es` | Samples 6 phrases across all modes |
 | POST | `/api/lessons/generate` `{ situation, language }` | Calls Anthropic (Claude Haiku) to build a lesson from free text |
+| POST | `/api/roleplay/turn` | One roleplay turn. Stateless: body `{ language, scenario, history[] }`, returns `{ reply, replyNorwegian, correction, hints, done }`. Max 8 user turns per chat, 60 turns/hour per IP |
 
 The backend is the only thing that ever talks to Anthropic or Firestore — the Anthropic API key and Firebase credentials never reach the frontend or the repo.
 
@@ -157,6 +158,5 @@ I'm not a lawyer and this isn't legal advice — this section documents what the
 - Orforråd reisen skal helst unngå ord som de, est, le, la, osv. siden de alltid hører sammen med noe annet feks la maison.
 - Norwegian sentence displayed, mix of drag and drop words for the user to create the sentence themselves, with many (minimum 5, max 10) words that are not correct but are there to confuse the user.
 - AI version where the user can type the sentence themselves and the LLM will check to see if the user got it somewhat right- it would be nice to give feks score based on percentage of correctness. Example for spanish, "Jeg elsker deg" is displayed in norwegian and the user writes "Te amo" is 100% correct (?) but if the user writes "Tu amo" they get some points say 90% since they may have thought te amo but missed one letter.
-- **AI roleplay (real conversation):** stateless `POST /api/roleplay/turn` with `{ language, scenario, history[] }`; structured reply `{ reply, replyNorwegian, correction, hints, done }`. Cap ~10 turns, low `maxTokens`, rate limit per IP. End with a debrief saved as a normal `Lesson`.
 - **Photograph a menu/sign → lesson:** user snaps a photo, Claude (vision) reads it and returns a `Lesson` with the useful words/phrases from it. Reuses the existing `generate` flow with an image input.
 - **Travel buddy mode:** share a link to a lesson (or a whole trip plan) with travel companions — no accounts needed, e.g. lesson encoded in the URL or stored under a short share id.

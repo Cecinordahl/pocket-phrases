@@ -59,3 +59,26 @@ export async function generateLesson(language: Language, situation: string): Pro
   });
   return handle<Lesson>(res);
 }
+
+export type RoleplayMessage = { role: "user" | "assistant"; text: string };
+
+export type RoleplayTurn = {
+  reply: string;
+  replyNorwegian: string;
+  correction: string;
+  hints: string[];
+  done: boolean;
+};
+
+export async function fetchRoleplayTurn(
+  language: Language,
+  scenario: string,
+  history: RoleplayMessage[],
+): Promise<RoleplayTurn> {
+  const res = await fetch(`${BASE_URL}/api/roleplay/turn`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ language, scenario, history }),
+  });
+  return handle<RoleplayTurn>(res);
+}

@@ -20,6 +20,7 @@ type ModePickerProps = {
   onEnterTopic: (topic: TopicId) => void;
   onEnterQuickPrep: () => void;
   onEnterTrip: () => void;
+  onEnterRoleplay: () => void;
 };
 
 const MAX_SITUATION_LENGTH = 300;
@@ -39,6 +40,7 @@ export function ModePicker({
   onEnterTopic,
   onEnterQuickPrep,
   onEnterTrip,
+  onEnterRoleplay,
 }: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
@@ -146,6 +148,17 @@ export function ModePicker({
         </p>
         <button className="button" style={{ width: "100%" }} onClick={onEnterQuickPrep}>
           Lær det jeg trenger nå
+        </button>
+      </div>
+
+      <div className="card" style={{ marginTop: 16 }}>
+        <h3>🗣️ Øv på en samtale</h3>
+        <p className="text-muted" style={{ marginBottom: 12 }}>
+          Snakk med en KI-servitør, -resepsjonist eller -sjåfør. Du får hint og vennlige rettelser
+          underveis.
+        </p>
+        <button className="button" style={{ width: "100%" }} onClick={onEnterRoleplay}>
+          Start en samtale
         </button>
       </div>
 

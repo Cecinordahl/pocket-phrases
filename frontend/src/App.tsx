@@ -16,6 +16,7 @@ import { QuickPrep } from "./screens/QuickPrep";
 import { TripSetup } from "./screens/TripSetup";
 import { TripPlan } from "./screens/TripPlan";
 import { tripStore } from "./lib/trip";
+import { Roleplay } from "./screens/Roleplay";
 import { frequencyProgressStore } from "./lib/frequencyProgress";
 import type { TopicId } from "./lib/topicVocab";
 
@@ -36,7 +37,8 @@ type Screen =
   | { name: "topic-review"; language: Language; topic: TopicId }
   | { name: "quick-prep"; language: Language }
   | { name: "trip-setup"; language: Language }
-  | { name: "trip-plan"; language: Language };
+  | { name: "trip-plan"; language: Language }
+  | { name: "roleplay"; language: Language };
 
 function App() {
   const [screen, setScreen] = useState<Screen>({ name: "language" });
@@ -68,6 +70,7 @@ function App() {
         }
         onEnterTopic={(topic) => setScreen({ name: "topic-map", language, topic })}
         onEnterQuickPrep={() => setScreen({ name: "quick-prep", language })}
+        onEnterRoleplay={() => setScreen({ name: "roleplay", language })}
         onEnterTrip={() =>
           setScreen(tripStore.get(language) ? { name: "trip-plan", language } : { name: "trip-setup", language })
         }
@@ -79,6 +82,17 @@ function App() {
     const language = screen.language;
     return (
       <QuickPrep
+        language={language}
+        onBack={() => setScreen({ name: "mode", language })}
+        onAccessDenied={() => setAccessDenied(true)}
+      />
+    );
+  }
+
+  if (screen.name === "roleplay") {
+    const language = screen.language;
+    return (
+      <Roleplay
         language={language}
         onBack={() => setScreen({ name: "mode", language })}
         onAccessDenied={() => setAccessDenied(true)}

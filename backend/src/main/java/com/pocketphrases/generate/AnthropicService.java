@@ -1,21 +1,18 @@
 package com.pocketphrases.generate;
 
 import com.anthropic.client.AnthropicClient;
-import com.anthropic.client.okhttp.AnthropicOkHttpClient;
 import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.StructuredMessageCreateParams;
 import com.pocketphrases.lesson.Lesson;
 import com.pocketphrases.lesson.Phrase;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Calls the Anthropic API (Claude Haiku 5.5) to turn a free-text situation
- * description into a Lesson. The API key is read from an environment
- * variable (spring.config "anthropic.api-key" -> ANTHROPIC_API_KEY) and
- * never appears in frontend code or the repo.
+ * description into a Lesson. The client (and its API key) comes from
+ * {@link AnthropicConfig}.
  *
  * Structured outputs (output_config.format, derived from GeneratedLesson)
  * guarantee the model returns valid JSON matching the expected shape rather
@@ -25,7 +22,7 @@ import java.util.List;
 @Service
 public class AnthropicService {
 
-    private static final String MODEL = "claude-haiku-5-5";
+    private static final String MODEL = AnthropicConfig.MODEL;
     // Haiku 5.5 thinks by default and thinking counts toward max_tokens,
     // so leave headroom above the ~1500 tokens the JSON lesson itself needs.
     private static final long MAX_TOKENS = 4000L;
@@ -43,8 +40,8 @@ public class AnthropicService {
 
     private final AnthropicClient client;
 
-    public AnthropicService(@Value("${anthropic.api-key:}") String apiKey) {
-        this.client = AnthropicOkHttpClient.builder().apiKey(apiKey).build();
+    public AnthropicService(AnthropicClient client) {
+        this.client = client;
     }
 
     public Lesson generateLesson(String situation, String language) {
