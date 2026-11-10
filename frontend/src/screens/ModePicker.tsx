@@ -17,6 +17,7 @@ type ModePickerProps = {
   onAccessDenied: () => void;
   onEnterVocabJourney: () => void;
   onEnterTopic: (topic: TopicId) => void;
+  onEnterQuickPrep: () => void;
 };
 
 const MAX_SITUATION_LENGTH = 300;
@@ -34,6 +35,7 @@ export function ModePicker({
   onAccessDenied,
   onEnterVocabJourney,
   onEnterTopic,
+  onEnterQuickPrep,
 }: ModePickerProps) {
   const [modes, setModes] = useState<ModeInfo[] | null>(null);
   const [situation, setSituation] = useState("");
@@ -111,6 +113,17 @@ export function ModePicker({
           {error}
         </p>
       )}
+
+      <div className="card" style={{ marginTop: 16 }}>
+        <h3>⚡ Her og nå</h3>
+        <p className="text-muted" style={{ marginBottom: 12 }}>
+          Er du i situasjonen akkurat nå? Lær de 5 frasene du trenger mest på to minutter — enten du skal
+          bestille, sjekke inn eller spørre om veien.
+        </p>
+        <button className="button" style={{ width: "100%" }} onClick={onEnterQuickPrep}>
+          Lær det jeg trenger nå
+        </button>
+      </div>
 
       {/* Only shown once there's at least some fetched content for this
           language — no point linking into a journey that's 100% locked. */}

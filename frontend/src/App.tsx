@@ -12,6 +12,7 @@ import { VocabReviewQuiz } from "./screens/VocabReviewQuiz";
 import { TopicVocabMap } from "./screens/TopicVocabMap";
 import { TopicModuleQuiz } from "./screens/TopicModuleQuiz";
 import { TopicReviewQuiz } from "./screens/TopicReviewQuiz";
+import { QuickPrep } from "./screens/QuickPrep";
 import { frequencyProgressStore } from "./lib/frequencyProgress";
 import type { TopicId } from "./lib/topicVocab";
 
@@ -28,7 +29,8 @@ type Screen =
   | { name: "vocab-review"; language: Language; scope: VocabReviewScope }
   | { name: "topic-map"; language: Language; topic: TopicId }
   | { name: "topic-module"; language: Language; topic: TopicId; moduleIndex: number }
-  | { name: "topic-review"; language: Language; topic: TopicId };
+  | { name: "topic-review"; language: Language; topic: TopicId }
+  | { name: "quick-prep"; language: Language };
 
 function App() {
   const [screen, setScreen] = useState<Screen>({ name: "language" });
@@ -59,6 +61,18 @@ function App() {
           )
         }
         onEnterTopic={(topic) => setScreen({ name: "topic-map", language, topic })}
+        onEnterQuickPrep={() => setScreen({ name: "quick-prep", language })}
+      />
+    );
+  }
+
+  if (screen.name === "quick-prep") {
+    const language = screen.language;
+    return (
+      <QuickPrep
+        language={language}
+        onBack={() => setScreen({ name: "mode", language })}
+        onAccessDenied={() => setAccessDenied(true)}
       />
     );
   }
